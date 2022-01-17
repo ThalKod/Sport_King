@@ -11,10 +11,13 @@
   },
   "dependencies": {
     "@apollo/client": "^3.5.7",
+    "@react-navigation/native": "^6.0.6",
     "graphql": "^16.2.0",
     "react": "17.0.2",
     "react-native": "0.66.4",
-    "react-native-config": "^1.4.5"
+    "react-native-config": "^1.4.5",
+    "react-native-safe-area-context": "^3.3.2",
+    "react-native-screens": "^3.10.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
