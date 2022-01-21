@@ -2,12 +2,17 @@ import React from 'react';
 import type {Node} from 'react';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { NavigationContainer } from '@react-navigation/native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import config from './config';
+import FontAwesome5Icons from 'react-native-vector-icons/FontAwesome5';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const client = new ApolloClient({
   uri: config.API_HOST,
   cache: new InMemoryCache()
 });
+
+const Drawer = createDrawerNavigator();
 
 const App: () => Node = () => {
   return (
@@ -29,24 +34,6 @@ const App: () => Node = () => {
             options={{
               drawerIcon: ({focused, size}) => (
                 <FontAwesome5Icons name="dice" size={moderateScale(14)} color="#fff" />
-              )
-            }}
-          />
-          {/* <Drawer.Screen
-                  name="Rezilta Live"
-                  component={liveScoreDrawerNavigation}
-                  options={{
-                    drawerIcon: ({focused, size}) => (
-                        <AntDesignIcons name="videocamera" size={moderateScale(18)} color="#fff" />
-                    )
-                  }}
-              /> */}
-          <Drawer.Screen
-            name="Live Sports"
-            component={liveTvDrawerNavigation}
-            options={{
-              drawerIcon: ({focused, size}) => (
-                <MaterialIcons name="live-tv" size={moderateScale(18)} color="#fff" />
               )
             }}
           />
