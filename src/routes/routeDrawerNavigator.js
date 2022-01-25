@@ -2,7 +2,7 @@ import React from 'react';
 import {useEffect, useState} from 'react';
 import {useDispatch} from 'react-redux';
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import {initUser} from '../redux/actions';
+import {initUser} from '../redux/features/userSlice';
 import {ActivityIndicator, TouchableOpacity, View} from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import OnBoardingScreens from '../screens/Onboardings';
