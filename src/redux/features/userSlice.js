@@ -1,5 +1,5 @@
 import { INIT_USER, ADD_COINS } from '../constants';
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
 
 
 export const userSlice = createSlice({
@@ -23,24 +23,8 @@ export const userSlice = createSlice({
       state.coins = state.coins + action.payload.coins
     }
   }
-})
+});
 
-export const usersReducer = (state = defaultState, action) => {
-  switch (action.type) {
+export const { initUser, addCoins } =userSlice.actions;
 
-    case INIT_USER:
-      return {
-          ...state,
-          ...action.payload
-      };
-
-    case ADD_COINS:
-      return {
-          ...state,
-          coins: state.coins + action.payload.coins
-      };
-
-    default:
-      return state;
-  }
-};
+export default userSlice.reducer;
