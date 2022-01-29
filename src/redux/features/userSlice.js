@@ -1,4 +1,3 @@
-import { INIT_USER, ADD_COINS } from '../constants';
 import { createSlice } from '@reduxjs/toolkit';
 
 

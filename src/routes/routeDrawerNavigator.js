@@ -6,7 +6,7 @@ import {initUser} from '../redux/features/userSlice';
 import {ActivityIndicator, TouchableOpacity, View} from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import OnBoardingScreens from '../screens/Onboardings';
-import ConnectOptions from '../screens/ConnectOptions';
+{/* import ConnectOptions from '../screens/ConnectOptions';
 import LoginScreen from '../screens/Login';
 import RegisterScreen from '../screens/Register';
 import ResetPasswordScreen from '../screens/ResetPassword';
@@ -16,7 +16,7 @@ import CoinsHeaderDisplay from '../components/CoinsHeaderDisplay';
 import GameDetailsScreen from '../screens/GameDetailsScreen';
 import { getHeaderTitle, Home } from "./index";
 import ProfileScreen from "../screens/ProfileScreen";
-import SettingScreen from "../screens/SettingScreen";
+import SettingScreen from "../screens/SettingScreen"; */}
 
 
 export const rootDrawerNavigator = () => {
@@ -25,11 +25,14 @@ export const rootDrawerNavigator = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log("Here 1");
     getToken()
   }, []);
 
   const getToken = async () => {
+    console.log("Here 2")
     const token = await AsyncStorage.getItem("jsWebToken");
+    console.log("Token", token)
     setToken(token);
 
     if(token){
@@ -38,6 +41,9 @@ export const rootDrawerNavigator = () => {
     }else{
     }
   };
+
+  console.log("is First Run", isFirstRun);
+
 
   getToken();
 
@@ -53,7 +59,7 @@ export const rootDrawerNavigator = () => {
 
   return(
     <Stack.Navigator
-      initialRouteName={isFirstRun?  'Home' : 'onBoardings' }
+      initialRouteName='onBoardings'//{isFirstRun?  'Home' : 'onBoardings' }
       screenOptions={{
         headerStyle: {
           backgroundColor: "#1C0C4F"
@@ -61,7 +67,7 @@ export const rootDrawerNavigator = () => {
       }}
     >
       <Stack.Screen name="onBoardings" component={OnBoardingScreens} options={{ headerShown: false }} />
-      <Stack.Screen name="ConnectOptions" component={ConnectOptions} options={{ headerShown: false }}/>
+      {/*<Stack.Screen name="ConnectOptions" component={ConnectOptions} options={{ headerShown: false }}/>
       <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }}/>
       <Stack.Screen name="Register" component={RegisterScreen} options={{ headerShown: false}}/>
       <Stack.Screen name="ResetPassword" component={ResetPasswordScreen} options={{ headerShown: false }}/>
@@ -139,7 +145,7 @@ export const rootDrawerNavigator = () => {
             </TouchableOpacity>
           ),
         })}
-      />
+      /> */}
     </Stack.Navigator>
   )
 };

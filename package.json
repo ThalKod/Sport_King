@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.5.7",
-    "@react-native-async-storage/async-storage": "^1.15.15",
+    "@react-native-async-storage/async-storage": "^1.15.17",
     "@react-navigation/drawer": "^6.1.8",
     "@react-navigation/material-bottom-tabs": "^6.0.9",
     "@react-navigation/native": "^6.0.6",
@@ -22,11 +22,13 @@
     "react-native": "0.66.4",
     "react-native-config": "^1.4.5",
     "react-native-gesture-handler": "^2.2.0",
+    "react-native-linear-gradient": "^2.5.6",
     "react-native-paper": "^4.11.2",
     "react-native-reanimated": "^2.3.1",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.10.2",
     "react-native-size-matters": "^0.4.0",
+    "react-native-status-bar-height": "^2.6.0",
     "react-native-vector-icons": "^9.0.0",
     "react-redux": "^7.2.6"
   },

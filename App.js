@@ -7,6 +7,9 @@ import config from './config';
 import FontAwesome5Icons from 'react-native-vector-icons/FontAwesome5';
 import store from "./src/redux/store";
 import {  Provider } from "react-redux";
+import { moderateScale } from "react-native-size-matters";
+import { rootDrawerNavigator } from "./src/routes";
+import CustomDrawerContent from "./src/components/CustomDrawerContent";
 
 const client = new ApolloClient({
   uri: config.API_HOST,
@@ -16,12 +19,13 @@ const client = new ApolloClient({
 const Drawer = createDrawerNavigator();
 
 const App: () => Node = () => {
+
   return (
     <Provider store={store}>
       <ApolloProvider client={client}>
         <NavigationContainer>
           <Drawer.Navigator
-            initialRouteName="Paryaj Sport"
+            initialRouteName="SportKing"
             drawerContent={(props) => ( <CustomDrawerContent {...props} />)}
             drawerStyle={{
               backgroundColor: '#261D44',
@@ -31,7 +35,7 @@ const App: () => Node = () => {
             }}
           >
             <Drawer.Screen
-              name="Paryaj Sport"
+              name="SportKing"
               component={rootDrawerNavigator}
               options={{
                 drawerIcon: ({focused, size}) => (
