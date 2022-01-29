@@ -10,6 +10,8 @@ import {  Provider } from "react-redux";
 import { moderateScale } from "react-native-size-matters";
 import { rootDrawerNavigator } from "./src/routes";
 import CustomDrawerContent from "./src/components/CustomDrawerContent";
+import OnBoardingScreens from "./src/screens/Onboardings";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const client = new ApolloClient({
   uri: config.API_HOST,
@@ -17,33 +19,50 @@ const client = new ApolloClient({
 });
 
 const Drawer = createDrawerNavigator();
+const Stack = createNativeStackNavigator();
 
 const App: () => Node = () => {
+
+  const DrawerMain = () => {
+    return (
+      <Drawer.Navigator
+        initialRouteName="SportKing"
+        drawerContent={(props) => ( <CustomDrawerContent {...props} />)}
+        drawerStyle={{
+          backgroundColor: '#261D44',
+        }}
+        drawerContentOptions={{
+          inactiveTintColor: '#fff',
+        }}
+      >
+        <Drawer.Screen
+          name="SportKing"
+          component={rootDrawerNavigator}
+          options={{
+            drawerIcon: ({focused, size}) => (
+              <FontAwesome5Icons name="dice" size={moderateScale(14)} color="#fff" />
+            )
+          }}
+        />
+      </Drawer.Navigator>
+    )
+  }
 
   return (
     <Provider store={store}>
       <ApolloProvider client={client}>
         <NavigationContainer>
-          <Drawer.Navigator
-            initialRouteName="SportKing"
-            drawerContent={(props) => ( <CustomDrawerContent {...props} />)}
-            drawerStyle={{
-              backgroundColor: '#261D44',
-            }}
-            drawerContentOptions={{
-              inactiveTintColor: '#fff',
+          <Stack.Navigator
+            initialRouteName='onBoardings'//{isFirstRun?  'Home' : 'onBoardings' }
+            screenOptions={{
+              headerStyle: {
+                backgroundColor: "#1C0C4F"
+              }
             }}
           >
-            <Drawer.Screen
-              name="SportKing"
-              component={rootDrawerNavigator}
-              options={{
-                drawerIcon: ({focused, size}) => (
-                  <FontAwesome5Icons name="dice" size={moderateScale(14)} color="#fff" />
-                )
-              }}
-            />
-          </Drawer.Navigator>
+            <Stack.Screen name="onBoardings" component={OnBoardingScreens} options={{ headerShown: false }} />
+            <Stack.Screen name="Main" component={DrawerMain}/>
+          </Stack.Navigator>
         </NavigationContainer>
       </ApolloProvider>
     </Provider>

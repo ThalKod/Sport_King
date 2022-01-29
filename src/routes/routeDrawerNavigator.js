@@ -39,11 +39,11 @@ export const rootDrawerNavigator = () => {
       dispatch(initUser({ jsWebToken: token }));
       setIsFirstRun(true)
     }else{
+      setIsFirstRun(false);
     }
   };
 
   console.log("is First Run", isFirstRun);
-
 
   getToken();
 
@@ -66,7 +66,6 @@ export const rootDrawerNavigator = () => {
         }
       }}
     >
-      <Stack.Screen name="onBoardings" component={OnBoardingScreens} options={{ headerShown: false }} />
       {/*<Stack.Screen name="ConnectOptions" component={ConnectOptions} options={{ headerShown: false }}/>
       <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }}/>
       <Stack.Screen name="Register" component={RegisterScreen} options={{ headerShown: false}}/>
