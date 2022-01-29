@@ -8,8 +8,8 @@ const OnBoardingInfoBox = ({slideNumber})=>{
   const text1 = () => {
     return (
       <View>
-        <Text style={styles.headerText}><Text style={{ color: "#FDE88E"}}>San</Text> Lanjan !</Text>
-        <Text style={styles.text}>Avek ParyajKing ou pa bezwen lajan, {"\n"} jis jwe avek coin ou,{"\n"} epi {"\n"} genyen <Text style={{ color: "#FDE88E"}}>prim</Text> chak week ends ! </Text>
+        <Text style={styles.headerText}> Gratuit!</Text>
+        <Text style={styles.text}>Avec Sport<Text style={{ color: "#FDE88E"}}>King</Text> plus besoin d'argent, {"\n"} placer gratuitement des paris sportifs avec vos monnaies virtuels!</Text>
       </View>
     )
   };
@@ -17,8 +17,8 @@ const OnBoardingInfoBox = ({slideNumber})=>{
   const text2 = () => {
     return (
       <View>
-        <Text style={styles.headerText}>Vin Prouvew c <Text style={{ color: "#FDE88E"}}>King</Text> lan !</Text>
-        <Text style={styles.text}>Chak jou, parye sou nempot match rasanble coin, jwe kont lot moun, {"\n"} rete nan tet clasman an,{"\n"} pou gen chans genyen <Text style={{ color: "#FDE88E"}}>prim</Text> yo…</Text>
+        <Text style={styles.headerText}>Prouve que t'es le <Text style={{ color: "#FDE88E"}}>King</Text>!</Text>
+        <Text style={styles.text}>Chaque jour, pariez sur vos matchs préférer, jouer contre les autres joueurs et défendez votre position !</Text>
       </View>
     )
   };
@@ -26,8 +26,8 @@ const OnBoardingInfoBox = ({slideNumber})=>{
   const text3 = () => {
     return (
       <View>
-        <Text style={styles.headerText}>24/24, 7/7</Text>
-        <Text style={styles.text}>Plis pase <Text style={{ color: "#FDE88E"}}>25</Text> diferan sport {"\n"} pou parye !{"\n"}  Tout gro lig yo <Text style={{ color: "#FDE88E"}}>live</Text> ak sport virtuel, {"\n"} ou pap janm manke <Text style={{ color: "#FDE88E"}}>plezi</Text>!</Text>
+        <Text style={styles.headerText}>24/7</Text>
+        <Text style={styles.text}>Plus de <Text style={{ color: "#FDE88E"}}>25</Text> sports differents {"\n"}Les plus grandes league <Text style={{ color: "#FDE88E"}}>en direct</Text> Et des sports virtuels, {"\n"} Du <Text style={{ color: "#FDE88E"}}>Fun</Text> 24/7!</Text>
       </View>
     )
   };

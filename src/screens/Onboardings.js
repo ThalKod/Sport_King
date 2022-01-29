@@ -29,7 +29,7 @@ const Onboardings = ({ navigation })=>{
         style={styles.linearGradient}
       />
       <View style={styles.content}>
-        <View style={{ flexDirection: "row"}}>
+        <View style={{ flexDirection: "row", marginBottom: moderateScale(50)}}>
           <Text style={[styles.headerTitles, styles.white]}>Sport</Text>
           <Text style={[styles.headerTitles, styles.yellow]}>King</Text>
         </View>
