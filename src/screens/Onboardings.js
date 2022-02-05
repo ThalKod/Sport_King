@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import { StyleSheet, Text, View, ImageBackground, } from 'react-native';
+import React, { useEffect, useState } from "react";
+import { StyleSheet, Text, View, ImageBackground, ActivityIndicator } from "react-native";
 import BackgroundImage from "../assets/background_football_head.jpg";
 import LinearGradient from 'react-native-linear-gradient';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
@@ -8,16 +8,51 @@ import { StackActions } from '@react-navigation/native';
 
 import OnBoardingInfoBox from "../components/onboardings/OnBoardingInfoBox";
 import OnBoardingFooter from "../components/onboardings/OnBoardingFooter";
+import { useDispatch } from "react-redux";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { initUser } from "../redux/features/userSlice";
 
 const Onboardings = ({ navigation })=>{
   const [slideNumber, setSlideNumber] = useState(0);
+  const [isFirstRun, setIsFirstRun] = useState("");
+  const [token, setToken] = useState("");
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    console.log("Here 1");
+    getToken()
+  }, []);
+
+  const getToken = async () => {
+    console.log("Here 2")
+    const token = await AsyncStorage.getItem("jsWebToken");
+    console.log("Token", token)
+    setToken(token);
+
+    if(token){
+      dispatch(initUser({ jsWebToken: token }));
+      setIsFirstRun(true)
+    }else{
+      setIsFirstRun(false);
+    }
+  };
+
+  console.log("is First Run", isFirstRun);
+
+  getToken();
+
+  if(isFirstRun === ""){
+    return (
+      <View style={{ backgroundColor: "#1C0C4F", flex: 1, alignItems: "center", justifyContent: "center"}}>
+        <ActivityIndicator size="large" color="#fff"/>
+      </View>
+    )
+  }
 
   const onNextButton = () => {
     setSlideNumber(slideNumber + 1);
     if(slideNumber + 1 === 3){
-      navigation.dispatch(
-        StackActions.replace('ConnectOptions')
-      );
+      navigation.navigate("Main");
     }
   };
 

@@ -6,13 +6,17 @@ import {initUser} from '../redux/features/userSlice';
 import {ActivityIndicator, TouchableOpacity, View} from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import OnBoardingScreens from '../screens/Onboardings';
+import Home from "../screens/HomeScreen";
+import { moderateScale } from "react-native-size-matters";
+import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import { getHeaderTitle } from "./utils/getHeaderTitle";
+import CoinsHeaderDisplay from '../components/CoinsHeaderDisplay';
 {/* import ConnectOptions from '../screens/ConnectOptions';
 import LoginScreen from '../screens/Login';
 import RegisterScreen from '../screens/Register';
 import ResetPasswordScreen from '../screens/ResetPassword';
 import {moderateScale} from 'react-native-size-matters';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import CoinsHeaderDisplay from '../components/CoinsHeaderDisplay';
 import GameDetailsScreen from '../screens/GameDetailsScreen';
 import { getHeaderTitle, Home } from "./index";
 import ProfileScreen from "../screens/ProfileScreen";
@@ -20,46 +24,12 @@ import SettingScreen from "../screens/SettingScreen"; */}
 
 
 export const rootDrawerNavigator = () => {
-  const [isFirstRun, setIsFirstRun] = useState("");
-  const [token, setToken] = useState("");
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    console.log("Here 1");
-    getToken()
-  }, []);
-
-  const getToken = async () => {
-    console.log("Here 2")
-    const token = await AsyncStorage.getItem("jsWebToken");
-    console.log("Token", token)
-    setToken(token);
-
-    if(token){
-      dispatch(initUser({ jsWebToken: token }));
-      setIsFirstRun(true)
-    }else{
-      setIsFirstRun(false);
-    }
-  };
-
-  console.log("is First Run", isFirstRun);
-
-  getToken();
-
-  if(isFirstRun === ""){
-    return (
-      <View style={{ backgroundColor: "#1C0C4F", flex: 1, alignItems: "center", justifyContent: "center"}}>
-        <ActivityIndicator size="large" color="#fff"/>
-      </View>
-    )
-  }
 
   const Stack = createNativeStackNavigator();
 
   return(
     <Stack.Navigator
-      initialRouteName='onBoardings'//{isFirstRun?  'Home' : 'onBoardings' }
+      initialRouteName='Home'
       screenOptions={{
         headerStyle: {
           backgroundColor: "#1C0C4F"
@@ -69,7 +39,7 @@ export const rootDrawerNavigator = () => {
       {/*<Stack.Screen name="ConnectOptions" component={ConnectOptions} options={{ headerShown: false }}/>
       <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }}/>
       <Stack.Screen name="Register" component={RegisterScreen} options={{ headerShown: false}}/>
-      <Stack.Screen name="ResetPassword" component={ResetPasswordScreen} options={{ headerShown: false }}/>
+      <Stack.Screen name="ResetPassword" component={ResetPasswordScreen} options={{ headerShown: false }}/>*/}
       <Stack.Screen
         name="Home"
         component={Home}
@@ -91,7 +61,7 @@ export const rootDrawerNavigator = () => {
           }
         })}
       />
-      <Stack.Screen
+      {/* <Stack.Screen
         name="GameDetails"
         component={GameDetailsScreen}
         options={({ navigation }) => ({
@@ -144,7 +114,7 @@ export const rootDrawerNavigator = () => {
             </TouchableOpacity>
           ),
         })}
-      /> */}
+      />*/}
     </Stack.Navigator>
   )
 };
