@@ -18,7 +18,7 @@ const OnBoardingInfoBox = ({slideNumber})=>{
     return (
       <View>
         <Text style={styles.headerText}>Prouve que t'es le <Text style={{ color: "#FDE88E"}}>King</Text>!</Text>
-        <Text style={styles.text}>Chaque jour, pariez sur vos matchs préférer, jouer contre les autres joueurs et défendez votre position !</Text>
+        <Text style={styles.text}>Chaque jour, pariez sur tes matchs préférer, jouer contre les autres joueurs et défends ton classement !</Text>
       </View>
     )
   };
