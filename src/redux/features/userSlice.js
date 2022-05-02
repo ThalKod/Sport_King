@@ -17,9 +17,13 @@ export const userSlice = createSlice({
   },
   reducers: {
     initUser:  (state, action) => {
-      // await AsyncStorage.setItem("jsWebToken", action.payload.jsWebToken)
-      console.log(action.payload)
-      state.initialState = {...state.initialState, ...action.payload};
+      AsyncStorage.setItem("jsWebToken", action.payload.jsWebToken)
+        .then(() => {
+          console.log(action.payload)
+          state.initialState = {...state.initialState, ...action.payload};
+        })
+        .catch(err => console.log(err));
+
     },
     addCoins: (state, action) => {
       state.coins = state.coins + action.payload.coins
