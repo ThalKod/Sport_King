@@ -12,6 +12,9 @@ import { rootDrawerNavigator } from "./src/routes";
 import CustomDrawerContent from "./src/components/CustomDrawerContent";
 import OnBoardingScreens from "./src/screens/Onboardings";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { initUser } from "./src/redux/features/userSlice";
+import { ActivityIndicator, View } from "react-native";
 
 const client = new ApolloClient({
   uri: config.API_HOST,
@@ -47,22 +50,31 @@ function DrawerMain() {
 }
 
 const App: () => Node = () => {
-
   return (
     <Provider store={store}>
       <ApolloProvider client={client}>
         <NavigationContainer>
-          <Stack.Navigator
-            initialRouteName='onBoardings'
-            screenOptions={{
-              headerStyle: {
-                backgroundColor: "#1C0C4F"
-              }
+          <Drawer.Navigator
+            initialRouteName="SportKing"
+            drawerContent={(props) => ( <CustomDrawerContent {...props} />)}
+            drawerStyle={{
+              backgroundColor: '#261D44',
+            }}
+            drawerContentOptions={{
+              inactiveTintColor: '#fff',
             }}
           >
-            <Stack.Screen name="onBoardings" component={OnBoardingScreens} options={{ headerShown: false }} />
-            <Stack.Screen name="Main" component={DrawerMain}/>
-          </Stack.Navigator>
+            <Drawer.Screen
+              name="SportKing"
+              component={rootDrawerNavigator}
+              options={{
+                drawerIcon: ({focused, size}) => (
+                  <FontAwesome5Icons name="dice" size={moderateScale(14)} color="#fff" />
+                ),
+                headerShown: false
+              }}
+            />
+          </Drawer.Navigator>
         </NavigationContainer>
       </ApolloProvider>
     </Provider>

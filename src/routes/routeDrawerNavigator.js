@@ -11,35 +11,61 @@ import { moderateScale } from "react-native-size-matters";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import { getHeaderTitle } from "./utils/getHeaderTitle";
 import CoinsHeaderDisplay from '../components/CoinsHeaderDisplay';
-{/* import ConnectOptions from '../screens/ConnectOptions';
+import ConnectOptions from '../screens/ConnectOptions';
 import LoginScreen from '../screens/Login';
 import RegisterScreen from '../screens/Register';
 import ResetPasswordScreen from '../screens/ResetPassword';
-import {moderateScale} from 'react-native-size-matters';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import GameDetailsScreen from '../screens/GameDetailsScreen';
+{ /* import GameDetailsScreen from '../screens/GameDetailsScreen';
 import { getHeaderTitle, Home } from "./index";
 import ProfileScreen from "../screens/ProfileScreen";
 import SettingScreen from "../screens/SettingScreen"; */}
 
 
 export const rootDrawerNavigator = () => {
-
   const Stack = createNativeStackNavigator();
+  const [isFirstRun, setIsFirstRun] = useState("");
+  const [token, setToken] = useState("");
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    getToken()
+  }, []);
+
+  const getToken = async () => {
+    const token = await AsyncStorage.getItem("jsWebToken");
+    setToken(token);
+
+    if(token){
+      dispatch(initUser({ jsWebToken: token }));
+      setIsFirstRun(true)
+    }else{
+      setIsFirstRun(false);
+    }
+  };
+
+  getToken();
+
+  if(isFirstRun === ""){
+    return (
+      <View style={{ backgroundColor: "#1C0C4F", flex: 1, alignItems: "center", justifyContent: "center"}}>
+        <ActivityIndicator size="large" color="#fff"/>
+      </View>
+    )
+  }
   return(
     <Stack.Navigator
-      initialRouteName='Home'
+      initialRouteName={isFirstRun?  'Home' : 'onBoardings' }
       screenOptions={{
         headerStyle: {
           backgroundColor: "#1C0C4F"
         }
       }}
     >
-      {/*<Stack.Screen name="ConnectOptions" component={ConnectOptions} options={{ headerShown: false }}/>
+      <Stack.Screen name="ConnectOptions" component={ConnectOptions} options={{ headerShown: false }}/>
       <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }}/>
       <Stack.Screen name="Register" component={RegisterScreen} options={{ headerShown: false}}/>
-      <Stack.Screen name="ResetPassword" component={ResetPasswordScreen} options={{ headerShown: false }}/>*/}
+      <Stack.Screen name="ResetPassword" component={ResetPasswordScreen} options={{ headerShown: false }}/>
+      <Stack.Screen name="onBoardings" component={OnBoardingScreens} options={{ headerShown: false }} />
       <Stack.Screen
         name="Home"
         component={Home}

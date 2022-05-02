@@ -52,7 +52,7 @@ const Onboardings = ({ navigation })=>{
   const onNextButton = () => {
     setSlideNumber(slideNumber + 1);
     if(slideNumber + 1 === 3){
-      navigation.navigate("Main");
+      navigation.navigate("Home");
     }
   };
 

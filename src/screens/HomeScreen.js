@@ -35,9 +35,8 @@ const HomeScreen = ({ navigation }) => {
   }, []);
 
   const getToken = async () => {
-    // const token = await AsyncStorage.getItem("jsWebToken");
+    const token = await AsyncStorage.getItem("jsWebToken");
     const AppRated =  await AsyncStorage.getItem("AppRated");
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjk2LCJpYXQiOjE2NDQwNjU5MjZ9.3dFqlVX76w6lx8hb3MhWlZOhAiOgtGVcGWxiaP3IWxw";
     if(token){
       setJsWebToken(token);
       getMe();
@@ -85,7 +84,8 @@ const HomeScreen = ({ navigation }) => {
     onCompleted(data){
       console.log("data ", data);
       dispatch(initUser({
-        jsWebToken, id: data.getMe.id,
+        jsWebToken,
+        id: data.getMe.id,
         name: data.getMe.name,
         coins: data.getMe.coins,
         bet_won: data.getMe.bet_won,

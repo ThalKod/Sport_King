@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 
 export const userSlice = createSlice({
@@ -15,8 +16,10 @@ export const userSlice = createSlice({
     invite_code: ""
   },
   reducers: {
-    initUser: (state, action) => {
-      state = action.payload;
+    initUser:  (state, action) => {
+      // await AsyncStorage.setItem("jsWebToken", action.payload.jsWebToken)
+      console.log(action.payload)
+      state.initialState = {...state.initialState, ...action.payload};
     },
     addCoins: (state, action) => {
       state.coins = state.coins + action.payload.coins
