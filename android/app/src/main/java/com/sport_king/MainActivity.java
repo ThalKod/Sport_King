@@ -10,7 +10,7 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "Sport_King";
+    return "Sport King";
   }
 
   @Override
