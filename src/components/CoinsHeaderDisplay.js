@@ -106,7 +106,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#140A35",
     borderRadius: moderateScale(5),
     height: moderateScale(30),
-    marginHorizontal: moderateScale(10),
+    marginLeft: moderateScale(0),
+    // marginRight: moderateScale(-30),
     flexDirection: "row"
   },
   cartContainer: {

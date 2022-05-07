@@ -6,10 +6,9 @@ import {initUser} from '../redux/features/userSlice';
 import {ActivityIndicator, TouchableOpacity, View} from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import OnBoardingScreens from '../screens/Onboardings';
-import Home from "../screens/HomeScreen";
 import { moderateScale } from "react-native-size-matters";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-import { getHeaderTitle } from "./utils/getHeaderTitle";
+import { getHeaderTitle, Home } from "./";
 import CoinsHeaderDisplay from '../components/CoinsHeaderDisplay';
 import ConnectOptions from '../screens/ConnectOptions';
 import LoginScreen from '../screens/Login';
@@ -57,7 +56,8 @@ export const rootDrawerNavigator = () => {
       initialRouteName={isFirstRun?  'Home' : 'onBoardings' }
       screenOptions={{
         headerStyle: {
-          backgroundColor: "#1C0C4F"
+          backgroundColor: "#1C0C4F",
+          paddingRight: moderateScale(-200)
         }
       }}
     >
@@ -83,7 +83,7 @@ export const rootDrawerNavigator = () => {
           headerRight: () => ( <CoinsHeaderDisplay />),
           headerTintColor: "#fff",
           headerTitleStyle: {
-            marginLeft: moderateScale(-15)
+            marginLeft: moderateScale(0)
           }
         })}
       />

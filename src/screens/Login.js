@@ -83,7 +83,7 @@ const Login = ({ navigation })=>{
           <ScrollView keyboardShouldPersistTaps="handled">
             <View style={styles.content}>
               <View style={{ flexDirection: "row"}}>
-                <Text style={[styles.headerTitles, styles.white]}>Paryaj</Text>
+                <Text style={[styles.headerTitles, styles.white]}>Sport</Text>
                 <Text style={[styles.headerTitles, styles.yellow]}>King</Text>
               </View>
               <View style={styles.loginSection}>
@@ -92,9 +92,9 @@ const Login = ({ navigation })=>{
                 {/* <TouchableOpacity onPress={() => navigation.navigate("ResetPassword")}>
                   <Text style={styles.forgetText}>Ou bliye password ou ?</Text>
                 </TouchableOpacity> */}
-                <MainButton onClick={handleLogin} text={loading? loadingComp : "ANTRE"} color={"#19D8B7"} arrow={arrowImage}/>
+                <MainButton onClick={handleLogin} text={loading? loadingComp : "SE CONNECTER"} color={"#19D8B7"} arrow={arrowImage}/>
                 <TouchableOpacity onPress={() => navigation.navigate("Register")}>
-                  <Text style={styles.newUserText}>Ou Poko gen yon kont? {"\n"}  Kreye youn kounya </Text>
+                  <Text style={styles.newUserText}>Tu n'as pas encore de compte? {"\n"}  Créez en un maintenant </Text>
                 </TouchableOpacity>
               </View>
             </View>

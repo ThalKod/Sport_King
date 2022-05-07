@@ -1,4 +1,4 @@
-import { Platform } from 'react-native';
+/* import { Platform } from 'react-native';
 import Config from 'react-native-config';
 
 export default {
@@ -10,4 +10,4 @@ export default {
     ios: Config.REWARDED_ADS_ANDROID,
     android: Config.REWARDED_ADS_IOS,
   })
-};
+}; */

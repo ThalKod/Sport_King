@@ -92,18 +92,18 @@ const Register = ({ navigation }) => {
           <ScrollView keyboardShouldPersistTaps="handled">
             <View style={styles.content}>
               <View style={{ flexDirection: "row"}}>
-                <Text style={[styles.headerTitles, styles.white]}>Paryaj</Text>
+                <Text style={[styles.headerTitles, styles.white]}>Sport</Text>
                 <Text style={[styles.headerTitles, styles.yellow]}>King</Text>
               </View>
               <View style={styles.loginSection}>
-                <CustomTextInput value={nameValue} onValueChange={(v) => setNameValue(v)} placeHolder="Non'w" icon={<AntDesign style={{ marginRight: moderateScale(10)}} name="user" size={20} color="#B3B3B6" />}/>
+                <CustomTextInput value={nameValue} onValueChange={(v) => setNameValue(v)} placeHolder="Nom d'Utilisateur" icon={<AntDesign style={{ marginRight: moderateScale(10)}} name="user" size={20} color="#B3B3B6" />}/>
                 <CustomTextInput value={emailValue} onValueChange={(v) => setEmailValue(v)} placeHolder="E-mail" icon={<Feather style={{ marginRight: moderateScale(10)}} name="at-sign" size={20} color="#B3B3B6" />}/>
                 <CustomTextInput value={passwordValue} onValueChange={(v) => setPasswordValue(v)} password placeHolder="Password" icon={<AntDesign style={{ marginRight: moderateScale(10)}} name="lock" size={20} color="#B3B3B6" />}/>
-                <CustomTextInput value={passwordConfirmationValue} onValueChange={(v) => setPasswordConfirmationValue(v)} password placeHolder="Password Konfimation" icon={<AntDesign style={{ marginRight: moderateScale(10)}} name="lock" size={20} color="#B3B3B6" />}/>
-                <CustomTextInput value={inviteCode} onValueChange={(v) => setInviteCode(v)} placeHolder="Invite Code(Optyonel)" icon={<AntDesign style={{ marginRight: moderateScale(10)}} name="barcode" size={20} color="#B3B3B6" />}/>
-                <MainButton onClick={handleSignupUser} text={loading? loadingComp : "ENSKRI"} color={"#19D8B7"} arrow={arrowImage}/>
+                <CustomTextInput value={passwordConfirmationValue} onValueChange={(v) => setPasswordConfirmationValue(v)} password placeHolder="Password Confirmation" icon={<AntDesign style={{ marginRight: moderateScale(10)}} name="lock" size={20} color="#B3B3B6" />}/>
+                <CustomTextInput value={inviteCode} onValueChange={(v) => setInviteCode(v)} placeHolder="Invite Code(Optionnel)" icon={<AntDesign style={{ marginRight: moderateScale(10)}} name="barcode" size={20} color="#B3B3B6" />}/>
+                <MainButton onClick={handleSignupUser} text={loading? loadingComp : "CREER UN COMPTE"} color={"#19D8B7"} arrow={arrowImage}/>
                 <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-                  <Text style={styles.newUserText}>Ou gen yon kont deja? {"\n"}  Konekte kounya ! </Text>
+                  <Text style={styles.newUserText}>T'as deja un compte? {"\n"}  Clique ici pour te connecter! </Text>
                 </TouchableOpacity>
               </View>
             </View>

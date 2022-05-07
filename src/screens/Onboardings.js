@@ -4,7 +4,6 @@ import BackgroundImage from "../assets/background_football_head.jpg";
 import LinearGradient from 'react-native-linear-gradient';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
 import { moderateScale } from 'react-native-size-matters';
-import { StackActions } from '@react-navigation/native';
 
 import OnBoardingInfoBox from "../components/onboardings/OnBoardingInfoBox";
 import OnBoardingFooter from "../components/onboardings/OnBoardingFooter";

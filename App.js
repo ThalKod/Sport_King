@@ -14,10 +14,13 @@ import OnBoardingScreens from "./src/screens/Onboardings";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { initUser } from "./src/redux/features/userSlice";
-import { ActivityIndicator, View } from "react-native";
+import { ActivityIndicator, View, Platform } from "react-native";
+import { ANDROID_API_HOST, IOS_API_HOST } from "@env";
+
+console.log("==============", IOS_API_HOST, ANDROID_API_HOST)
 
 const client = new ApolloClient({
-  uri: config.API_HOST,
+  uri: Platform.OS === "ios" ? IOS_API_HOST : ANDROID_API_HOST,
   cache: new InMemoryCache()
 });
 
