@@ -71,7 +71,7 @@ const HomeScreen = ({ navigation }) => {
       }
     },
     onCompleted(data){
-      console.log("data ", data);
+      // console.log("data ", data);
       setGameDetails(data.upcomingGames);
     }
   });

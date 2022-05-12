@@ -17,13 +17,8 @@ export const userSlice = createSlice({
   },
   reducers: {
     initUser:  (state, action) => {
-      AsyncStorage.setItem("jsWebToken", action.payload.jsWebToken)
-        .then(() => {
-          console.log(action.payload)
-          state.initialState = {...state.initialState, ...action.payload};
-        })
-        .catch(err => console.log(err));
-
+      console.log("1 action payload====",action.payload, state)
+       return {...state, ...action.payload};
     },
     addCoins: (state, action) => {
       state.coins = state.coins + action.payload.coins
@@ -31,6 +26,11 @@ export const userSlice = createSlice({
   }
 });
 
-export const { initUser, addCoins } =userSlice.actions;
+export const initUserPersit = (payload) => async (dispatch) => {
+  await AsyncStorage.setItem("jsWebToken", payload.jsWebToken);
+  dispatch(initUser(payload))
+}
+
+export const { initUser, addCoins } = userSlice.actions;
 
 export default userSlice.reducer;
