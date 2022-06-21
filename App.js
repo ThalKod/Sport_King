@@ -17,7 +17,7 @@ import { initUser } from "./src/redux/features/userSlice";
 import { ActivityIndicator, View, Platform } from "react-native";
 import { ANDROID_API_HOST, IOS_API_HOST } from "@env";
 
-console.log("==============", IOS_API_HOST, ANDROID_API_HOST)
+console.log("==================", IOS_API_HOST, ANDROID_API_HOST)
 
 const client = new ApolloClient({
   uri: Platform.OS === "ios" ? IOS_API_HOST : ANDROID_API_HOST,

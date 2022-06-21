@@ -23,7 +23,7 @@ import arrowImage from "../assets/arrow.png";
 import { useMutation } from '@apollo/client';
 import { SIGNUP_USER } from "../graph-operations";
 import { useDispatch } from 'react-redux';
-import { initUser } from '../redux/features/userSlice';
+import { initUser, initUserPersit } from '../redux/features/userSlice';
 
 
 const Register = ({ navigation }) => {
@@ -40,7 +40,7 @@ const Register = ({ navigation }) => {
     onCompleted(data){
       console.log("Data : ", data);
       const { token, user } = data.signupUser;
-      dispatch(initUser({
+      dispatch(initUserPersit({
         jsWebToken: token,
         id: user.id,
         name: user.name,

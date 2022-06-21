@@ -22,7 +22,7 @@ import MainButton from "../components/MainButton";
 import arrowImage from "../assets/arrow.png";
 import { LOGIN_USER } from "../graph-operations";
 import { useMutation } from "@apollo/client";
-import { initUser } from '../redux/features/userSlice';
+import { initUser, initUserPersit } from '../redux/features/userSlice';
 import { useDispatch } from 'react-redux';
 
 
@@ -37,7 +37,7 @@ const Login = ({ navigation })=>{
     onCompleted(data){
       console.log("Data : ", data);
       const { token, user } = data.login;
-      dispatch(initUser({
+      dispatch(initUserPersit({
         jsWebToken: token,
         id: user.id,
         name: user.name,

@@ -34,6 +34,7 @@ export const rootDrawerNavigator = () => {
     const token = await AsyncStorage.getItem("jsWebToken");
     setToken(token);
 
+    console.log("Token before", token)
     if(token){
       dispatch(initUser({ jsWebToken: token }));
       setIsFirstRun(true)
