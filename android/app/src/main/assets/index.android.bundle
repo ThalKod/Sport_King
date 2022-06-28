@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</title>
+</head>
+<body>
+<pre>Error: Unable to resolve module ./index.android from /Users/thal/Github/Sport_King/.: <br><br>None of these files exist:<br> &nbsp;* index.android(.native|.android.js|.native.js|.js|.android.json|.native.json|.json|.android.ts|.native.ts|.ts|.android.tsx|.native.tsx|.tsx|.android.cjs|.native.cjs|.cjs)<br> &nbsp;* index.android/index(.native|.android.js|.native.js|.js|.android.json|.native.json|.json|.android.ts|.native.ts|.ts|.android.tsx|.native.tsx|.tsx|.android.cjs|.native.cjs|.cjs)<br> &nbsp; &nbsp;at ModuleResolver.resolveDependency (/Users/thal/Github/Sport_King/node_modules/metro/src/node-haste/DependencyGraph/ModuleResolution.js:107:15)<br> &nbsp; &nbsp;at DependencyGraph.resolveDependency (/Users/thal/Github/Sport_King/node_modules/metro/src/node-haste/DependencyGraph.js:288:43)<br> &nbsp; &nbsp;at /Users/thal/Github/Sport_King/node_modules/metro/src/lib/transformHelpers.js:129:24<br> &nbsp; &nbsp;at Server._resolveRelativePath (/Users/thal/Github/Sport_King/node_modules/metro/src/Server.js:1072:12)<br> &nbsp; &nbsp;at async Server.requestProcessor [as _processBundleRequest] (/Users/thal/Github/Sport_King/node_modules/metro/src/Server.js:428:37)<br> &nbsp; &nbsp;at async Server._processRequest (/Users/thal/Github/Sport_King/node_modules/metro/src/Server.js:380:9)</pre>
+</body>
+</html>

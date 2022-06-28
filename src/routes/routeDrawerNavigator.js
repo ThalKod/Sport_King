@@ -3,7 +3,7 @@ import {useEffect, useState} from 'react';
 import {useDispatch} from 'react-redux';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {initUser} from '../redux/features/userSlice';
-import {ActivityIndicator, TouchableOpacity, View} from 'react-native';
+import { ActivityIndicator, Text, TouchableOpacity, View } from "react-native";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import OnBoardingScreens from '../screens/Onboardings';
 import { moderateScale } from "react-native-size-matters";
@@ -71,8 +71,13 @@ export const rootDrawerNavigator = () => {
         name="Home"
         component={Home}
         options={({ route, navigation }) => ({
-          headerTitle: getHeaderTitle(route),
+          title: "",
           headerLeft: () => (
+            <View>
+              <Text style={{ color: "#ffffff", fontSize: moderateScale(16), fontWeight: "bold"}}>{getHeaderTitle(route)}</Text>
+            </View>
+          ),
+          /* headerLeft: () => (
             <TouchableOpacity
               onPress={() => navigation.openDrawer()}
               style={{ marginLeft: moderateScale(15)}}
@@ -80,12 +85,9 @@ export const rootDrawerNavigator = () => {
             >
               <MaterialIcons name="menu" size={moderateScale(24)} color="#fff" />
             </TouchableOpacity>
-          ),
+          ), */
           headerRight: () => ( <CoinsHeaderDisplay />),
           headerTintColor: "#fff",
-          headerTitleStyle: {
-            marginLeft: moderateScale(0)
-          }
         })}
       />
       {/* <Stack.Screen

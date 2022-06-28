@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     borderRadius: moderateScale(5),
     height: moderateScale(30),
     marginLeft: moderateScale(0),
-    // marginRight: moderateScale(-30),
+    marginRight: moderateScale(-30),
     flexDirection: "row"
   },
   cartContainer: {
