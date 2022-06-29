@@ -171,17 +171,19 @@ const EndedBet = ({ navigation }) => {
 
 const BetScreen = ({ navigation }) => {
   return (
+    <View style={styles.backgroundColor}>
       <NavigationContext.Provider value={navigation}>
         <Tab.Navigator
-            tabBarOptions={{
-              activeTintColor: "#fff",
-              style: { backgroundColor: '#140A35' },
-            }}
+          screenOptions={{
+            tabBarActiveTintColor: "#fff",
+            tabBarStyle: { backgroundColor: '#140A35' },
+          }}
         >
-          <Tab.Screen name="Actif" component={ActiveBet} />
-          <Tab.Screen name="Fini" component={EndedBet} />
+          <Tab.Screen name="En Cours" component={ActiveBet} />
+          <Tab.Screen name="Terminee" component={EndedBet} />
         </Tab.Navigator>
       </NavigationContext.Provider>
+    </View>
   )
 };
 
@@ -190,6 +192,10 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#1C0C4F",
     padding: moderateScale(10)
+  },
+  backgroundColor: {
+    flex: 1,
+    backgroundColor: "#1C0C4F",
   }
 });
 export default BetScreen;

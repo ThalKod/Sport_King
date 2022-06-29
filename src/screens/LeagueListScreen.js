@@ -21,7 +21,6 @@ const LeagueListScreen = ({ route, navigation }) => {
 
   const user = useSelector(state => state.user);
 
-
   useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {
       console.log("loading");

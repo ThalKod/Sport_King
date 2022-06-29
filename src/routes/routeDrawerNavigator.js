@@ -71,10 +71,11 @@ export const rootDrawerNavigator = () => {
         name="Home"
         component={Home}
         options={({ route, navigation }) => ({
+          headerShown: getHeaderTitle(route) !== "Matchs",
           title: "",
           headerLeft: () => (
             <View>
-              <Text style={{ color: "#ffffff", fontSize: moderateScale(16), fontWeight: "bold"}}>{getHeaderTitle(route)}</Text>
+              <Text style={{ color: "#ffffff", fontSize: moderateScale(16), fontWeight: "bold"}}>{getHeaderTitle(route) || "Accueil"}</Text>
             </View>
           ),
           /* headerLeft: () => (
