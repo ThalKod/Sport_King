@@ -14,8 +14,8 @@ import ConnectOptions from '../screens/ConnectOptions';
 import LoginScreen from '../screens/Login';
 import RegisterScreen from '../screens/Register';
 import ResetPasswordScreen from '../screens/ResetPassword';
-{ /* import GameDetailsScreen from '../screens/GameDetailsScreen';
-import { getHeaderTitle, Home } from "./index";
+import GameDetailsScreen from '../screens/GameDetailsScreen';
+{ /* import { getHeaderTitle, Home } from "./index";
 import ProfileScreen from "../screens/ProfileScreen";
 import SettingScreen from "../screens/SettingScreen"; */}
 
@@ -91,7 +91,7 @@ export const rootDrawerNavigator = () => {
           headerTintColor: "#fff",
         })}
       />
-      {/* <Stack.Screen
+      <Stack.Screen
         name="GameDetails"
         component={GameDetailsScreen}
         options={({ navigation }) => ({
@@ -109,7 +109,7 @@ export const rootDrawerNavigator = () => {
           ),
         })}
       />
-      <Stack.Screen
+      {/* <Stack.Screen
         name="MyProfile"
         component={ProfileScreen}
         options={({ navigation }) => ({
