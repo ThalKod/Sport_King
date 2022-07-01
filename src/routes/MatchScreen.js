@@ -10,7 +10,7 @@ export const MatchScreen = () => {
 
   return (
     <Stack.Navigator
-      initialRouteName={"Matchs"}
+      initialRouteName={"MatchsStack"}
       screenOptions={{
         headerTitleStyle: {
           color: "#ffffff"
@@ -22,11 +22,12 @@ export const MatchScreen = () => {
       }}
     >
       <Stack.Screen
-        name="Matchs"
+        name="MatchsStack"
         component={EventsScreen}
+        options={{title: 'Matchs'}}
       />
       <Stack.Screen name="Leagues" component={LeagueListScreen} />
-      <Stack.Screen name="GamesList" component={BetCardListScreen} />
+      <Stack.Screen name="GamesList" component={BetCardListScreen} options={{title: 'Matchs'}} />
     </Stack.Navigator>
   )
 };

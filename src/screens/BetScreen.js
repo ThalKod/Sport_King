@@ -68,7 +68,7 @@ const ActiveBet = ({ navigation }) => {
   if(betData.length <= 0) {
     return (
         <View style={{ backgroundColor: "#1C0C4F", flex: 1, alignItems: "center", justifyContent: "center"}}>
-          <Text style={{ color: "#fff", fontSize: moderateScale(16), textAlign: "center"}}>Ou pa gen paryaj en attente</Text>
+          <Text style={{ color: "#fff", fontSize: moderateScale(16), textAlign: "center"}}>Aucun paris en cours.</Text>
         </View>
     )
   }
@@ -144,7 +144,7 @@ const EndedBet = ({ navigation }) => {
   if(betData.length <= 0) {
     return (
         <View style={{ backgroundColor: "#1C0C4F", flex: 1, alignItems: "center", justifyContent: "center"}}>
-          <Text style={{ color: "#fff", fontSize: moderateScale(16), textAlign: "center"}}>Ou pa gen paryaj en attente</Text>
+          <Text style={{ color: "#fff", fontSize: moderateScale(16), textAlign: "center"}}>Aucun paris en cours.</Text>
         </View>
     )
   }

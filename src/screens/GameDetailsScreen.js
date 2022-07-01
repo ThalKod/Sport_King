@@ -70,7 +70,7 @@ const GameDetailsScreen = ({ route, navigation }) => {
     return (
       <View style={{ backgroundColor: "#1C0C4F", flex: 1, alignItems: "center", justifyContent: "center"}}>
         <AntDesignIcons name="warning" size={moderateScale(30)} color="#fff" />
-        <Text style={{ color: "#fff", fontSize: moderateScale(14), textAlign: "center", fontFamily: "OpenSans-Bold"}}>Fonktyonalite sa poko disponib, {'\n'} Ret branche !</Text>
+        <Text style={{ color: "#fff", fontSize: moderateScale(14), textAlign: "center", fontFamily: "OpenSans-Bold"}}>Fonctionnalités à venir. {'\n'} Bientôt!</Text>
       </View>
     )
   };
@@ -188,11 +188,11 @@ const GameDetailsScreen = ({ route, navigation }) => {
     return (
       <ScrollView
         style={{ backgroundColor: "#1C0C4F", flex: 1}}>
-        { sport === "basketball" && <BetSelectionSingle homeName={homeName} awayName={awayName} onOddSelected={(info) => handleSelection(info)} odd={[odd1x2[4], odd1x2[5]]} type={"1x2"} title={"Kiyes kap genyen"}/> }
+        { sport === "basketball" && <BetSelectionSingle homeName={homeName} awayName={awayName} onOddSelected={(info) => handleSelection(info)} odd={[odd1x2[4], odd1x2[5]]} type={"1x2"} title={"Vainqueur"}/> }
         { sport === "basketball" && <BetSelectionSingle homeName={homeName} awayName={awayName} onOddSelected={(info) => handleSelection(info)} odd={[basketSpreadOddHome.toFixed(2), basketSpreadOddAway.toFixed(2)]} selection={[basketSpreadTextHome, basketSpreadTextAway]} type={"Handicap"} title={"Handicap"}/>}
         { sport === "basketball" && <BetSelectionSingle homeName={homeName} awayName={awayName} onOddSelected={(info) => handleSelection(info)} odd={[basketTotalOddHome.toFixed(2), basketTotalOddAway.toFixed(2)]} selection={[basketTotalTextHome, basketTotalTextAway]} total={roundDecimals(totalSum)} type={"Total"} title={"Total"}/> }
 
-        { sport === "football" && <BetSelectionSingle homeName={homeName} awayName={awayName} onOddSelected={(info) => handleSelection(info)} odd={[odd1x2[5], odd1x2[7], odd1x2[6]]} type={"1x2"} title={"Kiyes kap genyen"}/> }
+        { sport === "football" && <BetSelectionSingle homeName={homeName} awayName={awayName} onOddSelected={(info) => handleSelection(info)} odd={[odd1x2[5], odd1x2[7], odd1x2[6]]} type={"1x2"} title={"Vainqueur"}/> }
         { sport === "football" && <BetSelectionSingle homeName={homeName} awayName={awayName} onOddSelected={(info) => handleSelection(info)} odd={[footballHandicapOddHome.toFixed(2), footballHandicapOddAway.toFixed(2)]} type={"Handicap"} selection={[ roundDecimals(footballHandicapTextHome), roundDecimals(footballHandicapTextAway)]} title={"Handicap"}/> }
         {/* sport === "football" && <BetSelectionSingle homeName={homeName} awayName={awayName} onOddSelected={(info) => handleSelection(info)} odd={[footballHandicapHalfOddHome.toFixed(2), footballHandicapHalfOddAway.toFixed(2)]} type={"Handicap Half"} selection={[roundDecimals(footballHandicapHalfTextHome), roundDecimals(footballHandicapHalfTextAway)]} title={"Handicap Half"}/> */}
         { sport === "football" && <BetSelectionSingle homeName={homeName} awayName={awayName} onOddSelected={(info) => handleSelection(info)} odd={[footballTotalOddHome.toFixed(2), footballTotalOddAway.toFixed(2)]} total={roundDecimals(totalSum)} type={"Total"} selection={[footballTotalTextHome, footballTotalTextAway]} title={"Over/Under Goals"}/> }

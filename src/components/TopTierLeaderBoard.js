@@ -56,13 +56,13 @@ const TopTierLeaderBoard = ({ topData, weekly, monthly, alltime }) => {
           <Image style={{ resizeMode: "contain", width: moderateScale(18)}} source={Betcoin}/>
         </View>
         <View style={{ position: "absolute", left: moderateScale(55), top: moderateScale(60)}}>
-          <Profile name={topData[2].user_name} photos={profilePhotos2}/>
+          <Profile name={topData[2].user_name.split(" ")[0]} photos={profilePhotos2}/>
         </View>
         <View style={{ position: "absolute", right: moderateScale(50), top: moderateScale(55)}}>
-          <Profile name={topData[1].user_name} photos={profilePhotos2} />
+          <Profile name={topData[1].user_name.split(" ")[0]} photos={profilePhotos2} />
         </View>
         <View style={{ position: "absolute", right: moderateScale(160), top: moderateScale(5)}}>
-          <Profile name={topData[0].user_name} photos={profilePhotos2}/>
+          <Profile name={topData[0].user_name.split(" ")[0]} photos={profilePhotos2}/>
         </View>
         <View style={styles.leadersBoard}>
           <Image style={[styles.standImage , { marginRight: moderateScale(-30),  }]} source={Bronze} />
