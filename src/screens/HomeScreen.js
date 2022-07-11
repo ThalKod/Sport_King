@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {View, Text, StyleSheet, ScrollView, FlatList, ActivityIndicator} from 'react-native';
+import {View, Text, StyleSheet, ScrollView, FlatList, ActivityIndicator, KeyboardAvoidingView} from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { moderateScale } from "react-native-size-matters";
 // import RatingModal from "../components/RateModal";
@@ -141,7 +141,7 @@ const HomeScreen = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView style={styles.container}>
       <StatusBar style="light" />
       <HomeInfoBox/>
       <View style={styles.content}>
@@ -168,7 +168,7 @@ const HomeScreen = ({ navigation }) => {
           /> */ }
       { isQuickPickVisible && <QuickPicksModal info={quickPicksDetails} close={(navigate) => handleCloseModal(navigate)} /> }
       {/* <RatingModal isModalOpen={isModalOpen} closeModal={() => setIsModalOpen(false)}/> */}
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 

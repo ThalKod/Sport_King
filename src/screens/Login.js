@@ -24,6 +24,7 @@ import { LOGIN_USER } from "../graph-operations";
 import { useMutation } from "@apollo/client";
 import { initUser, initUserPersit } from '../redux/features/userSlice';
 import { useDispatch } from 'react-redux';
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 
 const Login = ({ navigation })=>{
@@ -79,7 +80,7 @@ const Login = ({ navigation })=>{
             colors={['#046572', '#4949D4']}
             style={styles.linearGradient}
         />
-        <KeyboardAvoidingView>
+        <KeyboardAwareScrollView>
           <ScrollView keyboardShouldPersistTaps="handled">
             <View style={styles.content}>
               <View style={{ flexDirection: "row"}}>
@@ -99,7 +100,7 @@ const Login = ({ navigation })=>{
               </View>
             </View>
           </ScrollView>
-        </KeyboardAvoidingView>
+        </KeyboardAwareScrollView>
       </ImageBackground>
   );
 };

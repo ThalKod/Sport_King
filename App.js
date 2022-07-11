@@ -28,7 +28,6 @@ console.log("2", IOS_API_HOST, ANDROID_API_HOST)
 
 
 const Drawer = createDrawerNavigator();
-const Stack = createNativeStackNavigator();
 
 function DrawerMain() {
   return (
