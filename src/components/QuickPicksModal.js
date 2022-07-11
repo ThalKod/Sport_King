@@ -81,7 +81,7 @@ const QuickPicksModal = ({ isVisible, close, info }) => {
         style={styles.modalContainer}>
         <View style={styles.container}>
           <View style={styles.modalHeader}>
-            <Text style={styles.modalTextTitle}>Parye</Text>
+            <Text style={styles.modalTextTitle}>Placer un Paris</Text>
             <TouchableOpacity
               onPress={() => close(false)}
               hitSlop={{ top: 10, left: 10, right: 10, bottom: 10 }}
@@ -113,16 +113,16 @@ const QuickPicksModal = ({ isVisible, close, info }) => {
               { error? <Text style={styles.errorText}>{error}</Text> : null }
               <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center"}}>
                 <TouchableOpacity onPress={handleDelete} style={{ flexDirection: "row", alignItems: "center", fontSize: moderateScale(16)}}>
-                  <Text style={{ color: "#fff", marginRight: moderateScale(5)}}>Delete</Text>
+                  <Text style={{ color: "#fff", marginRight: moderateScale(5)}}>Effacer</Text>
                   <AntDesign name="close" size={moderateScale(16)} color={"#fff"} />
                 </TouchableOpacity>
                 <View>
-                  <Text style={{ opacity: 0.7, color: "#fff", textDecorationLine: 'underline' }}>Ou ka genyen:  {numeral(inputValue * info.odd).format("0,0[.]00 $")}</Text>
+                  <Text style={{ opacity: 0.7, color: "#fff", textDecorationLine: 'underline' }}>Gains Potentiels:  {numeral(inputValue * info.odd).format("0,0[.]00 $")}</Text>
                 </View>
               </View>
               <TouchableOpacity disabled={loading || error} onPress={handleMakeBet} style={styles.placeBetButton}>
                 { loading && <ActivityIndicator size="large" color="#fff"/> }
-                { !loading && <Text style={{ fontFamily: "OpenSans-Bold", color: "#fff", fontSize: moderateScale(16)}}>Parye</Text> }
+                { !loading && <Text style={{ fontFamily: "OpenSans-Bold", color: "#fff", fontSize: moderateScale(16)}}>Confirmer</Text> }
               </TouchableOpacity>
             </View>
           </View>
@@ -137,8 +137,10 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 4,
+    alignSelf: "center",
+    borderRadius: 5,
     borderColor: 'rgba(0, 0, 0, 0.1)',
+    width: "95%"
   },
   versusText: {
     color: "#fff",
