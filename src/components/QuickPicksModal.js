@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
     width: "100%"
   },
   modalContainer: {
-    justifyContent: 'flex-end',
+    justifyContent: 'center', // "flex-end"
     margin: 0,
   },
   modalHeader: {

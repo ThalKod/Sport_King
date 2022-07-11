@@ -12,6 +12,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import {useDispatch} from 'react-redux';
 import { initUser } from '../redux/features/userSlice';
 import NetInfo from "@react-native-community/netinfo";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 
 const HomeScreen = ({ navigation }) => {
@@ -141,7 +142,7 @@ const HomeScreen = ({ navigation }) => {
   };
 
   return (
-    <KeyboardAvoidingView style={styles.container}>
+    <View style={styles.container}>
       <StatusBar style="light" />
       <HomeInfoBox/>
       <View style={styles.content}>
@@ -166,9 +167,13 @@ const HomeScreen = ({ navigation }) => {
                 console.log("ads failed to load");
               }}
           /> */ }
-      { isQuickPickVisible && <QuickPicksModal info={quickPicksDetails} close={(navigate) => handleCloseModal(navigate)} /> }
+      { isQuickPickVisible &&
+      <KeyboardAwareScrollView>
+        <QuickPicksModal info={quickPicksDetails} close={(navigate) => handleCloseModal(navigate)} />
+      </KeyboardAwareScrollView>
+      }
       {/* <RatingModal isModalOpen={isModalOpen} closeModal={() => setIsModalOpen(false)}/> */}
-    </KeyboardAvoidingView>
+    </View>
   );
 };
 
