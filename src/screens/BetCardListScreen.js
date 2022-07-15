@@ -36,12 +36,13 @@ const BetCardListScreen  = ({ route, navigation }) => {
     unsubscribe();
   }, []);
 
+
   const { loading } = useQuery(GET_MATCH_BASIC_INFO, {
     fetchPolicy: 'no-cache',
     variables: {
       jsWebToken: user.jsWebToken,
       sport,
-      matchId: matchIDs.join(),
+      matchId: matchIDs,
     },
     onCompleted(data){
       console.log("m basic info ", data);
