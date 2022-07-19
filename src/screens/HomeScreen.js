@@ -64,15 +64,19 @@ const HomeScreen = ({ navigation }) => {
 
   const [ getUpcomingGames, { loading }] = useLazyQuery(GET_UPCOMING_GAMES, {
     fetchPolicy: 'no-cache',
+    pollInterval: 5000,
     variables: {
       jsWebToken: jsWebToken,
       data: {
         sport
-      }
+      },
     },
     onCompleted(data){
       // console.log("data ", data);
       setGameDetails(data.upcomingGames);
+    },
+    onError(){
+      getUpcomingGames()
     }
   });
 

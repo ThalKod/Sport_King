@@ -83,7 +83,7 @@ const GameDetailsScreen = ({ route, navigation }) => {
 
     const { loading } = useQuery(GET_MATCH_ODD, {
       fetchPolicy: 'no-cache',
-      pollInterval: 60000,
+      pollInterval: 30000,
       notifyOnNetworkStatusChange: true,
       variables: {
         jsWebToken: user.jsWebToken,

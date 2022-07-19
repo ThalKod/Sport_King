@@ -41,6 +41,7 @@ const LeagueListScreen = ({ route, navigation }) => {
 
   const [getLeagues, { loading }] = useLazyQuery(LEAGUES, {
     fetchPolicy: 'no-cache',
+    pollInterval: 60000,
     variables: {
       jsWebToken: user.jsWebToken,
       sport

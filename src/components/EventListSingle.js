@@ -23,6 +23,7 @@ const EventListSingle = ({ request, text, icon, liveCount, onPress }) => {
 
   const [getScheduledGamesCount, { loading }]= useLazyQuery(GET_SCHEDULED_GAMES_COUNT, {
     fetchPolicy: 'no-cache',
+    pollInterval: 10000,
     skip: !request,
     variables: {
       jsWebToken: user.jsWebToken,
