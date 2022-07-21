@@ -8,6 +8,7 @@ export const GET_UPCOMING_GAMES = gql`
     ){
       matchId
       matchTime
+      halfStartTime
       awayName
       homeName
       status

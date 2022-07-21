@@ -9,6 +9,7 @@ export const GET_MATCH_BASIC_INFO = gql`
     ){
       matchId
       matchTime
+      halfStartTime
       awayName
       homeName
       status

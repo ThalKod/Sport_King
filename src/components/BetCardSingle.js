@@ -10,14 +10,15 @@ import TeamName from "./TeamName";
 import OddSelection from "./OddSelection";
 import moment from "moment";
 
-const BetCardSingle = ({ moneyLine, homeName, awayName, homeLogo, homeScore, awayScore, awayLogo, onPress, onOddSelected, matchTime, sport }) => {
+const BetCardSingle = ({ status, moneyLine, homeName, awayName, homeLogo, homeScore, awayScore, awayLogo, onPress, onOddSelected, matchTime, sport, halfStartTime }) => {
 
   const odds = moneyLine? moneyLine.split(",") :  [];
   const disabled = sport === "basketball";
 
   const gameIsInPlay = moment() > moment.unix(matchTime);
-  const currentGameTine = moment() - moment.unix(matchTime)
-  console.log(currentGameTine)
+  const currentGameTine = status === 1? moment().diff(moment.unix(matchTime), "minutes") :  moment().diff(moment.unix(halfStartTime), "minutes") + 45
+  console.log(moment(), moment.unix(matchTime), moment.unix(halfStartTime), currentGameTine, moment().diff(moment.unix(halfStartTime), "minutes"))
+
 
   return (
     <TouchableOpacity onPress={onPress} style={styles.container}>
@@ -25,7 +26,14 @@ const BetCardSingle = ({ moneyLine, homeName, awayName, homeLogo, homeScore, awa
         <TeamName teamName={homeName} teamLogo={homeLogo}/>
         <View style={{ alignItems: "center"}}>
           <Text style={[styles.text, { fontSize: moderateScale(18), color: gameIsInPlay? "#4DFB47" : "#fff"}, ]}>{gameIsInPlay? `${homeScore} - ${awayScore}` : moment.unix(matchTime).format("DD/MM")}</Text>
-          <Text style={[styles.text, { fontSize: gameIsInPlay? moderateScale(12) : moderateScale(12), color: gameIsInPlay? "#4DFB47" : "#fff"}]}>{gameIsInPlay? `${moment.unix(matchTime).format("mm")}'` : moment.unix(matchTime).format("HH:mm")}</Text>
+          { status === 2 ?
+             <Text style={[styles.text, { fontSize: gameIsInPlay? moderateScale(12) : moderateScale(12), color: gameIsInPlay? "#4DFB47" : "#fff"}]}>MT</Text>
+            :
+            status === 4 ?
+              <Text style={[styles.text, { fontSize: gameIsInPlay? moderateScale(12) : moderateScale(12), color: gameIsInPlay? "#4DFB47" : "#fff"}]}>OT</Text>
+              :
+              <Text style={[styles.text, { fontSize: gameIsInPlay? moderateScale(12) : moderateScale(12), color: gameIsInPlay? "#4DFB47" : "#fff"}]}>{gameIsInPlay? `${currentGameTine}'` : moment.unix(matchTime).format("HH:mm")}</Text>
+          }
         </View>
         <TeamName teamName={awayName} teamLogo={awayLogo} left/>
       </View>
