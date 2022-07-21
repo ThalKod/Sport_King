@@ -15,6 +15,8 @@ export const GET_MATCH_BASIC_INFO = gql`
       homeLogo
       awayLogo
       moneyLine
+      homeScore
+      awayScore
     }
   }
 `;

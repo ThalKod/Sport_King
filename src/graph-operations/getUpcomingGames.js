@@ -15,6 +15,8 @@ export const GET_UPCOMING_GAMES = gql`
       awayLogo
       moneyLine
       leagueName
+      homeScore
+      awayScore
     }
   }
 `;

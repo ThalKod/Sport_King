@@ -71,7 +71,7 @@ const BetCardListScreen  = ({ route, navigation }) => {
   };
 
   const renderCards = ({ item }) => {
-    // console.log("item ", item);
+    console.log("item ", item);
     return (
         <BetCardSingle onOddSelected={(info) => handleSelection(info, item)} {...item} sport={sport} onPress={() => navigation.navigate("GameDetails", {...item, country, leagueName, name, sport, matchId: item.matchId })}/>
     )

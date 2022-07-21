@@ -10,20 +10,22 @@ import TeamName from "./TeamName";
 import OddSelection from "./OddSelection";
 import moment from "moment";
 
-const BetCardSingle = ({ moneyLine, homeName, awayName, homeLogo, awayLogo, onPress, onOddSelected, matchTime, sport }) => {
+const BetCardSingle = ({ moneyLine, homeName, awayName, homeLogo, homeScore, awayScore, awayLogo, onPress, onOddSelected, matchTime, sport }) => {
 
   const odds = moneyLine? moneyLine.split(",") :  [];
   const disabled = sport === "basketball";
 
   const gameIsInPlay = moment() > moment.unix(matchTime);
+  const currentGameTine = moment() - moment.unix(matchTime)
+  console.log(currentGameTine)
 
   return (
     <TouchableOpacity onPress={onPress} style={styles.container}>
       <View style={styles.contentTeam}>
         <TeamName teamName={homeName} teamLogo={homeLogo}/>
         <View style={{ alignItems: "center"}}>
-          <Text style={[styles.text, { fontSize: moderateScale(16), color: gameIsInPlay? "#4DFB47" : "#fff"}, ]}>{gameIsInPlay? "En" : moment.unix(matchTime).format("DD/MM")}</Text>
-          <Text style={[styles.text, { fontSize: gameIsInPlay? moderateScale(16) : moderateScale(12), color: gameIsInPlay? "#4DFB47" : "#fff"}]}>{gameIsInPlay? "Cours" : moment.unix(matchTime).format("HH:mm")}</Text>
+          <Text style={[styles.text, { fontSize: moderateScale(18), color: gameIsInPlay? "#4DFB47" : "#fff"}, ]}>{gameIsInPlay? `${homeScore} - ${awayScore}` : moment.unix(matchTime).format("DD/MM")}</Text>
+          <Text style={[styles.text, { fontSize: gameIsInPlay? moderateScale(12) : moderateScale(12), color: gameIsInPlay? "#4DFB47" : "#fff"}]}>{gameIsInPlay? `${moment.unix(matchTime).format("mm")}'` : moment.unix(matchTime).format("HH:mm")}</Text>
         </View>
         <TeamName teamName={awayName} teamLogo={awayLogo} left/>
       </View>

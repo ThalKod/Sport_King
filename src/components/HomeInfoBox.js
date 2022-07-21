@@ -14,7 +14,7 @@ import { useSelector } from 'react-redux';
 
 const HomeInfoBox = () => {
   const user = useSelector(state => state.user);
-  console.log("name", user)
+  // console.log("name", user)
   return (
     <View style={styles.container}>
       <ImageBackground source={ChampionsBackground} style={styles.imageBackground}>
