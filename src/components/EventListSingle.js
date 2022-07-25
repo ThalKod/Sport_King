@@ -17,6 +17,8 @@ const EventListSingle = ({ request, text, icon, liveCount, onPress }) => {
   const [gamesCount, setGameCount] = useState(0);
   const user = useSelector(state => state.user);
 
+  console.log("URI=======================", icon)
+
   useEffect(() => {
     getScheduledGamesCount();
   }, []);
