@@ -26,7 +26,6 @@ const BetCardSingle = ({ status, moneyLine, homeName, awayName, homeId, awayId, 
   const currentGameTine = status === 1? moment().diff(moment.unix(matchTime), "minutes") :  moment().diff(moment.unix(halfStartTime), "minutes") + 45
 
   const getHomeTeam = useQuery(GET_TEAM, {
-    fetchPolicy: 'no-cache',
     variables: {
       jsWebToken: user.jsWebToken,
       sport,
@@ -39,7 +38,6 @@ const BetCardSingle = ({ status, moneyLine, homeName, awayName, homeId, awayId, 
   });
 
   const getAwayTeam = useQuery(GET_TEAM, {
-    fetchPolicy: 'no-cache',
     variables: {
       jsWebToken: user.jsWebToken,
       sport,
