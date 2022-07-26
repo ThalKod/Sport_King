@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Text,
   View,
@@ -9,15 +9,49 @@ import { moderateScale } from "react-native-size-matters";
 import TeamName from "./TeamName";
 import OddSelection from "./OddSelection";
 import moment from "moment";
+import { useLazyQuery, useQuery } from "@apollo/client";
+import { GET_TEAM } from "../graph-operations";
+import { useSelector } from "react-redux";
 
-const BetCardSingle = ({ status, moneyLine, homeName, awayName, homeLogo, homeScore, awayScore, awayLogo, onPress, onOddSelected, matchTime, sport, halfStartTime }) => {
+const BetCardSingle = ({ status, moneyLine, homeName, awayName, homeId, awayId, homeScore, awayScore, onPress, onOddSelected, matchTime, sport, halfStartTime }) => {
 
   const odds = moneyLine? moneyLine.split(",") :  [];
   const disabled = sport === "basketball";
 
+  const user = useSelector(state => state.user);
+  const [homeLogo, setHomeLogo] = useState("");
+  const [awayLogo, setAwayLogo] = useState("");
+
   const gameIsInPlay = moment() > moment.unix(matchTime);
   const currentGameTine = status === 1? moment().diff(moment.unix(matchTime), "minutes") :  moment().diff(moment.unix(halfStartTime), "minutes") + 45
-  console.log(moment(), moment.unix(matchTime), moment.unix(halfStartTime), currentGameTine, moment().diff(moment.unix(halfStartTime), "minutes"))
+
+  const getHomeTeam = useQuery(GET_TEAM, {
+    fetchPolicy: 'no-cache',
+    variables: {
+      jsWebToken: user.jsWebToken,
+      sport,
+      teamId: homeId
+    },
+    onCompleted(data){
+      console.log("data : ", data);
+      setHomeLogo(data.getTeam.logo.split("?")[0].replace("http", "https"));
+    }
+  });
+
+  const getAwayTeam = useQuery(GET_TEAM, {
+    fetchPolicy: 'no-cache',
+    variables: {
+      jsWebToken: user.jsWebToken,
+      sport,
+      teamId: awayId
+    },
+    onCompleted(data){
+      console.log("data : ", data);
+      setAwayLogo(data.getTeam.logo.split("?")[0].replace("http", "https"));
+    }
+  });
+
+  console.log("ID: ", awayLogo, homeLogo )
 
 
   return (

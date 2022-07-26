@@ -18,6 +18,8 @@ export const GET_UPCOMING_GAMES = gql`
       leagueName
       homeScore
       awayScore
+      homeId
+      awayId
     }
   }
 `;
