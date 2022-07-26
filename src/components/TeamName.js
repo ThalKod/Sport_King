@@ -9,19 +9,21 @@ import { moderateScale } from "react-native-size-matters";
 
 const TeamName = ({left, teamName, teamLogo}) => {
 
+  console.log("team logo", teamLogo)
+
   const renderCorrectDirection = () => {
     if(left){
       return (
         <View style={styles.container}>
           <Text adjustsFontSizeToFit numberOfLines={2} style={styles.text}>{teamName}</Text>
-          {/* <Image style={{ width: moderateScale(50), height: moderateScale(50), resizeMode: "contain", marginLeft: moderateScale(-10)}} source={{ uri: teamLogo }}/> */ }
+          {teamLogo? <Image style={styles.image} source={{ uri: teamLogo }}/> : null }
         </View>
       )
     }
 
     return (
       <View style={styles.container}>
-        {/* <Image style={{ width: moderateScale(50), height: moderateScale(50), resizeMode: "contain", marginRight: moderateScale(-10)}} source={{ uri: teamLogo }}/>  */}
+        { teamLogo? <Image style={styles.image} source={{ uri: teamLogo }}/> : null }
         <Text adjustsFontSizeToFit numberOfLines={2} style={styles.text}>{teamName}</Text>
       </View>
     )
@@ -41,6 +43,13 @@ const styles = StyleSheet.create({
     fontFamily: "OpenSans-Semibold",
     width: moderateScale(80),
     textAlign: "center",
+  },
+  image: {
+    width: moderateScale(50),
+    height: moderateScale(50),
+    marginRight: moderateScale(0),
+    borderRadius: moderateScale(50),
+    resizeMode: "contain",
   }
 });
 

@@ -51,11 +51,11 @@ const BetCardSingle = ({ status, moneyLine, homeName, awayName, homeId, awayId, 
     }
   });
 
-  console.log("ID: ", awayLogo, homeLogo )
+  // console.log("ID: ", awayLogo, homeLogo )
 
 
   return (
-    <TouchableOpacity onPress={onPress} style={styles.container}>
+    <TouchableOpacity onPress={() => {}} style={styles.container}>
       <View style={styles.contentTeam}>
         <TeamName teamName={homeName} teamLogo={homeLogo}/>
         <View style={{ alignItems: "center"}}>
