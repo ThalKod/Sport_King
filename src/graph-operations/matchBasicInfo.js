@@ -18,6 +18,8 @@ export const GET_MATCH_BASIC_INFO = gql`
       moneyLine
       homeScore
       awayScore
+      homeId
+      awayId
     }
   }
 `;
