@@ -34,7 +34,7 @@ const BetCardSingle = ({ status, moneyLine, homeName, awayName, homeId, awayId, 
     },
     onCompleted(data){
       console.log("data : ", data);
-      setHomeLogo(data.getTeam.logo.split("?")[0].replace("http", "https"));
+      setHomeLogo(data.getTeam.logo);
     }
   });
 
@@ -47,7 +47,7 @@ const BetCardSingle = ({ status, moneyLine, homeName, awayName, homeId, awayId, 
     },
     onCompleted(data){
       console.log("data : ", data);
-      setAwayLogo(data.getTeam.logo.split("?")[0].replace("http", "https"));
+      setAwayLogo(data.getTeam.logo);
     }
   });
 
