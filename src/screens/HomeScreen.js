@@ -64,7 +64,7 @@ const HomeScreen = ({ navigation }) => {
 
   const [ getUpcomingGames, { loading }] = useLazyQuery(GET_UPCOMING_GAMES, {
     fetchPolicy: 'no-cache',
-    pollInterval: 5000,
+    pollInterval: 60000,
     variables: {
       jsWebToken: jsWebToken,
       data: {
