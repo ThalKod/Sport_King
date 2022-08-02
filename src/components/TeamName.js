@@ -7,6 +7,7 @@ import {
   Platform
 } from "react-native";
 import { moderateScale } from "react-native-size-matters";
+import defaultImage from "../assets/default_team.png";
 
 const TeamName = ({left, teamName, teamLogo}) => {
 
@@ -19,14 +20,14 @@ const TeamName = ({left, teamName, teamLogo}) => {
       return (
         <View style={styles.container}>
           <Text adjustsFontSizeToFit numberOfLines={2} style={styles.text}>{teamName}</Text>
-          {teamLogo? <Image style={styles.image} source={{ uri: correctUrl }}/> : null }
+          {teamLogo? <Image style={styles.image} source={{ uri: correctUrl }}/> : <Image style={styles.image} source={defaultImage}/> }
         </View>
       )
     }
 
     return (
       <View style={styles.container}>
-        { teamLogo? <Image style={styles.image} source={{ uri: correctUrl }}/> : null }
+        {teamLogo? <Image style={styles.image} source={{ uri: correctUrl }}/> : <Image style={styles.image} source={defaultImage}/> }
         <Text adjustsFontSizeToFit numberOfLines={2} style={styles.text}>{teamName}</Text>
       </View>
     )
