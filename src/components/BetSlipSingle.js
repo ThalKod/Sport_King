@@ -86,8 +86,8 @@ const styles = StyleSheet.create({
   },
   cashoutButton: {
     backgroundColor: "#331493",
-    height: moderateScale(30),
-    borderRadius: moderateScale(50),
+    height: moderateScale(35),
+    borderRadius: moderateScale(30),
     padding: moderateScale(10),
     alignItems: "center",
     justifyContent: "center"
