@@ -50,10 +50,10 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   image: {
-    width: moderateScale(50),
-    height: moderateScale(50),
-    marginRight: moderateScale(0),
-    borderRadius: moderateScale(50),
+    width: moderateScale(45),
+    height: moderateScale(45),
+    marginRight: moderateScale(5),
+    borderRadius: moderateScale(40),
     resizeMode: "contain",
   }
 });

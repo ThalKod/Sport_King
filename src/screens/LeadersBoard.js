@@ -202,9 +202,9 @@ const AllTimeBoards = ({ navigation }) => {
 const LeadersBoards = () => {
   return (
       <Tab.Navigator
-          tabBarOptions={{
-            activeTintColor: "#fff",
-            style: { backgroundColor: '#140A35' },
+          screenOptions={{
+            tabBarActiveTintColor: "#fff",
+            tabBarStyle: { backgroundColor: '#140A35' },
           }}
       >
         <Tab.Screen name="Semaine" component={WeeklyBoards} />

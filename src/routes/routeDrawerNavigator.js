@@ -71,7 +71,7 @@ export const rootDrawerNavigator = () => {
         name="Home"
         component={Home}
         options={({ route, navigation }) => ({
-          headerShown: getHeaderTitle(route) !== "Matchs",
+          headerShown: getHeaderTitle(route),
           title: "",
           headerLeft: () => (
             <View>
