@@ -80,7 +80,7 @@ const LeagueListScreen = ({ route, navigation }) => {
             key={item.leagueId}
             request={false}
             onPress={() => handleOnPress(item)}
-            text={`${item.country}, ${item.name || item.leagueName}`}
+            text={`${item.name || item.leagueName}`}
             icon={item.logo? item.logo.replace("http", "https") : `https://countryflagsapi.com/png/${item.country}`}
             liveCount={item.scheduledGames}
         />
