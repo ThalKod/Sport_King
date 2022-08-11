@@ -25,6 +25,7 @@ import { useMutation } from "@apollo/client";
 import { initUser, initUserPersit } from '../redux/features/userSlice';
 import { useDispatch } from 'react-redux';
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import analytics from "@react-native-firebase/analytics";
 
 
 const Login = ({ navigation })=>{
@@ -70,9 +71,15 @@ const Login = ({ navigation })=>{
         password: passwordValue
       }
     })
+    await analytics().logEvent('signin_user_button');
   };
 
   const loadingComp =  <ActivityIndicator size="large" color="#fff"/>;
+
+  const handleNewUser = async () => {
+    await analytics().logEvent('new_registered_user');
+    navigation.navigate("Register")
+  }
 
   return (
       <ImageBackground source={BackgroundImage} style={styles.container}>
@@ -94,7 +101,7 @@ const Login = ({ navigation })=>{
                   <Text style={styles.forgetText}>Ou bliye password ou ?</Text>
                 </TouchableOpacity> */}
                 <MainButton onClick={handleLogin} text={loading? loadingComp : "SE CONNECTER"} color={"#19D8B7"} arrow={arrowImage}/>
-                <TouchableOpacity onPress={() => navigation.navigate("Register")}>
+                <TouchableOpacity onPress={handleNewUser}>
                   <Text style={styles.newUserText}>Tu n'as pas encore de compte? {"\n"}  Créez en un maintenant </Text>
                 </TouchableOpacity>
               </View>

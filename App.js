@@ -16,6 +16,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { initUser } from "./src/redux/features/userSlice";
 import { ActivityIndicator, View, Platform } from "react-native";
 import { ANDROID_API_HOST, IOS_API_HOST } from "@env";
+import analytics from '@react-native-firebase/analytics';
 
 console.log("==================", IOS_API_HOST, ANDROID_API_HOST)
 
@@ -55,10 +56,31 @@ function DrawerMain() {
 }
 
 const App: () => Node = () => {
+
+  const routeNameRef = React.useRef();
+  const navigationRef = React.useRef();
+
   return (
     <Provider store={store}>
       <ApolloProvider client={client}>
-        <NavigationContainer>
+        <NavigationContainer
+          ref={navigationRef}
+          onReady={() => {
+            routeNameRef.current = navigationRef.current.getCurrentRoute().name;
+          }}
+          onStateChange={async () => {
+            const previousRouteName = routeNameRef.current;
+            const currentRouteName = navigationRef.current.getCurrentRoute().name;
+
+            if (previousRouteName !== currentRouteName) {
+              await analytics().logScreenView({
+                screen_name: currentRouteName,
+                screen_class: currentRouteName,
+              });
+            }
+            routeNameRef.current = currentRouteName;
+          }}
+        >
           <Drawer.Navigator
             initialRouteName="SportKing"
             drawerContent={(props) => ( <CustomDrawerContent {...props} />)}

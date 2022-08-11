@@ -59,6 +59,7 @@ const CoinsHeaderDisplay = () => {
     setIsLoadingRewardedAds(true);
   };
 
+
   return (
     <TouchableOpacity onPress={() => {}} style={styles.container}>
       <View style={styles.cartContainer}>

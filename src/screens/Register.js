@@ -25,6 +25,7 @@ import { SIGNUP_USER } from "../graph-operations";
 import { useDispatch } from 'react-redux';
 import { initUser, initUserPersit } from '../redux/features/userSlice';
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import analytics from "@react-native-firebase/analytics";
 
 
 const Register = ({ navigation }) => {
@@ -79,7 +80,15 @@ const Register = ({ navigation }) => {
         invitedBy: inviteCode
       }
     })
+
+    await analytics().logEvent('create_user_button');
+
   };
+
+  const handleAlreadyRegistered = async () => {
+    await analytics().logEvent('already_registered_user');
+    navigation.navigate("Login")
+  }
 
   const loadingComp =  <ActivityIndicator size="large" color="#fff"/>;
 
@@ -103,7 +112,7 @@ const Register = ({ navigation }) => {
                 <CustomTextInput value={passwordConfirmationValue} onValueChange={(v) => setPasswordConfirmationValue(v)} password placeHolder="Password Confirmation" icon={<AntDesign style={{ marginRight: moderateScale(10)}} name="lock" size={20} color="#B3B3B6" />}/>
                 <CustomTextInput value={inviteCode} onValueChange={(v) => setInviteCode(v)} placeHolder="Invite Code(Optionnel)" icon={<AntDesign style={{ marginRight: moderateScale(10)}} name="barcode" size={20} color="#B3B3B6" />}/>
                 <MainButton onClick={handleSignupUser} text={loading? loadingComp : "CREER UN COMPTE"} color={"#19D8B7"} arrow={arrowImage}/>
-                <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+                <TouchableOpacity onPress={handleAlreadyRegistered}>
                   <Text style={styles.newUserText}>T'as deja un compte? {"\n"}  Clique ici pour te connecter! </Text>
                 </TouchableOpacity>
               </View>

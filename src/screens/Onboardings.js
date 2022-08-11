@@ -4,6 +4,7 @@ import BackgroundImage from "../assets/background_football_head.jpg";
 import LinearGradient from 'react-native-linear-gradient';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
 import { moderateScale } from 'react-native-size-matters';
+import analytics from '@react-native-firebase/analytics';
 
 import OnBoardingInfoBox from "../components/onboardings/OnBoardingInfoBox";
 import OnBoardingFooter from "../components/onboardings/OnBoardingFooter";
@@ -48,9 +49,13 @@ const Onboardings = ({ navigation })=>{
     )
   }
 
-  const onNextButton = () => {
+  const onNextButton = async () => {
+
+    await analytics().logEvent('next_button_slider');
+
     setSlideNumber(slideNumber + 1);
     if(slideNumber + 1 === 3){
+      await analytics().logEvent('finish_button_slider');
       navigation.navigate("ConnectOptions");
     }
   };

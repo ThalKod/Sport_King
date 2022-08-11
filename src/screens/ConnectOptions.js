@@ -8,6 +8,7 @@ import { getStatusBarHeight } from 'react-native-status-bar-height';
 import { moderateScale } from 'react-native-size-matters';
 import MainButton from "../components/MainButton";
 import {useDispatch} from "react-redux";
+import analytics from "@react-native-firebase/analytics";
 
 
 const ConnectOptions = ({ navigation }) => {
@@ -19,6 +20,7 @@ const ConnectOptions = ({ navigation }) => {
     if(loading)
       return;
 
+    await analytics().logEvent('connect_button');
     navigation.navigate('Register');
   };
 

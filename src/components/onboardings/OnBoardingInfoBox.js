@@ -18,7 +18,7 @@ const OnBoardingInfoBox = ({slideNumber})=>{
     return (
       <View>
         <Text style={styles.headerText}>Prouve que t'es le <Text style={{ color: "#FDE88E"}}>King</Text>!</Text>
-        <Text style={styles.text}>Chaque jour, pariez sur tes matchs préférer, jouer contre les autres joueurs et défends ton classement !</Text>
+        <Text style={styles.text}>Chaque jour, pariez sur tes matchs préférer, rivalise avec les autres joueurs et défends ta position dans le classement !</Text>
       </View>
     )
   };
@@ -27,7 +27,7 @@ const OnBoardingInfoBox = ({slideNumber})=>{
     return (
       <View>
         <Text style={styles.headerText}>24/7</Text>
-        <Text style={styles.text}>Plus de <Text style={{ color: "#FDE88E"}}>25</Text> sports differents {"\n"}Les plus grandes league <Text style={{ color: "#FDE88E"}}>en direct</Text> Et des sports virtuels, {"\n"} Du <Text style={{ color: "#FDE88E"}}>Fun</Text> 24/7!</Text>
+        <Text style={styles.text}>Plus de <Text style={{ color: "#FDE88E"}}>25</Text> sports differents {"\n\n"}Les plus grandes league <Text style={{ color: "#FDE88E"}}>en direct</Text> Et des sports virtuels, {"\n\n"} Du <Text style={{ color: "#FDE88E"}}>Fun</Text> 24/7!</Text>
       </View>
     )
   };
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     fontFamily: "GROBOLD",
     color: "#fff",
-    fontSize: moderateScale(16)
+    fontSize: moderateScale(17.5)
   }
 });
 
