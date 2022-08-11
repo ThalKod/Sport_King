@@ -12,6 +12,7 @@ import moment from "moment";
 import { useLazyQuery, useQuery } from "@apollo/client";
 import { GET_TEAM } from "../graph-operations";
 import { useSelector } from "react-redux";
+import analytics from "@react-native-firebase/analytics";
 
 const BetCardSingle = ({ status, moneyLine, homeName, awayName, homeId, awayId, homeScore, awayScore, onPress, onOddSelected, matchTime, sport, halfStartTime }) => {
 
@@ -51,9 +52,15 @@ const BetCardSingle = ({ status, moneyLine, homeName, awayName, homeId, awayId, 
 
   // console.log("ID: ", awayLogo, homeLogo )
 
+  const handleOnPress = async () => {
+    await analytics().logEvent('click_on_game_card', {
+      homeName,
+      awayName
+    });
+  }
 
   return (
-    <TouchableOpacity onPress={() => {}} style={styles.container}>
+    <TouchableOpacity onPress={handleOnPress} style={styles.container}>
       <View style={styles.contentTeam}>
         <TeamName teamName={homeName} teamLogo={homeLogo}/>
         <View style={{ alignItems: "center"}}>

@@ -17,6 +17,7 @@ import { gameType, betType } from "../config"
 import {useDispatch, useSelector} from 'react-redux';
 import { truncate } from "../utils";
 import { initUser } from '../redux/features/userSlice';
+import analytics from "@react-native-firebase/analytics";
 
 
 const QuickPicksModal = ({ isVisible, close, info }) => {
@@ -41,8 +42,9 @@ const QuickPicksModal = ({ isVisible, close, info }) => {
     }
   });
 
-  const handleDelete = () => {
+  const handleDelete = async () => {
     onInputValueChange("");
+    await analytics().logEvent('click_on_reset_bet_input');
   };
 
   const onChangeText = (text) => {
@@ -70,6 +72,11 @@ const QuickPicksModal = ({ isVisible, close, info }) => {
         total: parseFloat(info.pick.total)
       }
     })
+    await analytics().logEvent('click_on_make_bet', {
+      gameId: info.matchId,
+      total: parseFloat(info.pick.total),
+    });
+
   };
 
   return (

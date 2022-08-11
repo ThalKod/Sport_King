@@ -15,6 +15,7 @@ import {useSelector} from 'react-redux';
 import QuickPicksModal from '../components/QuickPicksModal';
 import {truncate} from '../utils';
 import NetInfo from '@react-native-community/netinfo';
+import analytics from "@react-native-firebase/analytics";
 
 
 const BetCardListScreen  = ({ route, navigation }) => {
@@ -55,7 +56,7 @@ const BetCardListScreen  = ({ route, navigation }) => {
     if(navigate) navigation.navigate("Pari");
   };
 
-  const handleSelection = (info, item) => {
+  const handleSelection = async (info, item) => {
     setIsQuickPicksVisible(true);
     console.log("itemes1 ", item);
     console.log("itemes2 ", info);
@@ -63,6 +64,9 @@ const BetCardListScreen  = ({ route, navigation }) => {
 
     console.log("detals", details);
     setQuickPicksDetails(details);
+
+    await analytics().logEvent('click_on_odds');
+
   };
 
   const closeModal = () => {

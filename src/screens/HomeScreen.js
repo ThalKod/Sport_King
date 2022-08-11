@@ -12,6 +12,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import {useDispatch} from 'react-redux';
 import { initUser } from '../redux/features/userSlice';
 import NetInfo from "@react-native-community/netinfo";
+import analytics from "@react-native-firebase/analytics";
 
 
 const HomeScreen = ({ navigation }) => {
@@ -122,7 +123,7 @@ const HomeScreen = ({ navigation }) => {
     if(navigate) navigation.navigate("Pari");
   };
 
-  const handleSelection = (info, item) => {
+  const handleSelection = async (info, item) => {
     setIsQuickPicksVisible(true);
     console.log("itemes1 ", item);
     console.log("itemes2 ", info);
@@ -130,6 +131,8 @@ const HomeScreen = ({ navigation }) => {
 
     console.log("detals", details);
     setQuickPicksDetails(details);
+
+    await analytics().logEvent('click_on_odds');
   };
 
   const closeModal = () => {

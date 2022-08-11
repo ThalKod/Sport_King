@@ -12,6 +12,7 @@ import { LEAGUES } from "../graph-operations";
 import EventListSingle from "../components/EventListSingle";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {useSelector} from 'react-redux';
+import analytics from "@react-native-firebase/analytics";
 
 
 const LeagueListScreen = ({ route, navigation }) => {
@@ -60,9 +61,15 @@ const LeagueListScreen = ({ route, navigation }) => {
     )
   }
 
-  const handleOnPress= (item) => {
+  const handleOnPress = async (item) => {
     if(liveScore)
       return navigation.navigate("LeagueLive", {});
+
+    await analytics().logEvent('click_on_league', {
+      country: item.country,
+      leagueName: item.leagueName,
+      name: item.name
+    });
 
     navigation.navigate("GamesList", { matchIDs: item.matchIds, country: item.country, leagueName: item.leagueName, name: item.name, sport})
   };

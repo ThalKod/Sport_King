@@ -11,6 +11,7 @@ import BasketBall from "../assets/basketball_icon.png";
 import { moderateScale } from "react-native-size-matters";
 import AntDesignIcons from 'react-native-vector-icons/AntDesign';
 import NetInfo from '@react-native-community/netinfo';
+import analytics from "@react-native-firebase/analytics";
 
 const EventsScreen = ({ navigation, route }) => {
 
@@ -25,6 +26,11 @@ const EventsScreen = ({ navigation, route }) => {
     // Unsubscribe
     unsubscribe();
   }, []);
+
+  const onPress = async () => {
+    await analytics().logEvent('click_on_football_event');
+    navigation.navigate("Leagues", { sport: "football" })
+  }
 
   return (
       <View style={styles.container}>

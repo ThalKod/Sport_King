@@ -15,6 +15,7 @@ import Betcoin from "../assets/betcoin.png";
 import { useSelector, useDispatch } from 'react-redux'
 import { useMutation } from "@apollo/client";
 import {ADD_COINS} from '../graph-operations';
+import analytics from "@react-native-firebase/analytics";
 
 
 // TODO: Fix error for rewarded ads when mot available
@@ -49,15 +50,18 @@ const CoinsHeaderDisplay = () => {
     setRewardsEarned({ amount: 0, status: false });
   }
 
-  const toggleModal = () => {
+  const toggleModal = async () => {
+    await analytics().logEvent('click_on_add_coin');
     setModalVisible(!isModalVisible);
   };
 
-  const showAds = () => {
+  const showAds = async () => {
+    await analytics().logEvent('click_on_watch_ads');
     toggleModal();
     rewarded.load();
     setIsLoadingRewardedAds(true);
   };
+
 
 
   return (
