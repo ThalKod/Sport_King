@@ -33,7 +33,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: "#fff",
     alignItems: "center",
-    marginVertical: moderateScale(5)
+    marginVertical: moderateScale(5),
+    borderRadius: moderateScale(5)
   },
   inputStyle: {
     flex: 1,

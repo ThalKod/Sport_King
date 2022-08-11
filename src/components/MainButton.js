@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginVertical: moderateScale(5),
-
+    borderRadius: moderateScale(50),
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
