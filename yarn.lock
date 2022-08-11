@@ -1733,6 +1733,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-native-firebase/analytics@npm:^15.3.0":
+  version: 15.3.0
+  resolution: "@react-native-firebase/analytics@npm:15.3.0"
+  peerDependencies:
+    "@react-native-firebase/app": 15.3.0
+  checksum: 0ce0fcce1e55c6bebd4dcf8fdf914536e48af6f74088589e7ddc98baf82a5a64d59164cb59258fb144b651bd52d3617e80728a6487051c66a763b93af222a853
+  languageName: node
+  linkType: hard
+
 "@react-native-firebase/app@npm:^15.3.0":
   version: 15.3.0
   resolution: "@react-native-firebase/app@npm:15.3.0"
@@ -9316,6 +9325,7 @@ __metadata:
     "@react-native-async-storage/async-storage": ^1.15.17
     "@react-native-community/eslint-config": ^2.0.0
     "@react-native-community/netinfo": ^7.1.9
+    "@react-native-firebase/analytics": ^15.3.0
     "@react-native-firebase/app": ^15.3.0
     "@react-navigation/drawer": ^6.1.8
     "@react-navigation/material-bottom-tabs": ^6.0.9

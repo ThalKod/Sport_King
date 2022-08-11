@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "717803274245",
+    "project_id": "sportking-24076",
+    "storage_bucket": "sportking-24076.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:717803274245:android:6fe4be1e7d27106bbedc6c",
+        "android_client_info": {
+          "package_name": "com.sport_king"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "717803274245-nje659eu2o4a52oj6lk36rn43iken28s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA35tPlSSsD6yGFohKH9I5OUD4z4S67qAY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "717803274245-nje659eu2o4a52oj6lk36rn43iken28s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
