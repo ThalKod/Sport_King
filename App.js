@@ -83,6 +83,10 @@ const App: () => Node = () => {
         >
           <Drawer.Navigator
             initialRouteName="SportKing"
+            screenOptions={{
+              gestureEnabled: false,
+              swipeEnabled: false,
+            }}
             drawerContent={(props) => ( <CustomDrawerContent {...props} />)}
             drawerStyle={{
               backgroundColor: '#261D44',
