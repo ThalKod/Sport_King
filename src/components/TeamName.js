@@ -11,7 +11,7 @@ import defaultImage from "../assets/default_team.png";
 
 const TeamName = ({left, teamName, teamLogo}) => {
 
-  console.log("team logo", teamLogo)
+  // console.log("team logo", teamLogo)
 
   const correctUrl = Platform.OS == 'ios' ? teamLogo.split("?")[0].replace("http", "https") : teamLogo;
 

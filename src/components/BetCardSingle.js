@@ -33,7 +33,7 @@ const BetCardSingle = ({ status, moneyLine, homeName, awayName, homeId, awayId, 
       teamId: homeId
     },
     onCompleted(data){
-      console.log("data : ", data);
+      // console.log("data : ", data);
       setHomeLogo(data.getTeam.logo);
     }
   });
@@ -45,7 +45,7 @@ const BetCardSingle = ({ status, moneyLine, homeName, awayName, homeId, awayId, 
       teamId: awayId
     },
     onCompleted(data){
-      console.log("data : ", data);
+      // console.log("data : ", data);
       setAwayLogo(data.getTeam.logo);
     }
   });

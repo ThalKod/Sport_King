@@ -17,11 +17,17 @@ export const userSlice = createSlice({
   },
   reducers: {
     initUser:  (state, action) => {
-      console.log("1 action payload====",action.payload, state)
        return {...state, ...action.payload};
     },
     addCoins: (state, action) => {
-      state.coins = state.coins + action.payload.coins
+      console.log({
+        ...state,
+        coins: state.coins + action.payload.coins
+      }, action)
+      return {
+        ...state,
+        coins: state.coins + action.payload.coins
+      }
     }
   }
 });

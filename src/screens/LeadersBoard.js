@@ -42,7 +42,7 @@ const WeeklyBoards = ({ navigation }) => {
       }
     },
     onCompleted(data){
-      console.log("Data weekly", data);
+      // console.log("Data weekly", data);
       setStandingData(data.standing.splice(3));
       setTopStandingData(data.standing.slice(0,4));
     }
@@ -103,7 +103,7 @@ const MonthlyBoards = ({ navigation }) => {
       }
     },
     onCompleted(data){
-      console.log("Data monthly", data);
+      // console.log("Data monthly", data);
       setStandingData(data.standing.splice(3));
       setTopStandingData(data.standing.slice(0,4));
     }
@@ -122,7 +122,7 @@ const MonthlyBoards = ({ navigation }) => {
         </View>
     )
   }
-  console.log("Standing Data", standingData);
+  // console.log("Standing Data", standingData);
 
   return (
       <View style={styles.container}>
@@ -164,7 +164,7 @@ const AllTimeBoards = ({ navigation }) => {
       }
     },
     onCompleted(data){
-      console.log("Data alltime", data);
+      // console.log("Data alltime", data);
       setStandingData(data.standing.splice(3));
       setTopStandingData(data.standing.slice(0,4));
     }

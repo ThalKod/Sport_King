@@ -31,10 +31,10 @@ const QuickPicksModal = ({ isVisible, close, info }) => {
 
   const [makeBet, { loading }] = useMutation(MAKE_BET, {
     onCompleted(data){
-      console.log("Data : ", data);
+      // console.log("Data : ", data);
       close(true);
       const coins = (user.coins - parseFloat(inputValue)).toFixed(2);
-      console.log("coins", coins);
+      // console.log("coins", coins);
       dispatch(initUser({ jsWebToken: user.jsWebToken, coins: coins }));
     },
     onError(error){

@@ -16,12 +16,23 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useMutation } from "@apollo/client";
 import {ADD_COINS} from '../graph-operations';
 import analytics from "@react-native-firebase/analytics";
+import {RewardedAd, AdEventType, TestIds, RewardedAdEventType } from 'react-native-google-mobile-ads';
+
+const adUnitId = TestIds.REWARDED
 
 
 // TODO: Fix error for rewarded ads when mot available
 const CoinsHeaderDisplay = () => {
   const user = useSelector(state => state.user);
   const dispatch = useDispatch();
+
+  const [modal, setModal] = useState({
+    isMainModalVisible: false,
+    isLoadingRewardedAdsModalVisible: false,
+    isModalErrorVisible: false
+  });
+
+  const [loaded, setLoaded] = useState(false);
   const [isLoadingRewardedAds, setIsLoadingRewardedAds] = useState(false);
   const [isModalVisible, setModalVisible] = useState(false);
   const [isModalErrorVisible, setModalErrorVisible] = useState(false);
@@ -34,38 +45,69 @@ const CoinsHeaderDisplay = () => {
   const [sendCoins] = useMutation(ADD_COINS, {
     onCompleted(data){
       console.log("Add coins complete : ", data);
+      setRewardsEarned({ amount: 0, status: false });
     },
     onError(error){
       console.log("Error ", error);
     }
   });
 
-  if(rewardEarned.status){
-    sendCoins({
-      variables: {
-        jsWebToken: user.jsWebToken,
-        amount: rewardEarned.amount
-      }
-    });
-    setRewardsEarned({ amount: 0, status: false });
-  }
 
   const toggleModal = async () => {
     await analytics().logEvent('click_on_add_coin');
-    setModalVisible(!isModalVisible);
+    setModal({...modal, isMainModalVisible: !modal.isMainModalVisible})
   };
 
   const showAds = async () => {
     await analytics().logEvent('click_on_watch_ads');
-    toggleModal();
+
+    const rewarded = RewardedAd.createForAdRequest(adUnitId, {
+      requestNonPersonalizedAdsOnly: true,
+      keywords: [],
+    });
+
+    const unsubscribeLoaded = rewarded.addAdEventListener(RewardedAdEventType.LOADED, () => {
+      console.log("LOADED")
+      rewarded.show()
+    });
+
+    const unsubscribeEarned = rewarded.addAdEventListener(
+      RewardedAdEventType.EARNED_REWARD,
+      reward => {
+        console.log('User earned reward of ', reward);
+        sendCoins({
+          variables: {
+            jsWebToken: user.jsWebToken,
+            amount: reward.amount
+          }
+        });
+        dispatch(addCoins({
+          coins: reward.amount
+        }));
+      },
+    );
+
+    const unsubscribedClosed = rewarded.addAdEventListener(AdEventType.CLOSED, (error) => {
+      console.log("should close all modal")
+      setModal({...modal, isLoadingRewardedAdsModalVisible: false, isMainModalVisible: false , isModalErrorVisible: false})
+    })
+
+    const unsubscribedError = rewarded.addAdEventListener(AdEventType.ERROR, (error) => {
+      console.log('Ad failed to load with error: ', error);
+      console.log("should open modal error")
+      setModal({...modal, isModalErrorVisible: true, isLoadingRewardedAdsModalVisible: false, isMainModalVisible: false})
+    })
+
     rewarded.load();
-    setIsLoadingRewardedAds(true);
+    console.log("after main load")
+
+    setModal({...modal, isMainModalVisible: false, isLoadingRewardedAdsModalVisible: true, isModalErrorVisible: false})
   };
 
-
+  console.log(modal)
 
   return (
-    <TouchableOpacity onPress={() => {}} style={styles.container}>
+    <TouchableOpacity onPress={toggleModal} style={styles.container}>
       <View style={styles.cartContainer}>
         <MaterialIcons name="add-shopping-cart" size={moderateScale(20)} color="#fff" />
       </View>
@@ -74,33 +116,26 @@ const CoinsHeaderDisplay = () => {
         <Text style={styles.textStyle}>{user.coins}</Text>
       </View>
       <Modal
-        isVisible={isModalVisible}
-        onBackButtonPress={() => setModalVisible(false)}
-        onBackdropPress={() => setModalVisible(false)}
+        isVisible={modal.isMainModalVisible || modal.isModalErrorVisible || modal.isLoadingRewardedAdsModalVisible}
+        onBackButtonPress={() => setModal({...modal, isMainModalVisible: false})}
+        onBackdropPress={() => setModal({...modal, isMainModalVisible: false})}
       >
-        <View style={styles.modal}>
-          <Text style={styles.modalText}>Ou vle ajoute plis coin? Gade publisite sa kounya, epi wap jwenn 5000 coins! </Text>
-          <Button title="Gade Publisite" onPress={showAds} />
-        </View>
-      </Modal>
-      <Modal
-        isVisible={isModalErrorVisible}
-        onBackButtonPress={() => setModalErrorVisible(false)}
-        onBackdropPress={() => setModalErrorVisible(false)}
-      >
-        <View style={styles.modal}>
-          <Text style={styles.modalText}>Erreur!, pa gen publisite disponib kounya, reessayer nan yon ti moman....</Text>
-          <Button title="Ok" onPress={() => setModalErrorVisible(false)} />
-        </View>
-      </Modal>
-      <Modal
-        isVisible={isLoadingRewardedAds}
-        onBackButtonPress={() => setIsLoadingRewardedAds(false)}
-        onBackdropPress={() => setIsLoadingRewardedAds(false)}
-      >
-        <View style={{ flex: 1, alignItems: "center", justifyContent: "center"}}>
-          <ActivityIndicator size="large" color="#fff"/>
-        </View>
+        {modal.isModalErrorVisible &&
+          <View style={styles.modal}>
+            <Text style={styles.modalText}>Erreur!, pa gen publisite disponib kounya, reessayer nan yon ti moman....</Text>
+            <Button title="Ok" onPress={() => setModal({...modal, isMainModalVisible: false, isModalErrorVisible: false})} />
+          </View> }
+
+        {modal.isMainModalVisible &&
+          <View style={styles.modal}>
+            <Text style={styles.modalText}>Ou vle ajoute plis coin? Gade publisite sa kounya, epi wap jwenn 5000 coins! </Text>
+            <Button title="Gade Publisite" onPress={showAds} />
+          </View> }
+
+        {modal.isLoadingRewardedAdsModalVisible &&
+          <View style={{ flex: 1, alignItems: "center", justifyContent: "center"}}>
+            <ActivityIndicator size="large" color="#fff"/>
+          </View> }
       </Modal>
     </TouchableOpacity>
   )

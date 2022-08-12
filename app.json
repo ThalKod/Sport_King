@@ -1,4 +1,8 @@
 {
   "name": "Sport_King",
-  "displayName": "Sport King"
+  "displayName": "Sport King",
+  "react-native-google-mobile-ads": {
+    "android_app_id": "ca-app-pub-xxxxxxxx~xxxxxxxx",
+    "ios_app_id": "ca-app-pub-4856517983898537~2626754378"
+  }
 }

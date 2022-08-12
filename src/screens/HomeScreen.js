@@ -87,7 +87,7 @@ const HomeScreen = ({ navigation }) => {
       jsWebToken: jsWebToken,
     },
     onCompleted(data){
-      console.log("data ", data);
+      // console.log("data ", data);
       dispatch(initUser({
         jsWebToken,
         id: data.getMe.id,

@@ -91,7 +91,7 @@ const GameDetailsScreen = ({ route, navigation }) => {
         matchId: matchId,
       },
       onCompleted(data){
-        console.log("Data ", data);
+        // console.log("Data ", data);
         setGameOdds(data.matchOdds);
       }
     });

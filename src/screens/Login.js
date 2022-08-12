@@ -37,7 +37,7 @@ const Login = ({ navigation })=>{
 
   const [login] = useMutation(LOGIN_USER, {
     onCompleted(data){
-      console.log("Data : ", data);
+      // console.log("Data : ", data);
       const { token, user } = data.login;
       dispatch(initUserPersit({
         jsWebToken: token,

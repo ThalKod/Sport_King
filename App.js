@@ -17,6 +17,7 @@ import { initUser } from "./src/redux/features/userSlice";
 import { ActivityIndicator, View, Platform } from "react-native";
 import { ANDROID_API_HOST, IOS_API_HOST } from "@env";
 import analytics from '@react-native-firebase/analytics';
+import mobileAds from 'react-native-google-mobile-ads';
 
 console.log("==================", IOS_API_HOST, ANDROID_API_HOST)
 
@@ -27,6 +28,10 @@ const client = new ApolloClient({
 
 console.log("2", IOS_API_HOST, ANDROID_API_HOST)
 
+
+mobileAds()
+  .initialize()
+  .then(adapterStatuses => console.log("Admob initialized", adapterStatuses));
 
 const Drawer = createDrawerNavigator();
 

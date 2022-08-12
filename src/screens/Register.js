@@ -40,7 +40,7 @@ const Register = ({ navigation }) => {
 
   const [signupUser] = useMutation(SIGNUP_USER, {
     onCompleted(data){
-      console.log("Data : ", data);
+      // console.log("Data : ", data);
       const { token, user } = data.signupUser;
       dispatch(initUserPersit({
         jsWebToken: token,

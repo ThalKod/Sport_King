@@ -10,6 +10,7 @@ target 'Sport_King' do
   pod 'FirebaseCore', :modular_headers => true
   pod 'FirebaseCoreInternal', :modular_headers => true
   pod 'GoogleUtilities', :modular_headers => true
+  pod 'Google-Mobile-Ads-SDK'
   $RNFirebaseAsStaticFramework = true
 
   use_react_native!(

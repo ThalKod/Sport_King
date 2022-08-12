@@ -48,7 +48,7 @@ const LeagueListScreen = ({ route, navigation }) => {
       sport
     },
     onCompleted(data){
-      console.log("data : ", data.leagues);
+      // console.log("data : ", data.leagues);
       setLeaguesList(data.leagues);
     }
   });
