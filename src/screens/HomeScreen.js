@@ -120,7 +120,7 @@ const HomeScreen = ({ navigation }) => {
 
   const handleCloseModal = (navigate) => {
     closeModal();
-    if(navigate) navigation.navigate("Pari");
+    if(navigate) navigation.navigate("Paris");
   };
 
   const handleSelection = async (info, item) => {

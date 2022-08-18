@@ -37,6 +37,10 @@ const Register = ({ navigation }) => {
   const [passwordConfirmationValue, setPasswordConfirmationValue] = useState("");
   const [inviteCode, setInviteCode] = useState("");
   const [loading, setLoading] = useState(false);
+  const [errorCompletion, setErrorCompletion] = useState(false)
+  const [errorUsername, setErrorUsername] = useState(false)
+  const [errorEmail, setErrorEmail] = useState(false)
+
 
   const [signupUser] = useMutation(SIGNUP_USER, {
     onCompleted(data){
@@ -57,15 +61,20 @@ const Register = ({ navigation }) => {
           StackActions.replace('Home')
       );
     },
-    onError(error){
+    onError(error){ // TODO: Fix the error
       setLoading(false);
-      console.log("Error ", error);
+      if(error.toString().includes("1"))
+        return setErrorUsername(true);
+      if(error.toString("2"))
+        return setErrorEmail(true)
+
+      setErrorCompletion(true)
     }
   });
 
   const handleSignupUser = async () => {
     if(!nameValue || !emailValue || !passwordConfirmationValue || !passwordValue || loading)
-      return;
+      return setErrorCompletion(true);
 
     //TODO: Handle error: if confirmation password incorrect
     if(passwordValue !== passwordConfirmationValue)
@@ -90,6 +99,7 @@ const Register = ({ navigation }) => {
     navigation.navigate("Login")
   }
 
+
   const loadingComp =  <ActivityIndicator size="large" color="#fff"/>;
 
   return (
@@ -106,11 +116,39 @@ const Register = ({ navigation }) => {
                 <Text style={[styles.headerTitles, styles.yellow]}>King</Text>
               </View>
               <View style={styles.loginSection}>
-                <CustomTextInput value={nameValue} onValueChange={(v) => setNameValue(v)} placeHolder="Nom d'Utilisateur" icon={<AntDesign style={{ marginRight: moderateScale(10)}} name="user" size={20} color="#B3B3B6" />}/>
-                <CustomTextInput value={emailValue} onValueChange={(v) => setEmailValue(v)} placeHolder="E-mail" icon={<Feather style={{ marginRight: moderateScale(10)}} name="at-sign" size={20} color="#B3B3B6" />}/>
-                <CustomTextInput value={passwordValue} onValueChange={(v) => setPasswordValue(v)} password placeHolder="Password" icon={<AntDesign style={{ marginRight: moderateScale(10)}} name="lock" size={20} color="#B3B3B6" />}/>
-                <CustomTextInput value={passwordConfirmationValue} onValueChange={(v) => setPasswordConfirmationValue(v)} password placeHolder="Password Confirmation" icon={<AntDesign style={{ marginRight: moderateScale(10)}} name="lock" size={20} color="#B3B3B6" />}/>
-                <CustomTextInput value={inviteCode} onValueChange={(v) => setInviteCode(v)} placeHolder="Invite Code(Optionnel)" icon={<AntDesign style={{ marginRight: moderateScale(10)}} name="barcode" size={20} color="#B3B3B6" />}/>
+                <CustomTextInput value={nameValue} onValueChange={(v) =>{
+                  setErrorUsername(false);
+                  setErrorEmail(false)
+                  setErrorCompletion(false);
+                  setNameValue(v);
+                }} placeHolder="Nom d'Utilisateur" icon={<AntDesign style={{ marginRight: moderateScale(10)}} name="user" size={20} color="#B3B3B6" />}/>
+                { errorUsername && <Text style={styles.errorText}>Nom d'utilisateur deja pris !</Text> }
+                <CustomTextInput value={emailValue} onValueChange={(v) => {
+                  setErrorUsername(false);
+                  setErrorEmail(false)
+                  setErrorCompletion(false);
+                  setEmailValue(v);
+                }} placeHolder="E-mail" icon={<Feather style={{ marginRight: moderateScale(10)}} name="at-sign" size={20} color="#B3B3B6" />}/>
+                { errorEmail && <Text style={styles.errorText}>Vous possedez deja un compte avec cet email !</Text> }
+                <CustomTextInput value={passwordValue} onValueChange={(v) => {
+                  setErrorUsername(false);
+                  setErrorEmail(false)
+                  setErrorCompletion(false);
+                  setPasswordValue(v);
+                }} password placeHolder="Password" icon={<AntDesign style={{ marginRight: moderateScale(10)}} name="lock" size={20} color="#B3B3B6" />}/>
+                <CustomTextInput value={passwordConfirmationValue} onValueChange={(v) => {
+                  setErrorUsername(false);
+                  setErrorEmail(false)
+                  setErrorCompletion(false)
+                  setPasswordConfirmationValue(v)
+                }} password placeHolder="Password Confirmation" icon={<AntDesign style={{ marginRight: moderateScale(10)}} name="lock" size={20} color="#B3B3B6" />}/>
+                <CustomTextInput value={inviteCode} onValueChange={(v) => {
+                  setErrorUsername(false);
+                  setErrorEmail(false)
+                  setErrorCompletion(false);
+                  setInviteCode(v);
+                }} placeHolder="Invite Code(Optionnel)" icon={<AntDesign style={{ marginRight: moderateScale(10)}} name="barcode" size={20} color="#B3B3B6" />}/>
+                { errorCompletion && <Text style={styles.errorText}>Veuillez completer le formulaire</Text> }
                 <MainButton onClick={handleSignupUser} text={loading? loadingComp : "CREER UN COMPTE"} color={"#19D8B7"} arrow={arrowImage}/>
                 <TouchableOpacity onPress={handleAlreadyRegistered}>
                   <Text style={styles.newUserText}>T'as deja un compte? {"\n"}  Clique ici pour te connecter! </Text>
@@ -170,6 +208,11 @@ const styles = StyleSheet.create({
     fontFamily: "OpenSans-Bold",
     color: "#36C0B0",
     textDecorationLine: 'underline',
+  },
+  errorText: {
+    color: "red",
+    fontSize: moderateScale(14),
+    fontWeight: "bold"
   }
 });
 

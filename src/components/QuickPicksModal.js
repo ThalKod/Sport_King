@@ -27,7 +27,7 @@ const QuickPicksModal = ({ isVisible, close, info }) => {
   const user = useSelector(state => state.user);
   const dispatch = useDispatch();
 
-  console.log(info);
+  console.log(info, user);
 
   const [makeBet, { loading }] = useMutation(MAKE_BET, {
     onCompleted(data){
@@ -39,6 +39,7 @@ const QuickPicksModal = ({ isVisible, close, info }) => {
     },
     onError(error){
       console.log("Error ", error);
+      // TODO: Handle Error
     }
   });
 
@@ -74,7 +75,6 @@ const QuickPicksModal = ({ isVisible, close, info }) => {
     })
     await analytics().logEvent('click_on_make_bet', {
       gameId: info.matchId,
-      total: parseFloat(info.pick.total),
     });
 
   };

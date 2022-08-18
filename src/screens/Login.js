@@ -34,6 +34,8 @@ const Login = ({ navigation })=>{
   const [emailValue, setEmailValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
   const [loading, setLoading] = useState(false);
+  const [errorCompletion, setErrorCompletion] = useState(false)
+  const [errorUser, setErrorUser] = useState(false)
 
   const [login] = useMutation(LOGIN_USER, {
     onCompleted(data){
@@ -56,13 +58,14 @@ const Login = ({ navigation })=>{
     },
     onError(error){
       setLoading(false);
-      console.log("Error ", error);
+      setErrorUser(true)
+      // console.log("Error ", error);
     }
   });
 
   const handleLogin = async () => {
     if(!emailValue || !passwordValue || loading)
-      return;
+      return setErrorCompletion(true);
 
     setLoading(true);
     login({
@@ -95,11 +98,21 @@ const Login = ({ navigation })=>{
                 <Text style={[styles.headerTitles, styles.yellow]}>King</Text>
               </View>
               <View style={styles.loginSection}>
-                <CustomTextInput value={emailValue} onValueChange={(v) => setEmailValue(v)} placeHolder="E-mail" icon={<Feather style={{ marginRight: moderateScale(10)}} name="at-sign" size={20} color="#B3B3B6" />}/>
-                <CustomTextInput value={passwordValue} onValueChange={(v) => setPasswordValue(v)} password placeHolder="Password" icon={<AntDesign style={{ marginRight: moderateScale(10)}} name="lock" size={20} color="#B3B3B6" />}/>
+                <CustomTextInput value={emailValue} onValueChange={(v) => {
+                  setErrorCompletion(false);
+                  setErrorUser(false)
+                  setEmailValue(v)
+                }} placeHolder="E-mail" icon={<Feather style={{ marginRight: moderateScale(10)}} name="at-sign" size={20} color="#B3B3B6" />}/>
+                <CustomTextInput value={passwordValue} onValueChange={(v) => {
+                  setErrorCompletion(false)
+                  setErrorUser(false)
+                  setPasswordValue(v)
+                }} password placeHolder="Password" icon={<AntDesign style={{ marginRight: moderateScale(10)}} name="lock" size={20} color="#B3B3B6" />}/>
                 {/* <TouchableOpacity onPress={() => navigation.navigate("ResetPassword")}>
                   <Text style={styles.forgetText}>Ou bliye password ou ?</Text>
                 </TouchableOpacity> */}
+                { errorUser && <Text style={styles.errorText}>Email ou password incorrect !</Text> }
+                { errorCompletion && <Text style={styles.errorText}>Veuillez completer le formulaire !</Text> }
                 <MainButton onClick={handleLogin} text={loading? loadingComp : "SE CONNECTER"} color={"#19D8B7"} arrow={arrowImage}/>
                 <TouchableOpacity onPress={handleNewUser}>
                   <Text style={styles.newUserText}>Tu n'as pas encore de compte? {"\n"}  Créez en un maintenant </Text>
@@ -159,6 +172,11 @@ const styles = StyleSheet.create({
     fontFamily: "OpenSans-Bold",
     color: "#36C0B0",
     textDecorationLine: 'underline',
+  },
+  errorText: {
+    color: "red",
+    fontSize: moderateScale(14),
+    fontWeight: "bold"
   }
 });
 
