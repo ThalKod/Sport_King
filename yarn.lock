@@ -8173,6 +8173,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-device-info@npm:^10.0.2":
+  version: 10.0.2
+  resolution: "react-native-device-info@npm:10.0.2"
+  peerDependencies:
+    react-native: "*"
+  checksum: 751274e5e2cec4f47f70a8b8ca7f3d7ce465a6dd022a5f935fd1a3fd81e4cb1a8b1072ee02d26047ba57da887b8dba0ea67888b238db4de6e0dbfa68fc079f13
+  languageName: node
+  linkType: hard
+
 "react-native-dotenv@npm:^3.3.1":
   version: 3.3.1
   resolution: "react-native-dotenv@npm:3.3.1"
@@ -9367,6 +9376,7 @@ __metadata:
     numeral: ^2.0.6
     react: 17.0.2
     react-native: 0.66.4
+    react-native-device-info: ^10.0.2
     react-native-dotenv: ^3.3.1
     react-native-gesture-handler: ^2.2.0
     react-native-google-mobile-ads: ^7.0.1

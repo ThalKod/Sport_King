@@ -458,6 +458,8 @@ PODS:
     - React-perflogger (= 0.66.4)
   - RNCAsyncStorage (1.15.17):
     - React-Core
+  - RNDeviceInfo (10.0.2):
+    - React-Core
   - RNFBAnalytics (15.3.0):
     - Firebase/Analytics (= 9.4.0)
     - React-Core
@@ -571,6 +573,7 @@ DEPENDENCIES:
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
+  - RNDeviceInfo (from `../node_modules/react-native-device-info`)
   - "RNFBAnalytics (from `../node_modules/@react-native-firebase/analytics`)"
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
@@ -679,6 +682,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   RNCAsyncStorage:
     :path: "../node_modules/@react-native-async-storage/async-storage"
+  RNDeviceInfo:
+    :path: "../node_modules/react-native-device-info"
   RNFBAnalytics:
     :path: "../node_modules/@react-native-firebase/analytics"
   RNFBApp:
@@ -757,6 +762,7 @@ SPEC CHECKSUMS:
   React-runtimeexecutor: dec32ee6f2e2a26e13e58152271535fadff5455a
   ReactCommon: 57b69f6383eafcbd7da625bfa6003810332313c4
   RNCAsyncStorage: 6bd5a7ba3dde1c3facba418aa273f449bdc5437a
+  RNDeviceInfo: 0a7c1d2532aa7691f9b9925a27e43af006db4dae
   RNFBAnalytics: dae2f8d9eff3c51e982bb7af3b734e0cd7a8a7de
   RNFBApp: 0db41be0ca09ec0828164f16cd36732c0df8dabb
   RNGestureHandler: bf572f552ea324acd5b5464b8d30755b2d8c1de6
