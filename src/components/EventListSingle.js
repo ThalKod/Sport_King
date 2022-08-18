@@ -17,15 +17,13 @@ const EventListSingle = ({ request, text, icon, liveCount, onPress }) => {
   const [gamesCount, setGameCount] = useState(0);
   const user = useSelector(state => state.user);
 
-  console.log("URI=======================", icon)
-
   useEffect(() => {
     getScheduledGamesCount();
   }, []);
 
   const [getScheduledGamesCount, { loading }]= useLazyQuery(GET_SCHEDULED_GAMES_COUNT, {
     fetchPolicy: 'no-cache',
-    pollInterval: 1800000,
+    pollInterval: 900000,
     skip: !request,
     variables: {
       jsWebToken: user.jsWebToken,

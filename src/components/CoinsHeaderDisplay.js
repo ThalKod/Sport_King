@@ -17,6 +17,7 @@ import { useMutation } from "@apollo/client";
 import {ADD_COINS} from '../graph-operations';
 import analytics from "@react-native-firebase/analytics";
 import {RewardedAd, AdEventType, TestIds, RewardedAdEventType } from 'react-native-google-mobile-ads';
+import AdsModal from "./AdsModal";
 
 const adUnitId = TestIds.REWARDED
 
@@ -120,17 +121,9 @@ const CoinsHeaderDisplay = () => {
         onBackButtonPress={() => setModal({...modal, isMainModalVisible: false})}
         onBackdropPress={() => setModal({...modal, isMainModalVisible: false})}
       >
-        {modal.isModalErrorVisible &&
-          <View style={styles.modal}>
-            <Text style={styles.modalText}>Erreur!, pa gen publisite disponib kounya, reessayer nan yon ti moman....</Text>
-            <Button title="Ok" onPress={() => setModal({...modal, isMainModalVisible: false, isModalErrorVisible: false})} />
-          </View> }
+        {modal.isModalErrorVisible && <AdsModal close={() => setModal({...modal, isModalErrorVisible: false})} buttonText={"Ok"} text={"Pas de pub disponible pour le moment, veuillez reessayer dans un moment"} onPress={() => setModal({...modal, isMainModalVisible: false, isModalErrorVisible: false})} />}
 
-        {modal.isMainModalVisible &&
-          <View style={styles.modal}>
-            <Text style={styles.modalText}>Ou vle ajoute plis coin? Gade publisite sa kounya, epi wap jwenn 5000 coins! </Text>
-            <Button title="Gade Publisite" onPress={showAds} />
-          </View> }
+        {modal.isMainModalVisible && <AdsModal close={() => setModal({...modal, isMainModalVisible: false})} buttonText={"Confirmer"} text={"Tu veut ajouter des coins sur ton compte? C'est gratuit ! Regarde une pub maintenant et recois 100 coins !"} onPress={showAds} />}
 
         {modal.isLoadingRewardedAdsModalVisible &&
           <View style={{ flex: 1, alignItems: "center", justifyContent: "center"}}>

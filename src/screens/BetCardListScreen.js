@@ -40,6 +40,7 @@ const BetCardListScreen  = ({ route, navigation }) => {
 
   const { loading } = useQuery(GET_MATCH_BASIC_INFO, {
     fetchPolicy: 'no-cache',
+    pollInterval: 5000,
     variables: {
       jsWebToken: user.jsWebToken,
       sport,
