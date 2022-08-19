@@ -12,4 +12,6 @@ export * from "./getMyPosition";
 export * from "./standing";
 export * from "./addCoins";
 export * from "./getLiveTVConfig";
-export * from "./getTeam"
+export * from "./getTeam";
+export * from "./saveDeviceInfo";
+export * from "./saveLocation"

@@ -35,7 +35,7 @@ const QuickPicksModal = ({ isVisible, close, info }) => {
       close(true);
       const coins = (user.coins - parseFloat(inputValue)).toFixed(2);
       // console.log("coins", coins);
-      dispatch(initUser({ jsWebToken: user.jsWebToken, coins: coins }));
+      dispatch(initUser({ jsWebToken: user.jsWebToken, coins: coins, bet_pending: user.bet_pending + 1 }));
     },
     onError(error){
       console.log("Error ", error);

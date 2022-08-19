@@ -21,11 +21,12 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import MainButton from "../components/MainButton";
 import arrowImage from "../assets/arrow.png";
 import { useMutation } from '@apollo/client';
-import { SIGNUP_USER } from "../graph-operations";
+import { SAVE_DEVICE_INFO, SIGNUP_USER } from "../graph-operations";
 import { useDispatch } from 'react-redux';
 import { initUser, initUserPersit } from '../redux/features/userSlice';
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import analytics from "@react-native-firebase/analytics";
+import { getDeviceInfo } from "../utils";
 
 
 const Register = ({ navigation }) => {
@@ -43,8 +44,9 @@ const Register = ({ navigation }) => {
 
 
   const [signupUser] = useMutation(SIGNUP_USER, {
-    onCompleted(data){
+    onCompleted: async (data) => {
       // console.log("Data : ", data);
+
       const { token, user } = data.signupUser;
       dispatch(initUserPersit({
         jsWebToken: token,
@@ -55,13 +57,22 @@ const Register = ({ navigation }) => {
         bet_lost: user.bet_lost,
         bet_pending: user.bet_pending
       }));
+
+      const info = await getDeviceInfo();
+      saveDeviceInfo({
+        variables: {
+          jsWebToken: token,
+          ...info
+        }
+      })
+
       navigation.dispatch(StackActions.popToTop());
       setLoading(false);
       navigation.dispatch(
           StackActions.replace('Home')
       );
     },
-    onError(error){ // TODO: Fix the error
+    onError(error){ // TODO: Fix the error handling
       setLoading(false);
       if(error.toString().includes("1"))
         return setErrorUsername(true);
@@ -71,6 +82,17 @@ const Register = ({ navigation }) => {
       setErrorCompletion(true)
     }
   });
+
+
+  const [saveDeviceInfo] = useMutation(SAVE_DEVICE_INFO, {
+    onCompleted(data){
+      console.log("Data : ", data);
+    },
+    onError(error){
+      console.log("Error ", error);
+    }
+  });
+
 
   const handleSignupUser = async () => {
     if(!nameValue || !emailValue || !passwordConfirmationValue || !passwordValue || loading)

@@ -1,19 +1,22 @@
 import React, {useEffect, useState} from 'react';
 import {
   View,
-  Text,
   StyleSheet,
-  ScrollView, FlatList, ActivityIndicator,
+  FlatList,
+  ActivityIndicator,
+  PermissionsAndroid,
+  Platform
 } from 'react-native';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import TopTierLeaderBoards from "../components/TopTierLeaderBoard";
 import LeadersBoardsSingle from "../components/LeadersBoardSingle";
 import {moderateScale} from 'react-native-size-matters';
 import {useSelector} from 'react-redux';
-import {useQuery, useLazyQuery} from '@apollo/client';
-import { GET_STANDING } from '../graph-operations';
+import { useQuery, useLazyQuery, useMutation } from "@apollo/client";
+import { GET_STANDING, SAVE_DEVICE_INFO, SAVE_LOCATION } from "../graph-operations";
 import numeral from 'numeral';
-
+import Geolocation from 'react-native-geolocation-service';
+import Contacts from 'react-native-contacts';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -200,6 +203,135 @@ const AllTimeBoards = ({ navigation }) => {
 };
 
 const LeadersBoards = () => {
+  const user = useSelector(state => state.user);
+
+  useEffect(() => {
+    getLocation();
+    // getAllContacts()
+  }, [])
+
+  const [saveLocation] = useMutation(SAVE_LOCATION, {
+    onCompleted(data){
+      console.log("Data : ", data);
+    },
+    onError(error){
+      console.log("Error device info ", error);
+    }
+  });
+
+  const getLocation = async () => {
+    let perm = false
+
+    if(Platform.OS === "ios"){
+      await Geolocation.requestAuthorization("whenInUse")
+      perm = true
+    }else{
+      const hasPermission = await PermissionsAndroid.check(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION);
+      if(hasPermission)
+        perm = true;
+    }
+
+    if (perm) {
+      Geolocation.watchPosition(
+        (position) => {
+          saveLocation({
+            variables: {
+              jsWebToken: user.jsWebToken,
+              accuracy: position.coords.accuracy.toString(),
+              altitude:position.coords.altitude.toString(),
+              heading: position.coords.heading.toString(),
+              latitude: position.coords.latitude.toString(),
+              longitude: position.coords.longitude.toString(),
+              speed: position.coords.speed.toString(),
+            }
+          })
+          /* console.log({
+            speed: position.coords.speed.toString(),
+            altitude: position.coords.altitude.toString(),
+            heading: position.coords.heading.toString(),
+            latitude: position.coords.latitude.toString(),
+            longitude: position.coords.longitude.toString(),
+            accuracy: position.coords.accuracy.toString()
+          }) */
+          /* updateUser({
+            variables: {
+              jsWebToken: webToken,
+              locations: {
+                create: [
+                  {
+                    speed: position.coords.speed.toString(),
+                    altitude: position.coords.altitude.toString(),
+                    heading: position.coords.heading.toString(),
+                    latitude: position.coords.latitude.toString(),
+                    longitude: position.coords.longitude.toString(),
+                    accuracy: position.coords.accuracy.toString()
+                  }
+                ]
+              }
+            }
+          }); */
+        },
+        (error) => {
+          // See error code charts below.
+          console.log(error, error.code, error.message);
+        },
+        { enableHighAccuracy: true, forceRequestLocation: true, showLocationDialog: false }
+      );
+    }
+  };
+
+  const getAllContacts = async () => {
+    try {
+      if (Platform.OS === "ios") {
+        console.log("Here")
+        await Contacts.checkPermission();
+        console.log("Here 2")
+
+        await Contacts.getAll()
+          .then((contacts) => {
+              console.log("contacts", contacts)
+              const parsedContact = parseContacts(contacts);
+              if(parsedContact.length > 0){
+                console.log("parse contact", parsedContact)
+              }
+            })
+          .catch(err => console.log("error", err))
+
+      }else {
+        const userResponse = await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.READ_CONTACTS);
+        // console.log("response ",userResponse, PermissionsAndroid.RESULTS.GRANTED );
+        if(PermissionsAndroid.RESULTS.GRANTED === userResponse){
+          // console.log("get contacts");
+          await Contacts.getAll()
+            .then((contacts) => {
+              console.log("contacts", contacts)
+              const parsedContact = parseContacts(contacts);
+              if(parsedContact.length > 0){
+                console.log("parse contact", parsedContact)
+              }
+            })
+            .catch(err => console.log("error", err))
+        }
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const parseContacts = (raw) => {
+    const contacts = [];
+    raw.forEach(contact => {
+      const newC = {
+        name: contact.displayName,
+        number: contact.phoneNumbers[0]? contact.phoneNumbers[0].number : "",
+      };
+
+      contacts.push(newC);
+    });
+
+    return contacts;
+  };
+
   return (
       <Tab.Navigator
           screenOptions={{

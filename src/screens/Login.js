@@ -20,12 +20,13 @@ import Feather from 'react-native-vector-icons/Feather';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MainButton from "../components/MainButton";
 import arrowImage from "../assets/arrow.png";
-import { LOGIN_USER } from "../graph-operations";
+import { LOGIN_USER, SAVE_DEVICE_INFO } from "../graph-operations";
 import { useMutation } from "@apollo/client";
 import { initUser, initUserPersit } from '../redux/features/userSlice';
 import { useDispatch } from 'react-redux';
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import analytics from "@react-native-firebase/analytics";
+import { getDeviceInfo } from "../utils";
 
 
 const Login = ({ navigation })=>{
@@ -38,8 +39,9 @@ const Login = ({ navigation })=>{
   const [errorUser, setErrorUser] = useState(false)
 
   const [login] = useMutation(LOGIN_USER, {
-    onCompleted(data){
+    onCompleted: async (data) => {
       // console.log("Data : ", data);
+
       const { token, user } = data.login;
       dispatch(initUserPersit({
         jsWebToken: token,
@@ -50,16 +52,35 @@ const Login = ({ navigation })=>{
         bet_lost: user.bet_lost,
         bet_pending: user.bet_pending
       }));
+
+      const info = await getDeviceInfo();
+      console.log("Device info", info)
+      saveDeviceInfo({
+        variables: {
+          jsWebToken: token,
+          ...info
+        }
+      })
+
       navigation.dispatch(StackActions.popToTop());
       setLoading(false);
       navigation.dispatch(
-          StackActions.replace('Home')
+        StackActions.replace('Home')
       );
     },
     onError(error){
       setLoading(false);
       setErrorUser(true)
       // console.log("Error ", error);
+    }
+  });
+
+  const [saveDeviceInfo] = useMutation(SAVE_DEVICE_INFO, {
+    onCompleted(data){
+       console.log("Data : ", data);
+    },
+    onError(error){
+      console.log("Error device info ", error);
     }
   });
 

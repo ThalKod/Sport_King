@@ -8173,6 +8173,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-contacts@npm:^7.0.5":
+  version: 7.0.5
+  resolution: "react-native-contacts@npm:7.0.5"
+  peerDependencies:
+    react-native: ">=0.64.0"
+  checksum: 23fd985f468e4e0a0838312f9ab8c302c015bbdf985bd75f8ae9568221a1d907ee7de2e7315c496307465ad26c866553a144fbf92dbc97f083ec14b8de06d814
+  languageName: node
+  linkType: hard
+
 "react-native-device-info@npm:^10.0.2":
   version: 10.0.2
   resolution: "react-native-device-info@npm:10.0.2"
@@ -8188,6 +8197,13 @@ __metadata:
   dependencies:
     dotenv: ^10.0.0
   checksum: 7e53bd7e3ab43479a1c304e7ff46b7ff24c9c743cc25cfae5bef0a7c7ee93a2748639e6edc337281576899216d8d9bdddfe563882fea6743d675444e8777514b
+  languageName: node
+  linkType: hard
+
+"react-native-geolocation-service@npm:^5.3.0":
+  version: 5.3.0
+  resolution: "react-native-geolocation-service@npm:5.3.0"
+  checksum: 7b07b0c551c4a7c8ebc2163f945350c0b37de561de59385b62527a7c2c93b372ef83f78e0b84c9571b208851d376efe8ee2689991ad901e0e67d112112123b6f
   languageName: node
   linkType: hard
 
@@ -9376,8 +9392,10 @@ __metadata:
     numeral: ^2.0.6
     react: 17.0.2
     react-native: 0.66.4
+    react-native-contacts: ^7.0.5
     react-native-device-info: ^10.0.2
     react-native-dotenv: ^3.3.1
+    react-native-geolocation-service: ^5.3.0
     react-native-gesture-handler: ^2.2.0
     react-native-google-mobile-ads: ^7.0.1
     react-native-keyboard-aware-scroll-view: ^0.9.5

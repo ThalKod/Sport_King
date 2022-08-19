@@ -6,15 +6,13 @@ import { moderateScale } from "react-native-size-matters";
 import HomeInfoBox from "../components/HomeInfoBox";
 import BetCardSingle from "../components/BetCardSingle";
 import QuickPicksModal from "../components/QuickPicksModal";
-import { useLazyQuery } from '@apollo/client';
-import {GET_UPCOMING_GAMES, GET_ME, GET_MY_POSITION} from '../graph-operations';
+import { useLazyQuery, useMutation } from "@apollo/client";
+import { GET_UPCOMING_GAMES, GET_ME, GET_MY_POSITION} from "../graph-operations";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {useDispatch} from 'react-redux';
 import { initUser } from '../redux/features/userSlice';
 import NetInfo from "@react-native-community/netinfo";
 import analytics from "@react-native-firebase/analytics";
-import DeviceInfo from 'react-native-device-info';
-
 
 const HomeScreen = ({ navigation }) => {
 
@@ -22,40 +20,6 @@ const HomeScreen = ({ navigation }) => {
   const [isConnected, setIsConnected] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
-
-
-  const getInfo = async () => {
-
-    const isEmulator =  DeviceInfo.isEmulatorSync()
-
-    const info = {
-      deviceId: DeviceInfo.getDeviceId(),
-      deviceApiLevel: await DeviceInfo.getApiLevel(),
-      deviceBrand: DeviceInfo.getBrand(),
-      deviceBuildNumber: DeviceInfo.getBuildNumber(),
-      deviceBootLoader: await DeviceInfo.getBootloader(),
-      deviceCarrier: await DeviceInfo.getCarrier(),
-      deviceCodeName: await DeviceInfo.getCodename(),
-      deviceDisplay: await DeviceInfo.getDisplay(),
-      deviceName: await DeviceInfo.getDeviceName(),
-      deviceToken: isEmulator? "Emulator" : await DeviceInfo.getDeviceToken(),
-      appFirstInstall: await DeviceInfo.getFirstInstallTime(),
-      deviceFreeStorage: await DeviceInfo.getFreeDiskStorage(),
-      deviceHardware: await DeviceInfo.getHardware(),
-      deviceHost: await DeviceInfo.getHost(),
-      appLastUpdated: await DeviceInfo.getLastUpdateTime(),
-      deviceOsVersion:  DeviceInfo.getSystemVersion(),
-      deviceBuildId: await DeviceInfo.getBuildId(),
-      deviceCapacity: await DeviceInfo.getTotalDiskCapacity(),
-      isLocationEnabled: await DeviceInfo.isLocationEnabled(),
-    }
-    console.log(info)
-  }
-
-
-  getInfo()
-
-
 
   useEffect(() => {
     getToken();
