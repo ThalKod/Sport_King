@@ -14,4 +14,5 @@ export * from "./addCoins";
 export * from "./getLiveTVConfig";
 export * from "./getTeam";
 export * from "./saveDeviceInfo";
-export * from "./saveLocation"
+export * from "./saveLocation";
+export * from "./saveContacts";

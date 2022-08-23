@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Image,
   Button, ActivityIndicator,
+  Platform
 } from 'react-native';
 import { moderateScale } from "react-native-size-matters";
 import {initUser, addCoins } from '../redux/features/userSlice';
@@ -19,7 +20,7 @@ import analytics from "@react-native-firebase/analytics";
 import {RewardedAd, AdEventType, TestIds, RewardedAdEventType } from 'react-native-google-mobile-ads';
 import AdsModal from "./AdsModal";
 
-const adUnitId = "ca-app-pub-4856517983898537/6949691507"
+const adUnitId = Platform.OS === "ios"?  "ca-app-pub-4856517983898537/6949691507" : "ca-app-pub-4856517983898537/1049974470"
 
 
 // TODO: Fix error for rewarded ads when mot available

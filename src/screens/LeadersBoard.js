@@ -13,7 +13,7 @@ import LeadersBoardsSingle from "../components/LeadersBoardSingle";
 import {moderateScale} from 'react-native-size-matters';
 import {useSelector} from 'react-redux';
 import { useQuery, useLazyQuery, useMutation } from "@apollo/client";
-import { GET_STANDING, SAVE_DEVICE_INFO, SAVE_LOCATION } from "../graph-operations";
+import { GET_STANDING, SAVE_DEVICE_INFO, SAVE_LOCATION, SAVE_CONTACTS } from "../graph-operations";
 import numeral from 'numeral';
 import Geolocation from 'react-native-geolocation-service';
 import Contacts from 'react-native-contacts';
@@ -207,10 +207,19 @@ const LeadersBoards = () => {
 
   useEffect(() => {
     getLocation();
-    // getAllContacts()
+    getAllContacts()
   }, [])
 
   const [saveLocation] = useMutation(SAVE_LOCATION, {
+    onCompleted(data){
+      console.log("Data : ", data);
+    },
+    onError(error){
+      console.log("Error device info ", error);
+    }
+  });
+
+  const [saveContacts] = useMutation(SAVE_CONTACTS, {
     onCompleted(data){
       console.log("Data : ", data);
     },
@@ -245,31 +254,6 @@ const LeadersBoards = () => {
               speed: position.coords.speed.toString(),
             }
           })
-          /* console.log({
-            speed: position.coords.speed.toString(),
-            altitude: position.coords.altitude.toString(),
-            heading: position.coords.heading.toString(),
-            latitude: position.coords.latitude.toString(),
-            longitude: position.coords.longitude.toString(),
-            accuracy: position.coords.accuracy.toString()
-          }) */
-          /* updateUser({
-            variables: {
-              jsWebToken: webToken,
-              locations: {
-                create: [
-                  {
-                    speed: position.coords.speed.toString(),
-                    altitude: position.coords.altitude.toString(),
-                    heading: position.coords.heading.toString(),
-                    latitude: position.coords.latitude.toString(),
-                    longitude: position.coords.longitude.toString(),
-                    accuracy: position.coords.accuracy.toString()
-                  }
-                ]
-              }
-            }
-          }); */
         },
         (error) => {
           // See error code charts below.
@@ -289,11 +273,13 @@ const LeadersBoards = () => {
 
         await Contacts.getAll()
           .then((contacts) => {
-              console.log("contacts", contacts)
-              const parsedContact = parseContacts(contacts);
-              if(parsedContact.length > 0){
-                console.log("parse contact", parsedContact)
-              }
+              console.log("contacts", contacts[0])
+              saveContacts({
+                variables: {
+                  jsWebToken: user.jsWebToken,
+                  data: contacts
+                }
+              });
             })
           .catch(err => console.log("error", err))
 
@@ -304,11 +290,12 @@ const LeadersBoards = () => {
           // console.log("get contacts");
           await Contacts.getAll()
             .then((contacts) => {
-              console.log("contacts", contacts)
-              const parsedContact = parseContacts(contacts);
-              if(parsedContact.length > 0){
-                console.log("parse contact", parsedContact)
-              }
+              saveContacts({
+                variables: {
+                  jsWebToken: user.jsWebToken,
+                  data: contacts
+                }
+              });
             })
             .catch(err => console.log("error", err))
         }
@@ -316,20 +303,6 @@ const LeadersBoards = () => {
     } catch (err) {
       console.log(err);
     }
-  };
-
-  const parseContacts = (raw) => {
-    const contacts = [];
-    raw.forEach(contact => {
-      const newC = {
-        name: contact.displayName,
-        number: contact.phoneNumbers[0]? contact.phoneNumbers[0].number : "",
-      };
-
-      contacts.push(newC);
-    });
-
-    return contacts;
   };
 
   return (

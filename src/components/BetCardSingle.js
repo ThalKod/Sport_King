@@ -33,6 +33,8 @@ const BetCardSingle = ({ status, moneyLine, homeName, awayName, homeId, awayId, 
   const gameIsInPlay = moment() > moment.unix(matchTime);
   let currentGameTine = status === 1? moment().diff(moment.unix(matchTime), "minutes") :  moment().diff(moment.unix(halfStartTime), "minutes") + 45
 
+
+  console.log(status,moment().diff(moment.unix(matchTime), "minutes"),moment.unix(halfStartTime), moment().diff(moment.unix(halfStartTime), "minutes"), currentGameTine)
   if(parseInt(currentGameTine) > 1000)
     currentGameTine = "OT"
 
