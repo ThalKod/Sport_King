@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSContactsUsageDescription</key>
-	<string>$(PRODUCT_NAME) would like to use your contacts to finds your friends standing</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -39,6 +37,14 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSContactsUsageDescription</key>
+	<string>$(PRODUCT_NAME) would like to use your contacts to finds your friends standing</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>$(PRODUCT_NAME) would like to use your location to filter the standing to your preferences</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>$(PRODUCT_NAME) would like to use your location to filter the standing to your preferences</string>
+	<key>NSLocationUsageDescription</key>
+	<string>$(PRODUCT_NAME) would like to use your location to filter the standing to your preferences</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>$(PRODUCT_NAME) would like to use your location to filter the standing to your preferences</string>
 	<key>SKAdNetworkItems</key>
@@ -234,11 +240,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>$(PRODUCT_NAME) would like to use your location to filter the standing to your preferences</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>$(PRODUCT_NAME) would like to use your location to filter the standing to your preferences</string>
-	<key>NSLocationUsageDescription</key>
-	<string>$(PRODUCT_NAME) would like to use your location to filter the standing to your preferences</string>
 </dict>
 </plist>

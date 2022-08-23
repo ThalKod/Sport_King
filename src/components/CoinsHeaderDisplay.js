@@ -19,7 +19,7 @@ import analytics from "@react-native-firebase/analytics";
 import {RewardedAd, AdEventType, TestIds, RewardedAdEventType } from 'react-native-google-mobile-ads';
 import AdsModal from "./AdsModal";
 
-const adUnitId = TestIds.REWARDED
+const adUnitId = "ca-app-pub-4856517983898537/6949691507"
 
 
 // TODO: Fix error for rewarded ads when mot available
@@ -123,7 +123,7 @@ const CoinsHeaderDisplay = () => {
       >
         {modal.isModalErrorVisible && <AdsModal close={() => setModal({...modal, isModalErrorVisible: false})} buttonText={"Ok"} text={"Pas de pub disponible pour le moment, veuillez reessayer dans un moment"} onPress={() => setModal({...modal, isMainModalVisible: false, isModalErrorVisible: false})} />}
 
-        {modal.isMainModalVisible && <AdsModal close={() => setModal({...modal, isMainModalVisible: false})} buttonText={"Confirmer"} text={"Tu veut ajouter des coins sur ton compte? C'est gratuit ! Regarde une pub maintenant et recois 100 coins !"} onPress={showAds} />}
+        {modal.isMainModalVisible && <AdsModal close={() => setModal({...modal, isMainModalVisible: false})} buttonText={"Confirmer"} text={"Tu veut ajouter des coins sur ton compte? C'est gratuit ! Regarde une pub maintenant et recois 50 jetons !"} onPress={showAds} />}
 
         {modal.isLoadingRewardedAdsModalVisible &&
           <View style={{ flex: 1, alignItems: "center", justifyContent: "center"}}>

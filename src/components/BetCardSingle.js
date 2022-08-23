@@ -17,14 +17,24 @@ import analytics from "@react-native-firebase/analytics";
 const BetCardSingle = ({ status, moneyLine, homeName, awayName, homeId, awayId, homeScore, awayScore, onPress, onOddSelected, matchTime, sport, halfStartTime }) => {
 
   const odds = moneyLine? moneyLine.split(",") :  [];
-  const disabled = sport === "basketball";
+  let basketball = sport === "basketball";
+  let disabled = false;
+
+  if(odds.length < 11)
+    odds.unshift(0,0,0);
+
+  if(odds.length <= 3)
+    disabled = true
 
   const user = useSelector(state => state.user);
   const [homeLogo, setHomeLogo] = useState("");
   const [awayLogo, setAwayLogo] = useState("");
 
   const gameIsInPlay = moment() > moment.unix(matchTime);
-  const currentGameTine = status === 1? moment().diff(moment.unix(matchTime), "minutes") :  moment().diff(moment.unix(halfStartTime), "minutes") + 45
+  let currentGameTine = status === 1? moment().diff(moment.unix(matchTime), "minutes") :  moment().diff(moment.unix(halfStartTime), "minutes") + 45
+
+  if(parseInt(currentGameTine) > 1000)
+    currentGameTine = "OT"
 
   const getHomeTeam = useQuery(GET_TEAM, {
     variables: {
@@ -83,9 +93,9 @@ const BetCardSingle = ({ status, moneyLine, homeName, awayName, homeId, awayId, 
       </View>
 
       <View style={{ flexDirection: "row", justifyContent: "space-between", width: "100%"}}>
-        <OddSelection large={disabled} onOddSelected={() => onOddSelected({pick: { name: homeName, num: 1 }, odd: disabled? odds[4] : odds[5], type: "1x2"})} selection={1} odd={disabled? odds[4] : odds[5]}/>
-        { !disabled && <OddSelection onOddSelected={() => onOddSelected({ pick: { name: "Nulle", num: 0}, odd: odds[6], type: "1x2" })} selection={"Nulle"} odd={odds[6]} /> }
-        <OddSelection large={disabled} onOddSelected={() => onOddSelected({pick: { name: awayName, num: 2 }, odd: disabled? odds[5] : odds[7], type: "1x2"})} selection={2} odd={disabled? odds[5] : odds[7]}/>
+        <OddSelection disabled={disabled} large={basketball} onOddSelected={() => onOddSelected({pick: { name: homeName, num: 1 }, odd: basketball? odds[4] : odds[5], type: "1x2"})} selection={1} odd={basketball? odds[4] : odds[5]}/>
+        { !basketball && <OddSelection disabled={disabled} onOddSelected={() => onOddSelected({ pick: { name: "Nulle", num: 0}, odd: odds[6], type: "1x2" })} selection={"Nulle"} odd={odds[6]} /> }
+        <OddSelection disabled={disabled} large={basketball} onOddSelected={() => onOddSelected({pick: { name: awayName, num: 2 }, odd: basketball? odds[5] : odds[7], type: "1x2"})} selection={2} odd={basketball? odds[5] : odds[7]}/>
       </View>
     </TouchableOpacity>
   )
