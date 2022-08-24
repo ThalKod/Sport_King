@@ -9,35 +9,76 @@ import BetSlipSingle from "../components/BetSlipSingle";
 import { moderateScale } from "react-native-size-matters";
 import {useQuery, useLazyQuery} from '@apollo/client';
 import { GET_BET } from '../graph-operations';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import { NavigationContext } from "../context";
 import AntDesignIcons from 'react-native-vector-icons/AntDesign';
 import NetInfo from '@react-native-community/netinfo';
+import InAppReview from 'react-native-in-app-review';
+import { useFocusEffect } from '@react-navigation/native';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { persistAppReviewLastTime } from '../redux/features/userSlice';
+import moment from "moment";
 
 
 const Tab = createMaterialTopTabNavigator();
+
 
 const ActiveBet = ({ navigation }) => {
   const user = useSelector(state => state.user);
   const [betData, setBetData] = useState([]);
   const [isConnected, setIsConnected] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const unsubscribe = navigation.addListener('focus', () => {
-        console.log("loading");
-        getBet();
-    });
-
     const unsubscribeNetInfo = NetInfo.addEventListener(state => {
       console.log("Connection type", state);
       setIsConnected(state.isConnected);
     });
 
     return () => {
-      unsubscribe();
       unsubscribeNetInfo();
     }
   }, []);
+
+  useFocusEffect(
+    React.useCallback(  () => {
+      getBet();
+
+      async function showInAppReview() {
+        const totalBetCount = await AsyncStorage.getItem("totalBetCount");
+        const appReviewLastTime = await AsyncStorage.getItem("appReviewLastTime");
+
+        if(totalBetCount > 5){
+          if(!appReviewLastTime){
+            InAppReview.RequestInAppReview()
+              .then((hasFlowFinishedSuccessfully) => {
+
+                if (hasFlowFinishedSuccessfully) {
+                  console.log("has finished persist", hasFlowFinishedSuccessfully);
+                  dispatch(persistAppReviewLastTime({ appReviewLastTime: moment().toString()}))
+                }
+              })
+              .catch((error) => console.log(error));
+          }else {
+            if(moment().diff(moment(appReviewLastTime), "days") >= 10){
+              InAppReview.RequestInAppReview()
+                .then((hasFlowFinishedSuccessfully) => {
+
+                  if (hasFlowFinishedSuccessfully) {
+                    console.log("has finished persist", hasFlowFinishedSuccessfully);
+                    dispatch(persistAppReviewLastTime({ appReviewLastTime: moment().toString()}))
+                  }
+                })
+                .catch((error) => console.log(error));
+            }
+          }
+        }
+      }
+
+      showInAppReview()
+
+    }, [])
+  );
 
   const [getBet,  { loading }] = useLazyQuery(GET_BET, {
     fetchPolicy: 'no-cache',
@@ -46,7 +87,7 @@ const ActiveBet = ({ navigation }) => {
       pending: true
     },
     onCompleted(data){
-      console.log("Active Bet data : ", data);
+      // console.log("Active Bet data : ", data);
       setBetData(data.getBet);
     }
   });

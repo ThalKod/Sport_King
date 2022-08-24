@@ -39,6 +39,7 @@ const CoinsHeaderDisplay = () => {
   const [isModalVisible, setModalVisible] = useState(false);
   const [isModalErrorVisible, setModalErrorVisible] = useState(false);
   const [rewardEarned, setRewardsEarned] = useState({ status: false, amount: 0});
+  const [appReviewLaunched, setAppReviewingLaunched] = useState(false)
 
   useEffect(() => {
 
@@ -106,7 +107,7 @@ const CoinsHeaderDisplay = () => {
     setModal({...modal, isMainModalVisible: false, isLoadingRewardedAdsModalVisible: true, isModalErrorVisible: false})
   };
 
-  console.log(modal)
+  // console.log(modal)
 
   return (
     <TouchableOpacity onPress={toggleModal} style={styles.container}>

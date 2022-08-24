@@ -16,7 +16,7 @@ import { MAKE_BET } from '../graph-operations';
 import { gameType, betType } from "../config"
 import {useDispatch, useSelector} from 'react-redux';
 import { truncate } from "../utils";
-import { initUser } from '../redux/features/userSlice';
+import { initUser, increaseTotalBetCountPersist } from '../redux/features/userSlice';
 import analytics from "@react-native-firebase/analytics";
 
 
@@ -36,6 +36,7 @@ const QuickPicksModal = ({ isVisible, close, info }) => {
       const coins = (user.coins - parseFloat(inputValue)).toFixed(2);
       // console.log("coins", coins);
       dispatch(initUser({ jsWebToken: user.jsWebToken, coins: coins, bet_pending: user.bet_pending + 1 }));
+      dispatch(increaseTotalBetCountPersist({ totalBetCount: user.totalBetCount + 1 }));
     },
     onError(error){
       console.log("Error ", error);
@@ -50,7 +51,7 @@ const QuickPicksModal = ({ isVisible, close, info }) => {
 
   const onChangeText = (text) => {
     onInputValueChange(text.replace(/[^0-9]/g, ''));
-    console.log(parseFloat(text), user.coins);
+    // console.log(parseFloat(text), user.coins);
     if(parseFloat(text) > user.coins){
       return setError("Balance insuffisant");
     }
