@@ -13,6 +13,18 @@ import {useDispatch} from 'react-redux';
 import { initUser } from '../redux/features/userSlice';
 import NetInfo from "@react-native-community/netinfo";
 import analytics from "@react-native-firebase/analytics";
+import messaging from '@react-native-firebase/messaging';
+
+async function requestUserPermission() {
+  const authStatus = await messaging().requestPermission();
+  const enabled =
+    authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
+    authStatus === messaging.AuthorizationStatus.PROVISIONAL;
+
+  if (enabled) {
+    console.log('Authorization status:', authStatus);
+  }
+}
 
 const HomeScreen = ({ navigation }) => {
 
@@ -23,6 +35,7 @@ const HomeScreen = ({ navigation }) => {
 
   useEffect(() => {
     getToken();
+    requestUserPermission()
 
     const unsubscribe = NetInfo.addEventListener(state => {
       console.log("Connection type", state);

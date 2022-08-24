@@ -65,6 +65,7 @@
 		7291A8DF4F148FB1B0D81DF4 /* Pods-Sport_King.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sport_King.release.xcconfig"; path = "Target Support Files/Pods-Sport_King/Pods-Sport_King.release.xcconfig"; sourceTree = "<group>"; };
 		7415E17BBC2E4DD1A07FCC3C /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		7654EE5128A2907100C3461C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		765E2E6C28B636F600581ABE /* Sport_King.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Sport_King.entitlements; path = Sport_King/Sport_King.entitlements; sourceTree = "<group>"; };
 		76A4170A27A55FE500FB403D /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Regular.ttf"; path = "../src/assets/fonts/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		76A4170B27A55FE500FB403D /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Bold.ttf"; path = "../src/assets/fonts/OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		76A4170C27A55FE500FB403D /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-SemiboldItalic.ttf"; path = "../src/assets/fonts/OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
@@ -137,6 +138,7 @@
 		13B07FAE1A68108700A75B9A /* Sport_King */ = {
 			isa = PBXGroup;
 			children = (
+				765E2E6C28B636F600581ABE /* Sport_King.entitlements */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -621,8 +623,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Sport_King/Sport_King.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = 54CB2WK4G7;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Sport_King/Info.plist;
@@ -650,9 +653,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Sport_King/Sport_King.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = 54CB2WK4G7;
 				INFOPLIST_FILE = Sport_King/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

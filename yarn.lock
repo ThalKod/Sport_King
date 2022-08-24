@@ -1763,6 +1763,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-native-firebase/messaging@npm:^15.3.0":
+  version: 15.3.0
+  resolution: "@react-native-firebase/messaging@npm:15.3.0"
+  peerDependencies:
+    "@react-native-firebase/app": 15.3.0
+  checksum: 96d918cb352d5886aff32127ec8aa1c7f76145d85aa6a5c92eca61fc00a8b70b220c239cde4876802ca3ab9403a000c4eb8865ae40cbf7d0377c020511a808d8
+  languageName: node
+  linkType: hard
+
 "@react-native/assets@npm:1.0.0":
   version: 1.0.0
   resolution: "@react-native/assets@npm:1.0.0"
@@ -9383,6 +9392,7 @@ __metadata:
     "@react-native-community/netinfo": ^7.1.9
     "@react-native-firebase/analytics": ^15.3.0
     "@react-native-firebase/app": ^15.3.0
+    "@react-native-firebase/messaging": ^15.3.0
     "@react-navigation/drawer": ^6.1.8
     "@react-navigation/material-bottom-tabs": ^6.0.9
     "@react-navigation/material-top-tabs": ^6.2.1
