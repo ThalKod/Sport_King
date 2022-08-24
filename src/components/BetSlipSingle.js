@@ -45,16 +45,16 @@ const BetSlipSingle = ({ eventIsOver, item }) => {
         <View style={styles.separator}/>
         <View style={{ flexDirection: "row", justifyContent: "space-between"}}>
           <View style={{alignItems: "center"}}>
-            <Text style={[styles.colorWhite, styles.bottomDetailsText]}>Od</Text>
+            <Text style={[styles.colorWhite, styles.bottomDetailsText]}>Odd</Text>
             <Text style={[styles.colorWhite, styles.bottomDetailsText]}>{item.odd.toFixed(2)}</Text>
           </View>
           <View style={{alignItems: "center"}}>
-            <Text style={[styles.colorWhite, styles.bottomDetailsText]}>Montant(Coin)</Text>
-            <Text style={[styles.colorWhite, styles.bottomDetailsText]}>{item.bid}</Text>
+            <Text style={[styles.colorWhite, styles.bottomDetailsText]}>Montant</Text>
+            <Text style={[styles.colorWhite, styles.bottomDetailsText]}>{item.bid} Ƀ</Text>
           </View>
           <View style={{alignItems: "center"}}>
-            <Text style={[styles.colorWhite, styles.bottomDetailsText]}>{ eventIsOver? statusText : "Potentiel(Coin)"}</Text>
-            <Text style={[styles.colorWhite, styles.bottomDetailsText]}>{(item.bid * item.odd).toFixed(2)}</Text>
+            <Text style={[styles.colorWhite, styles.bottomDetailsText]}>{ eventIsOver? statusText : "Potentiels"}</Text>
+            <Text style={[styles.colorWhite, styles.bottomDetailsText]}>{(item.bid * item.odd).toFixed(2)} Ƀ</Text>
           </View>
         </View>
       </View>

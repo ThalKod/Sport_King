@@ -89,7 +89,7 @@ const QuickPicksModal = ({ isVisible, close, info }) => {
         style={styles.modalContainer}>
         <View style={styles.container}>
           <View style={styles.modalHeader}>
-            <Text style={styles.modalTextTitle}>Placer un Paris</Text>
+            <Text style={styles.modalTextTitle}>Placer une mise</Text>
             <TouchableOpacity
               onPress={() => close(false)}
               hitSlop={{ top: 10, left: 10, right: 10, bottom: 10 }}
@@ -125,7 +125,7 @@ const QuickPicksModal = ({ isVisible, close, info }) => {
                   <AntDesign name="close" size={moderateScale(16)} color={"#fff"} />
                 </TouchableOpacity>
                 <View>
-                  <Text style={{ opacity: 0.7, color: "#fff", textDecorationLine: 'underline' }}>Gains Potentiels:  {numeral(inputValue * info.odd).format("0,0[.]00 $")}</Text>
+                  <Text style={{ opacity: 0.7, color: "#fff", textDecorationLine: 'underline' }}>Gains Potentiels:  {numeral(inputValue * info.odd).format("0,0[.]00 ")}Ƀ</Text>
                 </View>
               </View>
               <TouchableOpacity disabled={loading || error} onPress={handleMakeBet} style={styles.placeBetButton}>
