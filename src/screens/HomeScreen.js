@@ -140,6 +140,7 @@ const HomeScreen = ({ navigation }) => {
 
   const [ getMyPosition, { }] = useLazyQuery(GET_MY_POSITION, {
     fetchPolicy: 'no-cache',
+    pollInterval: 30000,
     variables: {
       jsWebToken: jsWebToken,
       orderBy: {

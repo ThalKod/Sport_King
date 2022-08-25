@@ -38,11 +38,13 @@ const WeeklyBoards = ({ navigation }) => {
 
   const [getStanding, { loading }] = useLazyQuery(GET_STANDING, {
     fetchPolicy: 'no-cache',
+    pollInterval: 60000,
     variables: {
       jsWebToken: user.jsWebToken,
       orderBy: {
-        weekly_count: "desc"
-      }
+        weekly_count: "desc",
+      },
+      take: 500
     },
     onCompleted(data){
       // console.log("Data weekly", data);
@@ -99,11 +101,14 @@ const MonthlyBoards = ({ navigation }) => {
 
   const [getStanding, { loading }] = useLazyQuery(GET_STANDING, {
     fetchPolicy: 'no-cache',
+    pollInterval: 60000,
+
     variables: {
       jsWebToken: user.jsWebToken,
       orderBy: {
-        monthly_count: "desc"
-      }
+        monthly_count: "desc",
+      },
+      take: 500
     },
     onCompleted(data){
       // console.log("Data monthly", data);
@@ -160,11 +165,13 @@ const AllTimeBoards = ({ navigation }) => {
 
   const [getStanding, { loading }] = useLazyQuery(GET_STANDING, {
     fetchPolicy: 'no-cache',
+    pollInterval: 60000,
     variables: {
       jsWebToken: user.jsWebToken,
       orderBy: {
-        alltime_count: "desc"
-      }
+        alltime_count: "desc",
+      },
+      take: 500
     },
     onCompleted(data){
       // console.log("Data alltime", data);
