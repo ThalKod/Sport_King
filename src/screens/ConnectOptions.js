@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {StyleSheet, Text, View, ImageBackground, Image, ActivityIndicator} from 'react-native';
 import BackgroundImage from "../assets/jobil.jpg";
 import CupImage from "../assets/cup_sports_2.png";
@@ -10,11 +10,11 @@ import MainButton from "../components/MainButton";
 import {useDispatch} from "react-redux";
 import analytics from "@react-native-firebase/analytics";
 
-
 const ConnectOptions = ({ navigation }) => {
 
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
+
 
   const naviagateToRegister = async () => {
     if(loading)

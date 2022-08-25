@@ -8365,6 +8365,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-splash-screen@npm:^3.3.0":
+  version: 3.3.0
+  resolution: "react-native-splash-screen@npm:3.3.0"
+  peerDependencies:
+    react-native: ">=0.57.0"
+  checksum: 14c565d5d4214f55586dcf6f7abd12d99d3e0667f67de3bda7aa24988971567b283a4187fbc0c6269c83b3c21d59d1950335c61bb0780ec2d065e20b3b9199d0
+  languageName: node
+  linkType: hard
+
 "react-native-status-bar-height@npm:^2.6.0":
   version: 2.6.0
   resolution: "react-native-status-bar-height@npm:2.6.0"
@@ -9425,6 +9434,7 @@ __metadata:
     react-native-safe-area-context: ^3.3.2
     react-native-screens: ^3.10.2
     react-native-size-matters: ^0.4.0
+    react-native-splash-screen: ^3.3.0
     react-native-status-bar-height: ^2.6.0
     react-native-tab-view: ^3.1.1
     react-native-vector-icons: ^9.0.0

@@ -18,6 +18,7 @@ import { ActivityIndicator, View, Platform } from "react-native";
 import { ANDROID_API_HOST, IOS_API_HOST } from "@env";
 import analytics from '@react-native-firebase/analytics';
 import mobileAds from 'react-native-google-mobile-ads';
+import SplashScreen from "react-native-splash-screen";
 
 console.log("==================", IOS_API_HOST, ANDROID_API_HOST)
 
@@ -61,6 +62,8 @@ function DrawerMain() {
 }
 
 const App: () => Node = () => {
+
+  SplashScreen.hide();
 
   const routeNameRef = React.useRef();
   const navigationRef = React.useRef();
