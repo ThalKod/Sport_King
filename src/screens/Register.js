@@ -42,6 +42,7 @@ const Register = ({ navigation }) => {
   const [loading, setLoading] = useState(false);
   const [errorCompletion, setErrorCompletion] = useState(false)
   const [errorUsername, setErrorUsername] = useState(false)
+  const [errorPasswordConfirmation, setErrorPasswordConfirmation] = useState(false)
   const [errorEmail, setErrorEmail] = useState(false)
   const [fcmtoken, setFcmToken]  = useState("");
 
@@ -113,7 +114,7 @@ const Register = ({ navigation }) => {
 
     //TODO: Handle error: if confirmation password incorrect
     if(passwordValue !== passwordConfirmationValue)
-      return;
+      return setErrorPasswordConfirmation(true);
 
     setLoading(true);
     signupUser({
@@ -122,7 +123,7 @@ const Register = ({ navigation }) => {
         email: emailValue.toLowerCase(),
         password: passwordValue,
         invitedBy: inviteCode,
-        fcmtoken: fcmToken
+        fcmtoken: fcmtoken
       }
     })
 
@@ -156,6 +157,7 @@ const Register = ({ navigation }) => {
                   setErrorUsername(false);
                   setErrorEmail(false)
                   setErrorCompletion(false);
+                  setErrorPasswordConfirmation(false)
                   setNameValue(v);
                 }} placeHolder="Nom d'Utilisateur" icon={<AntDesign style={{ marginRight: moderateScale(10)}} name="user" size={20} color="#B3B3B6" />}/>
                 { errorUsername && <Text style={styles.errorText}>Nom d'utilisateur deja pris !</Text> }
@@ -163,6 +165,7 @@ const Register = ({ navigation }) => {
                   setErrorUsername(false);
                   setErrorEmail(false)
                   setErrorCompletion(false);
+                  setErrorPasswordConfirmation(false)
                   setEmailValue(v);
                 }} placeHolder="E-mail" icon={<Feather style={{ marginRight: moderateScale(10)}} name="at-sign" size={20} color="#B3B3B6" />}/>
                 { errorEmail && <Text style={styles.errorText}>Vous possedez deja un compte avec cet email !</Text> }
@@ -170,18 +173,22 @@ const Register = ({ navigation }) => {
                   setErrorUsername(false);
                   setErrorEmail(false)
                   setErrorCompletion(false);
+                  setErrorPasswordConfirmation(false)
                   setPasswordValue(v);
                 }} password placeHolder="Password" icon={<AntDesign style={{ marginRight: moderateScale(10)}} name="lock" size={20} color="#B3B3B6" />}/>
                 <CustomTextInput value={passwordConfirmationValue} onValueChange={(v) => {
                   setErrorUsername(false);
                   setErrorEmail(false)
                   setErrorCompletion(false)
+                  setErrorPasswordConfirmation(false)
                   setPasswordConfirmationValue(v)
                 }} password placeHolder="Password Confirmation" icon={<AntDesign style={{ marginRight: moderateScale(10)}} name="lock" size={20} color="#B3B3B6" />}/>
+                { errorPasswordConfirmation && <Text style={styles.errorText}>Les mots de passe ne se correspondent pas</Text> }
                 <CustomTextInput value={inviteCode} onValueChange={(v) => {
                   setErrorUsername(false);
                   setErrorEmail(false)
                   setErrorCompletion(false);
+                  setErrorPasswordConfirmation(false)
                   setInviteCode(v);
                 }} placeHolder="Invite Code(Optionnel)" icon={<AntDesign style={{ marginRight: moderateScale(10)}} name="barcode" size={20} color="#B3B3B6" />}/>
                 { errorCompletion && <Text style={styles.errorText}>Veuillez completer le formulaire</Text> }
