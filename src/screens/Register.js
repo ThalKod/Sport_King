@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   StyleSheet,
   Text,
@@ -9,6 +9,7 @@ import {
   KeyboardAvoidingView,
   ScrollView,
   ActivityIndicator,
+  Platform
 } from 'react-native';
 import BackgroundImage from "../assets/jobil.jpg";
 import LinearGradient from 'react-native-linear-gradient';
@@ -27,6 +28,7 @@ import { initUser, initUserPersit } from '../redux/features/userSlice';
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import analytics from "@react-native-firebase/analytics";
 import { getDeviceInfo } from "../utils";
+import messaging from '@react-native-firebase/messaging';
 
 
 const Register = ({ navigation }) => {
@@ -41,6 +43,17 @@ const Register = ({ navigation }) => {
   const [errorCompletion, setErrorCompletion] = useState(false)
   const [errorUsername, setErrorUsername] = useState(false)
   const [errorEmail, setErrorEmail] = useState(false)
+  const [fcmtoken, setFcmToken]  = useState("");
+
+  useEffect(() => {
+    // Get the device token
+    messaging()
+      .getToken()
+      .then(token => {
+        console.log("token", token)
+        setFcmToken(token)
+      });
+  }, []);
 
 
   const [signupUser] = useMutation(SIGNUP_USER, {
@@ -108,7 +121,8 @@ const Register = ({ navigation }) => {
         name: nameValue,
         email: emailValue.toLowerCase(),
         password: passwordValue,
-        invitedBy: inviteCode
+        invitedBy: inviteCode,
+        fcmtoken: fcmToken
       }
     })
 

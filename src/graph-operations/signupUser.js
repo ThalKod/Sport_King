@@ -2,13 +2,14 @@ import gql from 'graphql-tag';
 
 
 export const SIGNUP_USER = gql`
-  mutation signupUser($email: String!, $name: String!, $password: String!, $invitedBy: String) {
+  mutation signupUser($email: String!, $name: String!, $password: String!, $invitedBy: String, $fcmtoken: String) {
     signupUser(
       data: {
         name: $name,
         email: $email
         password: $password
         invitedBy: $invitedBy
+        fcmtoken: $fcmtoken
       }
     ){
       token

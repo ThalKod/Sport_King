@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -8,8 +8,8 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView,
   ScrollView,
-  ActivityIndicator,
-} from 'react-native';
+  ActivityIndicator, Platform,
+} from "react-native";
 import BackgroundImage from "../assets/jobil.jpg";
 import LinearGradient from 'react-native-linear-gradient';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
@@ -27,6 +27,7 @@ import { useDispatch } from 'react-redux';
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import analytics from "@react-native-firebase/analytics";
 import { getDeviceInfo } from "../utils";
+import messaging from "@react-native-firebase/messaging";
 
 
 const Login = ({ navigation })=>{
@@ -37,6 +38,17 @@ const Login = ({ navigation })=>{
   const [loading, setLoading] = useState(false);
   const [errorCompletion, setErrorCompletion] = useState(false)
   const [errorUser, setErrorUser] = useState(false)
+  const [fcmToken, setFcmToken] = useState("")
+
+  useEffect(() => {
+    // Get the device token
+    messaging()
+      .getToken()
+      .then(token => {
+        console.log("token", token)
+        setFcmToken(token)
+      });
+  }, []);
 
   const [login] = useMutation(LOGIN_USER, {
     onCompleted: async (data) => {
@@ -92,7 +104,8 @@ const Login = ({ navigation })=>{
     login({
       variables: {
         email: emailValue.toLowerCase(),
-        password: passwordValue
+        password: passwordValue,
+        fcmtoken: fcmToken
       }
     })
     await analytics().logEvent('signin_user_button');

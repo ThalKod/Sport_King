@@ -16,3 +16,5 @@ export * from "./getTeam";
 export * from "./saveDeviceInfo";
 export * from "./saveLocation";
 export * from "./saveContacts";
+export * from "./updateUser";
+

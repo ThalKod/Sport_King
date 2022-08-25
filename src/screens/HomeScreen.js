@@ -7,7 +7,7 @@ import HomeInfoBox from "../components/HomeInfoBox";
 import BetCardSingle from "../components/BetCardSingle";
 import QuickPicksModal from "../components/QuickPicksModal";
 import { useLazyQuery, useMutation } from "@apollo/client";
-import { GET_UPCOMING_GAMES, GET_ME, GET_MY_POSITION} from "../graph-operations";
+import { GET_UPCOMING_GAMES, GET_ME, GET_MY_POSITION, UPDATE_USER, SAVE_DEVICE_INFO } from "../graph-operations";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {useDispatch} from 'react-redux';
 import { initUser } from '../redux/features/userSlice';
@@ -42,8 +42,24 @@ const HomeScreen = ({ navigation }) => {
       setIsConnected(state.isConnected);
     });
 
+    messaging().onTokenRefresh(token => {
+      async function updateToken(){
+        const jsWebToken = await AsyncStorage.getItem("jsWebToken");
+        await updateUser({
+          variables: {
+            jsWebToken,
+            data: {
+              fcmtoken: token
+            }
+          }
+        })
+      }
+      updateToken()
+    });
+
     // Unsubscribe
     unsubscribe();
+
   }, []);
 
   const getToken = async () => {
@@ -94,6 +110,7 @@ const HomeScreen = ({ navigation }) => {
 
   const [ getMe, { }] = useLazyQuery(GET_ME, {
     fetchPolicy: 'no-cache',
+    pollInterval: 30000,
     variables: {
       jsWebToken: jsWebToken,
     },
@@ -109,6 +126,15 @@ const HomeScreen = ({ navigation }) => {
         bet_pending: data.getMe.bet_pending,
         invite_code: data.getMe.invite_code
       }));
+    }
+  });
+
+  const [updateUser] = useMutation(UPDATE_USER, {
+    onCompleted(data){
+      console.log("Data : ", data);
+    },
+    onError(error){
+      console.log("Error device info ", error);
     }
   });
 
