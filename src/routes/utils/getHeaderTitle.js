@@ -15,6 +15,8 @@ export function getHeaderTitle(route) {
     case 'Paris':
       return 'Paris';
     case 'Classement':
-      return "Classement"
+      return "Classement";
+    case 'Profile':
+      return "Profile"
   }
 }

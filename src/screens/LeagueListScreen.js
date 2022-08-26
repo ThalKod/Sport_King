@@ -13,6 +13,7 @@ import EventListSingle from "../components/EventListSingle";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {useSelector} from 'react-redux';
 import analytics from "@react-native-firebase/analytics";
+import { moderateScale } from "react-native-size-matters";
 
 
 const LeagueListScreen = ({ route, navigation }) => {
@@ -101,7 +102,8 @@ const LeagueListScreen = ({ route, navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#1C0C4F"
+    backgroundColor: "#1C0C4F",
+    padding: moderateScale(5)
   },
 
 });

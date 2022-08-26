@@ -38,15 +38,15 @@
 		</dict>
 	</dict>
 	<key>NSContactsUsageDescription</key>
-	<string>$(PRODUCT_NAME) would like to use your contacts to finds your friends standing</string>
+	<string>We would like to use your contacts to filter the standing to your preferences, your data will be securely stored on our servers and can be requested to be deleted at any time</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>$(PRODUCT_NAME) would like to use your location to filter the standing to your preferences</string>
+	<string>We would like to use your location to filter the standing to your preferences, your data will be securely stored on our servers and can be requested to be deleted at any time</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>$(PRODUCT_NAME) would like to use your location to filter the standing to your preferences</string>
+	<string>We would like to use your location to filter the standing to your preferences, your data will be securely stored on our servers and can be requested to be deleted at any time</string>
 	<key>NSLocationUsageDescription</key>
-	<string>$(PRODUCT_NAME) would like to use your location to filter the standing to your preferences</string>
+	<string>We would like to use your location to filter the standing to your preferences, your data will be securely stored on our servers and can be requested to be deleted at any time</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>$(PRODUCT_NAME) would like to use your location to filter the standing to your preferences</string>
+	<string>We would like to use your location to filter the standing to your preferences, your data will be securely stored on our servers and can be requested to be deleted at any time</string>
 	<key>SKAdNetworkItems</key>
 	<array>
 		<dict>

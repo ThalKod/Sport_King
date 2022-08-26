@@ -6566,6 +6566,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lodash.toarray@npm:^4.4.0":
+  version: 4.4.0
+  resolution: "lodash.toarray@npm:4.4.0"
+  checksum: 2eebcbe75734223b2526018b1c66f7f5e3e5e21e2caffde1553e3453393a676347f2adb7ecbf08364521c188dbf280bd88053604ea159a95121d44453916c31f
+  languageName: node
+  linkType: hard
+
 "lodash@npm:^4.17.10, lodash@npm:^4.17.14, lodash@npm:^4.17.15, lodash@npm:^4.17.19, lodash@npm:^4.17.21, lodash@npm:^4.7.0":
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
@@ -7343,6 +7350,15 @@ __metadata:
   dependencies:
     minimatch: ^3.0.2
   checksum: 29de9560e52cdac8d3f794d38d782f6799e13d4d11aaf96d3da8c28458e1c5e33bb5f8edfb42dc34172ec5516c50c5b8850c9e1526542616757a969267263328
+  languageName: node
+  linkType: hard
+
+"node-emoji@npm:1.10.0":
+  version: 1.10.0
+  resolution: "node-emoji@npm:1.10.0"
+  dependencies:
+    lodash.toarray: ^4.4.0
+  checksum: e2514e34591c58d907f17ab6a21bcd0f9d7ae311187fc490fb52704389a66f48f0ce84cc34e5baf593c1d96e7796e9350dc1bebe7db4d9379a114fb9e5b0011b
   languageName: node
   linkType: hard
 
@@ -8206,6 +8222,15 @@ __metadata:
   dependencies:
     dotenv: ^10.0.0
   checksum: 7e53bd7e3ab43479a1c304e7ff46b7ff24c9c743cc25cfae5bef0a7c7ee93a2748639e6edc337281576899216d8d9bdddfe563882fea6743d675444e8777514b
+  languageName: node
+  linkType: hard
+
+"react-native-emoji@npm:^1.8.0":
+  version: 1.8.0
+  resolution: "react-native-emoji@npm:1.8.0"
+  dependencies:
+    node-emoji: 1.10.0
+  checksum: faed02e36a9575314b4adb4325345501447c8833b895eef52f1734f8db24ccbff905edd6665a8ea36a07e9d1bf2ac9edaa0a73efefb2eb95c43be546d4b61d7d
   languageName: node
   linkType: hard
 
@@ -9421,6 +9446,7 @@ __metadata:
     react-native-contacts: ^7.0.5
     react-native-device-info: ^10.0.2
     react-native-dotenv: ^3.3.1
+    react-native-emoji: ^1.8.0
     react-native-geolocation-service: ^5.3.0
     react-native-gesture-handler: ^2.2.0
     react-native-google-mobile-ads: ^7.0.1

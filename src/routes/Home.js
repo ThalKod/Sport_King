@@ -4,12 +4,14 @@ import HomeImage from '../assets/new_menu_home_active.png';
 import MatchImage from '../assets/new_menu_matches_active.png';
 import PariImage from '../assets/new_menu_bets_active.png';
 import KlasmanImage from '../assets/new_menu_leaderboard_active.png';
+import CupMain   from "../assets/cup_main.png";
 import HomeScreen from '../screens/HomeScreen';
 import BetScreen from '../screens/BetScreen';
 import LeadersBoardScreen from '../screens/LeadersBoard';
 import React from 'react';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import { MatchScreen } from "./index";
+import ProfileScreen from "../screens/ProfileScreen";
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -27,6 +29,8 @@ export const Home = () => {
             return <Image style={{ height: moderateScale(25), width: moderateScale(25), resizeMode: "contain" }} source={PariImage}/>
           } else if (route.name === "Classement"){
             return <Image style={{ height: moderateScale(25), width: moderateScale(25), resizeMode: "contain" }} source={KlasmanImage}/>
+          }else if (route.name === "Profile"){
+            return <Image style={{ height: moderateScale(25), width: moderateScale(25), resizeMode: "contain" }} source={CupMain}/>
           }
         },
       })}
@@ -38,6 +42,7 @@ export const Home = () => {
       <Tab.Screen name="Matchs" component={MatchScreen} options={{ tabBarLabel: 'Matchs' }} />
       <Tab.Screen name="Paris" component={BetScreen} options={{ tabBarLabel: 'Paris' }} />
       <Tab.Screen name="Classement" component={LeadersBoardScreen} options={{ tabBarLabel: 'Classement' }} />
+      <Tab.Screen name="Profile" component={ProfileScreen} options={{ tabBarLabel: 'Profile' }} />
     </Tab.Navigator>
   )
 };

@@ -24,7 +24,7 @@ const betType = (typeNumber) => {
 };
 
 const BetSlipSingle = ({ eventIsOver, item }) => {
-  const statusText = item.outcome === 1? "Gagnez" : "Perdu";
+  const statusText = item.outcome === 1? "Gagné" : "Perdu";
   const backgroundColor = item.outcome === 1? "#059A32" : "#9A052D";
 
   return (
@@ -53,7 +53,7 @@ const BetSlipSingle = ({ eventIsOver, item }) => {
             <Text style={[styles.colorWhite, styles.bottomDetailsText]}>{item.bid} Ƀ</Text>
           </View>
           <View style={{alignItems: "center"}}>
-            <Text style={[styles.colorWhite, styles.bottomDetailsText]}>{ eventIsOver? statusText : "Potentiels"}</Text>
+            <Text style={[styles.colorWhite, styles.bottomDetailsText]}>{ eventIsOver? statusText : "Gains Potentiels"}</Text>
             <Text style={[styles.colorWhite, styles.bottomDetailsText]}>{(item.bid * item.odd).toFixed(2)} Ƀ</Text>
           </View>
         </View>
@@ -67,7 +67,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#140A35",
     height: moderateScale(125),
     padding: moderateScale(15),
-    marginBottom: moderateScale(5)
+    marginBottom: moderateScale(5),
+    borderRadius: moderateScale(10)
   },
   separator: {
     height: moderateScale(0.5),

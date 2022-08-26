@@ -54,7 +54,8 @@ const EventsScreen = ({ navigation, route }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#1C0C4F"
+    backgroundColor: "#1C0C4F",
+    padding: moderateScale(5)
   }
 });
 

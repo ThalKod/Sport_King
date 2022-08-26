@@ -12,7 +12,7 @@ import { truncate } from "../utils";
 
 
 
-const AdsModal = ({ close,text, buttonText, onPress}) => {
+const AdsModal = ({ title,  close,text, buttonText, onPress}) => {
   return (
     <View>
       <Modal
@@ -22,7 +22,7 @@ const AdsModal = ({ close,text, buttonText, onPress}) => {
         style={styles.modalContainer}>
         <View style={styles.container}>
           <View style={styles.modalHeader}>
-            <Text style={styles.modalTextTitle}>Regarder une pub</Text>
+            <Text style={styles.modalTextTitle}>{title}</Text>
             <TouchableOpacity
               onPress={close}
               hitSlop={{ top: 10, left: 10, right: 10, bottom: 10 }}
@@ -57,7 +57,8 @@ const styles = StyleSheet.create({
   versusText: {
     color: "#fff",
     fontSize: moderateScale(14),
-    marginTop: moderateScale(15)
+    marginTop: moderateScale(15),
+    textAlign: "center"
   },
   betCategoryText: {
     color: "#fff",
