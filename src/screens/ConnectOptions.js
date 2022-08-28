@@ -41,7 +41,7 @@ const ConnectOptions = ({ navigation }) => {
           <Image style={{ width: moderateScale(300), height: moderateScale(300)}} source={CupImage}/>
 
           <View style={{ width: "100%",}}>
-            <MainButton onClick={naviagateToRegister} text={loading? loadingComp : "SE CONNECTER"} color={"#19D8B7"} arrow={arrowImage}/>
+            <MainButton onClick={naviagateToRegister} text={loading? loadingComp : "SIGN IN"} color={"#19D8B7"} arrow={arrowImage}/>
           </View>
         </View>
       </ImageBackground>

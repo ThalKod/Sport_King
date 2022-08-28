@@ -159,8 +159,8 @@ const Register = ({ navigation }) => {
                   setErrorCompletion(false);
                   setErrorPasswordConfirmation(false)
                   setNameValue(v);
-                }} placeHolder="Nom d'Utilisateur" icon={<AntDesign style={{ marginRight: moderateScale(10)}} name="user" size={20} color="#B3B3B6" />}/>
-                { errorUsername && <Text style={styles.errorText}>Nom d'utilisateur deja pris !</Text> }
+                }} placeHolder="Username" icon={<AntDesign style={{ marginRight: moderateScale(10)}} name="user" size={20} color="#B3B3B6" />}/>
+                { errorUsername && <Text style={styles.errorText}>Username not available !</Text> }
                 <CustomTextInput value={emailValue} onValueChange={(v) => {
                   setErrorUsername(false);
                   setErrorEmail(false)
@@ -168,7 +168,7 @@ const Register = ({ navigation }) => {
                   setErrorPasswordConfirmation(false)
                   setEmailValue(v);
                 }} placeHolder="E-mail" icon={<Feather style={{ marginRight: moderateScale(10)}} name="at-sign" size={20} color="#B3B3B6" />}/>
-                { errorEmail && <Text style={styles.errorText}>Vous possedez deja un compte avec cet email !</Text> }
+                { errorEmail && <Text style={styles.errorText}>You already have an account with that email !</Text> }
                 <CustomTextInput value={passwordValue} onValueChange={(v) => {
                   setErrorUsername(false);
                   setErrorEmail(false)
@@ -183,7 +183,7 @@ const Register = ({ navigation }) => {
                   setErrorPasswordConfirmation(false)
                   setPasswordConfirmationValue(v)
                 }} password placeHolder="Password Confirmation" icon={<AntDesign style={{ marginRight: moderateScale(10)}} name="lock" size={20} color="#B3B3B6" />}/>
-                { errorPasswordConfirmation && <Text style={styles.errorText}>Les mots de passe ne se correspondent pas</Text> }
+                { errorPasswordConfirmation && <Text style={styles.errorText}>The password don't match!</Text> }
                 <CustomTextInput value={inviteCode} onValueChange={(v) => {
                   setErrorUsername(false);
                   setErrorEmail(false)
@@ -191,10 +191,10 @@ const Register = ({ navigation }) => {
                   setErrorPasswordConfirmation(false)
                   setInviteCode(v);
                 }} placeHolder="Invite Code(Optionnel)" icon={<AntDesign style={{ marginRight: moderateScale(10)}} name="barcode" size={20} color="#B3B3B6" />}/>
-                { errorCompletion && <Text style={styles.errorText}>Veuillez completer le formulaire</Text> }
-                <MainButton onClick={handleSignupUser} text={loading? loadingComp : "CREER UN COMPTE"} color={"#19D8B7"} arrow={arrowImage}/>
+                { errorCompletion && <Text style={styles.errorText}>Please complete the form</Text> }
+                <MainButton onClick={handleSignupUser} text={loading? loadingComp : "CREATE AN ACCOUNT"} color={"#19D8B7"} arrow={arrowImage}/>
                 <TouchableOpacity onPress={handleAlreadyRegistered}>
-                  <Text style={styles.newUserText}>T'as deja un compte? {"\n"}  Clique ici pour te connecter! </Text>
+                  <Text style={styles.newUserText}>Already have an account? {"\n"}  Click here to sign in </Text>
                 </TouchableOpacity>
               </View>
             </View>

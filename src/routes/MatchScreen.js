@@ -24,10 +24,10 @@ export const MatchScreen = () => {
       <Stack.Screen
         name="MatchsStack"
         component={EventsScreen}
-        options={{title: 'Matchs', headerShown: false}}
+        options={{title: 'Games', headerShown: false}}
       />
       <Stack.Screen name="Leagues" component={LeagueListScreen} />
-      <Stack.Screen name="GamesList" component={BetCardListScreen} options={{title: 'Matchs'}} />
+      <Stack.Screen name="GamesList" component={BetCardListScreen} options={{title: 'Games'}} />
     </Stack.Navigator>
   )
 };

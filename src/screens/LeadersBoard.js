@@ -322,8 +322,8 @@ const LeadersBoards = () => {
             }
           }}
       >
-        <Tab.Screen name="Hebdomadaire" component={WeeklyBoards} />
-        <Tab.Screen name="Mensuel" component={MonthlyBoards} />
+        <Tab.Screen name="Weekly" component={WeeklyBoards} />
+        <Tab.Screen name="Monthly" component={MonthlyBoards} />
         <Tab.Screen name="All-Time" component={AllTimeBoards} />
       </Tab.Navigator>
   )

@@ -190,7 +190,7 @@ const HomeScreen = ({ navigation }) => {
       <StatusBar style="light" />
       <HomeInfoBox/>
       <View style={styles.content}>
-        <Text style={styles.titleText}>Matchs à la une</Text>
+        <Text style={styles.titleText}>Upcoming Games</Text>
         { loading &&
         <View style={{ backgroundColor: "#1C0C4F", flex: 1, alignItems: "center", justifyContent: "center"}}>
           <ActivityIndicator size="large" color="#fff"/>

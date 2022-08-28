@@ -21,13 +21,13 @@ export const Home = () => {
     <Tab.Navigator
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
-          if (route.name === 'Acceuil') {
+          if (route.name === 'Home') {
             return <Image style={{ height: moderateScale(25), width: moderateScale(25), resizeMode: "contain" }} source={HomeImage}/>
-          } else if (route.name === 'Matchs') {
+          } else if (route.name === 'Games') {
             return <Image style={{ height: moderateScale(25), width: moderateScale(25), resizeMode: "contain" }} source={MatchImage}/>
-          } else if (route.name === "Paris"){
+          } else if (route.name === "Bet"){
             return <Image style={{ height: moderateScale(25), width: moderateScale(25), resizeMode: "contain" }} source={PariImage}/>
-          } else if (route.name === "Classement"){
+          } else if (route.name === "Leaderboards"){
             return <Image style={{ height: moderateScale(25), width: moderateScale(25), resizeMode: "contain" }} source={KlasmanImage}/>
           }else if (route.name === "Profile"){
             return <Image style={{ height: moderateScale(25), width: moderateScale(25), resizeMode: "contain" }} source={CupMain}/>
@@ -38,10 +38,10 @@ export const Home = () => {
       barStyle={{ backgroundColor: '#1C0C4F' }}
       sceneAnimationEnabled={false}
     >
-      <Tab.Screen name="Acceuil" component={HomeScreen} options={{ tabBarLabel: 'Acceuil' }}/>
-      <Tab.Screen name="Matchs" component={MatchScreen} options={{ tabBarLabel: 'Matchs' }} />
-      <Tab.Screen name="Paris" component={BetScreen} options={{ tabBarLabel: 'Paris' }} />
-      <Tab.Screen name="Classement" component={LeadersBoardScreen} options={{ tabBarLabel: 'Classement' }} />
+      <Tab.Screen name="Home" component={HomeScreen} options={{ tabBarLabel: 'Home' }}/>
+      <Tab.Screen name="Games" component={MatchScreen} options={{ tabBarLabel: 'Games' }} />
+      <Tab.Screen name="Bet" component={BetScreen} options={{ tabBarLabel: 'Bet' }} />
+      <Tab.Screen name="Leaderboards" component={LeadersBoardScreen} options={{ tabBarLabel: 'Leaderboards' }} />
       <Tab.Screen name="Profile" component={ProfileScreen} options={{ tabBarLabel: 'Profile' }} />
     </Tab.Navigator>
   )

@@ -27,19 +27,19 @@ const HomeInfoBox = () => {
         <View style={styles.statsHolder}>
           <View style={{ alignItems: "center"}}>
             <Image style={{ width: moderateScale(30), height: moderateScale(30)}} source={StatWon}/>
-            <Text style={{ fontSize: moderateScale(14), color: "#fff", fontWeight: "bold"}}><Text style={{ color: "#FDE88E"}}>Gagnez:</Text> {user.bet_won}</Text>
+            <Text style={{ fontSize: moderateScale(14), color: "#fff", fontWeight: "bold"}}><Text style={{ color: "#FDE88E"}}>Won:</Text> {user.bet_won}</Text>
           </View>
           <View style={{ alignItems: "center"}}>
             <Image style={{ width: moderateScale(30), height: moderateScale(30)}} source={StatLost}/>
-            <Text style={{ fontSize: moderateScale(14), color: "#fff", fontWeight: "bold"}}><Text style={{ color: "#FDE88E"}}>Perdu:</Text> {user.bet_lost}</Text>
+            <Text style={{ fontSize: moderateScale(14), color: "#fff", fontWeight: "bold"}}><Text style={{ color: "#FDE88E"}}>Lost:</Text> {user.bet_lost}</Text>
           </View>
           <View style={{ alignItems: "center"}}>
             <Image style={{ width: moderateScale(30), height: moderateScale(30)}} source={StatInPlay}/>
-            <Text style={{ fontSize: moderateScale(14), color: "#fff", fontWeight: "bold"}}><Text style={{ color: "#FDE88E"}}>En cours:</Text> {user.bet_pending}</Text>
+            <Text style={{ fontSize: moderateScale(14), color: "#fff", fontWeight: "bold"}}><Text style={{ color: "#FDE88E"}}>Pending:</Text> {user.bet_pending}</Text>
           </View>
           <View style={{ alignItems: "center"}}>
             <Image style={{ width: moderateScale(30), height: moderateScale(30)}} source={StatPosition}/>
-            <Text style={{ fontSize: moderateScale(14), color: "#fff", fontWeight: "bold"}}><Text style={{ color: "#FDE88E"}}>Position:</Text> {user.position}</Text>
+            <Text style={{ fontSize: moderateScale(14), color: "#fff", fontWeight: "bold"}}><Text style={{ color: "#FDE88E"}}>Ranking:</Text> {user.position}</Text>
           </View>
         </View>
       </ImageBackground>

@@ -90,13 +90,13 @@ const BetCardSingle = ({ status, moneyLine, homeName, awayName, homeId, awayId, 
       </View>
       <View style={styles.separatorContent}>
         <View style={styles.separator}/>
-        <Text style={styles.text}>Vainqueur</Text>
+        <Text style={styles.text}>Winner</Text>
         <View style={styles.separator}/>
       </View>
 
       <View style={{ flexDirection: "row", justifyContent: "space-between", width: "100%"}}>
         <OddSelection disabled={disabled} large={basketball} onOddSelected={() => onOddSelected({pick: { name: homeName, num: 1 }, odd: basketball? odds[4] : odds[5], type: "1x2"})} selection={1} odd={basketball? odds[4] : odds[5]}/>
-        { !basketball && <OddSelection disabled={disabled} onOddSelected={() => onOddSelected({ pick: { name: "Nulle", num: 0}, odd: odds[6], type: "1x2" })} selection={"Nulle"} odd={odds[6]} /> }
+        { !basketball && <OddSelection disabled={disabled} onOddSelected={() => onOddSelected({ pick: { name: "Draw", num: 0}, odd: odds[6], type: "1x2" })} selection={"Draw"} odd={odds[6]} /> }
         <OddSelection disabled={disabled} large={basketball} onOddSelected={() => onOddSelected({pick: { name: awayName, num: 2 }, odd: basketball? odds[5] : odds[7], type: "1x2"})} selection={2} odd={basketball? odds[5] : odds[7]}/>
       </View>
     </TouchableOpacity>

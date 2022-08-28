@@ -8,8 +8,8 @@ const OnBoardingInfoBox = ({slideNumber})=>{
   const text1 = () => {
     return (
       <View>
-        <Text style={styles.headerText}> Gratuit!</Text>
-        <Text style={styles.text}>Avec Sport<Text style={{ color: "#FDE88E"}}>King</Text> plus besoin d'argent, {"\n"} placer gratuitement des paris sportifs avec vos monnaies virtuels!</Text>
+        <Text style={styles.headerText}> Free!</Text>
+        <Text style={styles.text}>With Sport<Text style={{ color: "#FDE88E"}}>King</Text> you don't need real money, just play with your virtual coins.</Text>
       </View>
     )
   };
@@ -17,8 +17,8 @@ const OnBoardingInfoBox = ({slideNumber})=>{
   const text2 = () => {
     return (
       <View>
-        <Text style={styles.headerText}>Prouve que t'es le <Text style={{ color: "#FDE88E"}}>King</Text>!</Text>
-        <Text style={styles.text}>Chaque jour, mise sur tes matchs préférer, rivalise avec les autres joueurs et défends ta position dans le classement !</Text>
+        <Text style={styles.headerText}>Show them who is the <Text style={{ color: "#FDE88E"}}>King</Text>!</Text>
+        <Text style={styles.text}>Everyday, play on your favorites games, Challenge other players and aim for the top.</Text>
       </View>
     )
   };
@@ -27,7 +27,7 @@ const OnBoardingInfoBox = ({slideNumber})=>{
     return (
       <View>
         <Text style={styles.headerText}>24/7</Text>
-        <Text style={styles.text}>Plus de <Text style={{ color: "#FDE88E"}}>25</Text> sports differents {"\n\n"}Les plus grandes leagues <Text style={{ color: "#FDE88E"}}>en direct</Text> Et des sports virtuels, {"\n\n"} Du <Text style={{ color: "#FDE88E"}}>Fun</Text> 24/7!</Text>
+        <Text style={styles.text}>More than <Text style={{ color: "#FDE88E"}}>25</Text> different sports {"\n\n"}The biggest sports leagues <Text style={{ color: "#FDE88E"}}>live</Text> and virtual games, {"\n\n"} Just <Text style={{ color: "#FDE88E"}}>Fun</Text> 24/7!</Text>
       </View>
     )
   };

@@ -8,14 +8,14 @@ export function getHeaderTitle(route) {
   const routeName = getFocusedRouteNameFromRoute(route) ?? 'Feed';
 
   switch (routeName) {
-    case 'Acceuil':
-      return 'Acceuil';
-    case 'Matchs':
-      return 'Matchs';
-    case 'Paris':
-      return 'Paris';
-    case 'Classement':
-      return "Classement";
+    case 'Home':
+      return 'Home';
+    case 'Games':
+      return 'Games';
+    case 'Bet':
+      return 'Bet';
+    case 'Leaderboards':
+      return "Leaderboards";
     case 'Profile':
       return "Profile"
   }

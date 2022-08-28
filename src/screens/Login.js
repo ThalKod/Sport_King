@@ -145,11 +145,11 @@ const Login = ({ navigation })=>{
                 {/* <TouchableOpacity onPress={() => navigation.navigate("ResetPassword")}>
                   <Text style={styles.forgetText}>Ou bliye password ou ?</Text>
                 </TouchableOpacity> */}
-                { errorUser && <Text style={styles.errorText}>Email ou password incorrect !</Text> }
-                { errorCompletion && <Text style={styles.errorText}>Veuillez completer le formulaire !</Text> }
-                <MainButton onClick={handleLogin} text={loading? loadingComp : "SE CONNECTER"} color={"#19D8B7"} arrow={arrowImage}/>
+                { errorUser && <Text style={styles.errorText}>Email or password incorrect !</Text> }
+                { errorCompletion && <Text style={styles.errorText}>Please complete the password !</Text> }
+                <MainButton onClick={handleLogin} text={loading? loadingComp : "SIGN IN"} color={"#19D8B7"} arrow={arrowImage}/>
                 <TouchableOpacity onPress={handleNewUser}>
-                  <Text style={styles.newUserText}>Tu n'as pas encore de compte? {"\n"}  Créez en un maintenant </Text>
+                  <Text style={styles.newUserText}>Don't have an account yet? {"\n"}  Click here to create one </Text>
                 </TouchableOpacity>
               </View>
             </View>

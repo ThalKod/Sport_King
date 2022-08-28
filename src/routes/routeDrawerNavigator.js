@@ -75,7 +75,7 @@ export const rootDrawerNavigator = () => {
           title: "",
           headerLeft: () => (
             <View>
-              <Text style={{ color: "#ffffff", fontSize: moderateScale(16), fontWeight: "bold"}}>{getHeaderTitle(route) || "Accueil"}</Text>
+              <Text style={{ color: "#ffffff", fontSize: moderateScale(16), fontWeight: "bold"}}>{getHeaderTitle(route) || "Home"}</Text>
             </View>
           ),
           /* headerLeft: () => (

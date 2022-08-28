@@ -109,7 +109,7 @@ const ActiveBet = ({ navigation }) => {
   if(betData.length <= 0) {
     return (
         <View style={{ backgroundColor: "#1C0C4F", flex: 1, alignItems: "center", justifyContent: "center"}}>
-          <Text style={{ color: "#fff", fontSize: moderateScale(16), textAlign: "center"}}>Aucun paris en cours.</Text>
+          <Text style={{ color: "#fff", fontSize: moderateScale(16), textAlign: "center"}}>No pending bet.</Text>
         </View>
     )
   }
@@ -185,7 +185,7 @@ const EndedBet = ({ navigation }) => {
   if(betData.length <= 0) {
     return (
         <View style={{ backgroundColor: "#1C0C4F", flex: 1, alignItems: "center", justifyContent: "center"}}>
-          <Text style={{ color: "#fff", fontSize: moderateScale(16), textAlign: "center"}}>Aucun paris en cours.</Text>
+          <Text style={{ color: "#fff", fontSize: moderateScale(16), textAlign: "center"}}>No Bet.</Text>
         </View>
     )
   }
@@ -220,8 +220,8 @@ const BetScreen = ({ navigation }) => {
             tabBarStyle: { backgroundColor: '#140A35' },
           }}
         >
-          <Tab.Screen name="En Cours" component={ActiveBet} />
-          <Tab.Screen name="Terminee" component={EndedBet} />
+          <Tab.Screen name="Pending" component={ActiveBet} />
+          <Tab.Screen name="Completed" component={EndedBet} />
         </Tab.Navigator>
       </NavigationContext.Provider>
     </View>

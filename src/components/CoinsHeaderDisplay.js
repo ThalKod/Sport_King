@@ -121,9 +121,9 @@ const CoinsHeaderDisplay = () => {
         onBackButtonPress={() => setModal({...modal, isMainModalVisible: false})}
         onBackdropPress={() => setModal({...modal, isMainModalVisible: false})}
       >
-        {modal.isModalErrorVisible && <AdsModal title={"Erreur"} close={() => setModal({...modal, isModalErrorVisible: false})} buttonText={"Ok"} text={"Pas de pub disponible pour le moment, veuillez reessayer dans un moment"} onPress={() => setModal({...modal, isMainModalVisible: false, isModalErrorVisible: false})} />}
+        {modal.isModalErrorVisible && <AdsModal title={"Error"} close={() => setModal({...modal, isModalErrorVisible: false})} buttonText={"Ok"} text={"No ads available for now, please try again later"} onPress={() => setModal({...modal, isMainModalVisible: false, isModalErrorVisible: false})} />}
 
-        {modal.isMainModalVisible && <AdsModal title={"Regarder une pub"} close={() => setModal({...modal, isMainModalVisible: false})} buttonText={"Confirmer"} text={"Tu veut ajouter des coins sur ton compte? C'est gratuit ! Regarde une pub maintenant et recois 50 jetons !"} onPress={showAds} />}
+        {modal.isMainModalVisible && <AdsModal title={"Watch an Ads"} close={() => setModal({...modal, isMainModalVisible: false})} buttonText={"Watch Ads"} text={"Do you want to add more coins to your account? It's Free ! Just watch an ads an receive more coins !"} onPress={showAds} />}
 
         {modal.isLoadingRewardedAdsModalVisible &&
           <View style={{ flex: 1, alignItems: "center", justifyContent: "center"}}>

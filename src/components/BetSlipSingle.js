@@ -24,7 +24,7 @@ const betType = (typeNumber) => {
 };
 
 const BetSlipSingle = ({ eventIsOver, item }) => {
-  const statusText = item.outcome === 1? "Gagné" : "Perdu";
+  const statusText = item.outcome === 1? "Won" : "Lost";
   const backgroundColor = item.outcome === 1? "#059A32" : "#9A052D";
 
   return (
@@ -38,7 +38,7 @@ const BetSlipSingle = ({ eventIsOver, item }) => {
           <View style={{alignItems: "flex-end"}}>
             <Text style={styles.odd}>{item.odd.toFixed(2)}</Text>
             <TouchableOpacity disable={true} style={[styles.cashoutButton, { backgroundColor: item.outcome !== null? backgroundColor : "#331493" }]}>
-              <Text style={[ styles.colorWhite]}>{eventIsOver? statusText : "En cours"}</Text>
+              <Text style={[ styles.colorWhite]}>{eventIsOver? statusText : "Pending"}</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -49,11 +49,11 @@ const BetSlipSingle = ({ eventIsOver, item }) => {
             <Text style={[styles.colorWhite, styles.bottomDetailsText]}>{item.odd.toFixed(2)}</Text>
           </View>
           <View style={{alignItems: "center"}}>
-            <Text style={[styles.colorWhite, styles.bottomDetailsText]}>Montant</Text>
+            <Text style={[styles.colorWhite, styles.bottomDetailsText]}>Amount</Text>
             <Text style={[styles.colorWhite, styles.bottomDetailsText]}>{item.bid} Ƀ</Text>
           </View>
           <View style={{alignItems: "center"}}>
-            <Text style={[styles.colorWhite, styles.bottomDetailsText]}>{ eventIsOver? statusText : "Gains Potentiels"}</Text>
+            <Text style={[styles.colorWhite, styles.bottomDetailsText]}>{ eventIsOver? statusText : "Winning amount"}</Text>
             <Text style={[styles.colorWhite, styles.bottomDetailsText]}>{(item.bid * item.odd).toFixed(2)} Ƀ</Text>
           </View>
         </View>
@@ -88,8 +88,9 @@ const styles = StyleSheet.create({
   cashoutButton: {
     backgroundColor: "#331493",
     height: moderateScale(35),
-    borderRadius: moderateScale(30),
+    borderRadius: moderateScale(20),
     padding: moderateScale(10),
+    width: moderateScale(75),
     alignItems: "center",
     justifyContent: "center"
   },
