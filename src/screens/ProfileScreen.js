@@ -102,7 +102,7 @@ const ProfileScreen = ({ navigation }) => {
   return (
     <ScrollView style={styles.container}>
       <ProfileInfoBox/>
-      { showModal && <ModalConfirmation title={"Delete my account"} close={() => { setShowModal(false); setLoadingDeleteUser(false) }} buttonText={"Confirmer"} text={"Do you really want to delete your account ? The data linked to your account will all be deleted. This cannot be undone."} onPress={handleDeletion} /> }
+      { showModal && <ModalConfirmation title={"Delete my account"} close={() => { setShowModal(false); setLoadingDeleteUser(false) }} buttonText={"Confirm"} text={"Do you really want to delete your account ? The data linked to your account will all be deleted. This cannot be undone."} onPress={handleDeletion} /> }
       <View style={{ padding: moderateScale(5)}}>
         <View style={styles.prizeBox}>
           <Text style={styles.primText}>Stats</Text>

@@ -89,7 +89,7 @@ const QuickPicksModal = ({ isVisible, close, info }) => {
         style={styles.modalContainer}>
         <View style={styles.container}>
           <View style={styles.modalHeader}>
-            <Text style={styles.modalTextTitle}>Placer une mise</Text>
+            <Text style={styles.modalTextTitle}>Play This Game</Text>
             <TouchableOpacity
               onPress={() => close(false)}
               hitSlop={{ top: 10, left: 10, right: 10, bottom: 10 }}
@@ -121,16 +121,16 @@ const QuickPicksModal = ({ isVisible, close, info }) => {
               { error? <Text style={styles.errorText}>{error}</Text> : null }
               <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center"}}>
                 <TouchableOpacity onPress={handleDelete} style={{ flexDirection: "row", alignItems: "center", fontSize: moderateScale(16)}}>
-                  <Text style={{ color: "#fff", marginRight: moderateScale(5)}}>Effacer</Text>
+                  <Text style={{ color: "#fff", marginRight: moderateScale(5)}}>Delete</Text>
                   <AntDesign name="close" size={moderateScale(16)} color={"#fff"} />
                 </TouchableOpacity>
                 <View>
-                  <Text style={{ opacity: 0.7, color: "#fff", textDecorationLine: 'underline' }}>Gains Potentiels:  {numeral(inputValue * info.odd).format("0,0[.]00 ")}Ƀ</Text>
+                  <Text style={{ opacity: 0.7, color: "#fff", textDecorationLine: 'underline' }}>Winning Amount:  {numeral(inputValue * info.odd).format("0,0[.]00 ")}Ƀ</Text>
                 </View>
               </View>
               <TouchableOpacity disabled={loading || error} onPress={handleMakeBet} style={styles.placeBetButton}>
                 { loading && <ActivityIndicator size="large" color="#fff"/> }
-                { !loading && <Text style={{ fontFamily: "OpenSans-Bold", color: "#fff", fontSize: moderateScale(16)}}>Confirmer</Text> }
+                { !loading && <Text style={{ fontFamily: "OpenSans-Bold", color: "#fff", fontSize: moderateScale(16)}}>Confirm</Text> }
               </TouchableOpacity>
             </View>
           </View>
