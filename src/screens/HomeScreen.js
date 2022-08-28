@@ -158,7 +158,7 @@ const HomeScreen = ({ navigation }) => {
 
   const handleCloseModal = (navigate) => {
     closeModal();
-    if(navigate) navigation.navigate("Paris");
+    if(navigate) navigation.navigate("Bet");
   };
 
   const handleSelection = async (info, item) => {

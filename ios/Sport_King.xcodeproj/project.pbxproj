@@ -625,7 +625,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Sport_King/Sport_King.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = 54CB2WK4G7;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Sport_King/Info.plist;
@@ -656,7 +656,7 @@
 				CODE_SIGN_ENTITLEMENTS = Sport_King/Sport_King.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = 54CB2WK4G7;
 				INFOPLIST_FILE = Sport_King/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
