@@ -182,7 +182,7 @@ const Register = ({ navigation }) => {
                   setErrorCompletion(false)
                   setErrorPasswordConfirmation(false)
                   setPasswordConfirmationValue(v)
-                }} password placeHolder="Password Confirmation" icon={<AntDesign style={{ marginRight: moderateScale(10)}} name="lock" size={20} color="#B3B3B6" />}/>
+                }} password placeHolder="Confirm Password" icon={<AntDesign style={{ marginRight: moderateScale(10)}} name="lock" size={20} color="#B3B3B6" />}/>
                 { errorPasswordConfirmation && <Text style={styles.errorText}>The password don't match!</Text> }
                 <CustomTextInput value={inviteCode} onValueChange={(v) => {
                   setErrorUsername(false);
@@ -190,7 +190,7 @@ const Register = ({ navigation }) => {
                   setErrorCompletion(false);
                   setErrorPasswordConfirmation(false)
                   setInviteCode(v);
-                }} placeHolder="Invite Code(Optionnel)" icon={<AntDesign style={{ marginRight: moderateScale(10)}} name="barcode" size={20} color="#B3B3B6" />}/>
+                }} placeHolder="Invite Code(Optional)" icon={<AntDesign style={{ marginRight: moderateScale(10)}} name="barcode" size={20} color="#B3B3B6" />}/>
                 { errorCompletion && <Text style={styles.errorText}>Please complete the form</Text> }
                 <MainButton onClick={handleSignupUser} text={loading? loadingComp : "CREATE AN ACCOUNT"} color={"#19D8B7"} arrow={arrowImage}/>
                 <TouchableOpacity onPress={handleAlreadyRegistered}>

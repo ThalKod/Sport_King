@@ -1,4 +1,4 @@
-rootProject.name = 'Sport_King'
+rootProject.name = 'Sport King'
 apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)
 include ':app'
 include ':react-native-linear-gradient'

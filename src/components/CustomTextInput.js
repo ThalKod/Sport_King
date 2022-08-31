@@ -20,6 +20,7 @@ const CustomTextInput  = ({ icon, placeHolder, password, value, onValueChange })
            onChangeText={text => onValueChange(text)}
            secureTextEntry={password}
            placeholder={placeHolder}
+           placeholderTextColor={'#393939'}
        />
      </View>
   );

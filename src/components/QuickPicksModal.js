@@ -125,7 +125,7 @@ const QuickPicksModal = ({ isVisible, close, info }) => {
                   <AntDesign name="close" size={moderateScale(16)} color={"#fff"} />
                 </TouchableOpacity>
                 <View>
-                  <Text style={{ opacity: 0.7, color: "#fff", textDecorationLine: 'underline' }}>Winning Amount:  {numeral(inputValue * info.odd).format("0,0[.]00 ")}Ƀ</Text>
+                  <Text style={{ opacity: 0.7, color: "#fff", textDecorationLine: 'underline' }}>Amount:  {numeral(inputValue * info.odd).format("0,0[.]00 ")}Ƀ</Text>
                 </View>
               </View>
               <TouchableOpacity disabled={loading || error} onPress={handleMakeBet} style={styles.placeBetButton}>
