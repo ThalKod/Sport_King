@@ -9,10 +9,11 @@
 
 <p align="center">
   <img width="260" height="600" src="https://github.com/ThalKod/Sport_King/assets/32584079/bf5d371d-fd21-45b0-bf46-57babc8ed971">
-  <img width="260" height="600" src="https://github.com/ThalKod/Sport_King/assets/32584079/19dd7416-6f0e-432d-98dd-a8a789bb1e28">
+  <img width="260" height="600" src="https://github.com/ThalKod/Sport_King/assets/32584079/96eed5ae-2280-4788-8fd2-24e49b6df369">
   <img width="260" height="600" src="https://github.com/ThalKod/Sport_King/assets/32584079/2d6de955-8e68-4e50-8912-f4bbc7c0b1b0">
 
   <p align="center">
+
       Complete app with full components
   </p>
 </p>
