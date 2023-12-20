@@ -13,7 +13,6 @@
   <img width="260" height="600" src="https://github.com/ThalKod/Sport_King/assets/32584079/2d6de955-8e68-4e50-8912-f4bbc7c0b1b0">
 
   <p align="center">
-
       Complete app with full components
   </p>
 </p>
